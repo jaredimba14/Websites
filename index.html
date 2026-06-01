@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Elite VitaMed Aesthetics | Tailwind Mockups</title>
+    <meta
+      name="description"
+      content="Luxury Tailwind mockup set for Elite VitaMed Aesthetics, a mobile concierge injectables and IV therapy provider in New Hampshire."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@300;500;600;700;800&family=Roboto+Condensed:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              navy: "#06324a",
+              "navy-deep": "#031d2e",
+              champagne: "#d5a85e",
+              "soft-gold": "#f3dfb8",
+              ivory: "#fbf7ee",
+              mist: "#edf6f8",
+              ink: "#142536"
+            },
+            fontFamily: {
+              serif: ["Cormorant Garamond", "serif"],
+              sans: ["Inter", "sans-serif"]
+            },
+            boxShadow: {
+              luxe: "0 24px 70px rgba(3, 29, 46, .14)",
+              gold: "0 18px 50px rgba(213, 168, 94, .22)"
+            }
+          }
+        }
+      };
+    </script>
+    <link rel="stylesheet" href="./assets/styles.css?v=52" />
+  </head>
+  <body class="bg-ivory text-ink antialiased">
+    <div class="site-header fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-navy-deep/95 backdrop-blur-xl">
+      <header class="mx-auto flex max-w-[90rem] items-center justify-between gap-4 px-4 py-2 sm:px-6 lg:px-8">
+        <a href="#home" class="brand-frame group flex shrink-0 items-center" aria-label="Elite VitaMed home">
+          <img class="brand-logo" src="./assets/logo-stacked.png" alt="Elite VitaMed Aesthetics" />
+        </a>
+
+        <div class="header-kicker hidden md:block">
+          <span>Mobile Concierge Care</span>
+          <strong>Injectables + IV Therapy in New Hampshire</strong>
+        </div>
+
+        <div class="hidden items-center gap-3 md:flex">
+          <a href="#assessment" class="btn btn-ghost">
+            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3l1.7 5.3L19 10l-5.3 1.7L12 17l-1.7-5.3L5 10l5.3-1.7L12 3Z"/></svg>
+            Start Assessment
+          </a>
+          <a href="#contact" class="btn btn-gold">
+            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3v4"/><path d="M17 3v4"/><path d="M4 8h16"/><path d="M5 5h14a1 1 0 0 1 1 1v14H4V6a1 1 0 0 1 1-1Z"/></svg>
+            Book Now
+          </a>
+        </div>
+
+        <button
+          id="menuButton"
+          class="shrink-0 rounded-full border border-champagne/30 px-4 py-2 text-sm font-bold text-white md:hidden"
+          aria-label="Open menu"
+          aria-expanded="false"
+        >
+          Menu
+        </button>
+      </header>
+
+      <nav class="desktop-nav-row hidden border-t border-white/10 md:block" aria-label="Main navigation">
+        <div class="mx-auto flex max-w-[90rem] items-center justify-center gap-2 px-4 py-1.5 sm:px-6 lg:px-8">
+          <a class="nav-link" href="#home"><svg class="svg-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 10v10h14V10"/></svg>Home</a>
+          <div class="nav-group">
+            <a class="nav-link nav-trigger" href="#services"><svg class="svg-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3l1.7 5.3L19 10l-5.3 1.7L12 17l-1.7-5.3L5 10l5.3-1.7L12 3Z"/></svg>Treatments</a>
+            <div class="mega-menu mega-wide mega-services">
+              <div class="mega-feature">
+                <span>Treatment Overview</span>
+                <strong>Our Treatments</strong>
+                <p>Explore injectables, IV therapy, wellness care, memberships, and guided next steps.</p>
+                <a href="#services">Explore Treatments →</a>
+              </div>
+              <div class="mega-columns mega-service-columns">
+                <div class="mega-service-group">
+                  <h3>Injectables</h3>
+                  <p>Sculptra, Radiesse, Botox, dermal fillers, facial balancing</p>
+                  <a href="#injectables">Botox or Neurotoxins</a>
+                  <a href="#injectables">Dermal Fillers</a>
+                  <a href="#injectables">Jawline Contouring</a>
+                  <a href="#injectables">Under Eye Rejuvenation</a>
+                  <a href="#injectables">PDO Threads</a>
+                  <a href="#injectables">Sculptra</a>
+                  <a href="#injectables">Facial Balancing</a>
+                  <a href="#injectables">Non Surgical Face Lift</a>
+                </div>
+                <div class="mega-service-stack">
+                  <div class="mega-service-group">
+                    <h3>Regenerative Aesthetics</h3>
+                    <p>PRP, PRF, hair restoration, skin rejuvenation</p>
+                    <a href="#services">PRP and PRF</a>
+                    <a href="#services">Hair Restoration</a>
+                    <a href="#services">Collagen Stimulation Treatments</a>
+                  </div>
+                  <div class="mega-service-group">
+                    <h3>Skin and Tightening</h3>
+                    <p>Neck tightening, skin laxity, radiofrequency, body contouring if relevant</p>
+                    <a href="#services">Breeze Facial</a>
+                    <a href="#services">WonderTouch</a>
+                    <a href="#services">Facial Contouring</a>
+                    <a href="#services">Microneedling with Stem Cells</a>
+                    <a href="#services">Chemical Peels</a>
+                  </div>
+                  <div class="mega-service-group">
+                    <h3>Intimate Wellness</h3>
+                    <p>Vaginal tightening, feminine rejuvenation, confidence, comfort, wellness</p>
+                    <a href="#services">Feminine Wellness</a>
+                    <a href="#services">Vaginal Tightening</a>
+                  </div>
+                </div>
+                <div class="mega-service-group">
+                  <h3>IV and Wellness</h3>
+                  <p>IV drip therapy, vitamin shots, wellness optimization</p>
+                  <a href="#services">Hydration &amp; Recovery Drip</a>
+                  <a href="#services">Energy &amp; Performance Drip</a>
+                  <a href="#services">Detox &amp; Cleanse Drip</a>
+                  <a href="#services">Beauty Glow Drip</a>
+                  <a href="#services">Metabolism &amp; Weight Management Drip</a>
+                  <a href="#services">Immunity Boost Drip</a>
+                  <a href="#services">Myers' Cocktail</a>
+                  <a href="#services">NAD+ Therapy</a>
+                  <a href="#contact">IV Therapy Phone Consult</a>
+                  <a href="#services">Vitamin Injections</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="nav-group">
+            <a class="nav-link nav-trigger" href="#assessment"><svg class="svg-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 11h6"/><path d="M9 15h4"/><path d="M5 4h14v16H5z"/></svg>Treatment Assessment</a>
+            <div class="mega-menu mega-assessment">
+              <div>
+                <h3>Start Here</h3>
+                <a href="#assessment">Assessment Overview</a>
+                <a href="#assessment">Which Treatment Is Right For You?</a>
+                <a href="#contact">Request a Phone Consultation</a>
+              </div>
+              <div>
+                <h3>Quiz Paths</h3>
+                <a href="#assessment">Injectables Assessment</a>
+                <a href="#assessment">IV Drip Assessment</a>
+                <a href="#assessment">Full Treatment Assessment</a>
+              </div>
+              <div class="mega-note">
+                <span>Conversion Flow</span>
+                <p>Quiz result → recommendation page → GHL follow-up → booking or VA call task.</p>
+              </div>
+            </div>
+          </div>
+          <a class="nav-link" href="#memberships"><svg class="svg-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 3h12l4 6-10 12L2 9l4-6Z"/><path d="M2 9h20"/></svg>Memberships</a>
+          <div class="nav-group">
+            <a class="nav-link nav-trigger" href="#about"><svg class="svg-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>About</a>
+            <div class="mega-menu mega-about">
+              <div>
+                <h3>Elite VitaMed</h3>
+                <a href="#about">About Elite VitaMed</a>
+                <a href="#about">Meet Tiana</a>
+                <a href="#about">Mobile Concierge Care</a>
+              </div>
+              <div>
+                <h3>Trust</h3>
+                <a href="#results">Results</a>
+                <a href="#results">Before and After</a>
+                <a href="#faq">FAQ</a>
+              </div>
+              <div class="mega-note">
+                <span>Care Model</span>
+                <p>Provider-led education, natural-looking results, and consultation-first planning.</p>
+              </div>
+            </div>
+          </div>
+          <a class="nav-link" href="#contact"><svg class="svg-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.4 19.4 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7"/></svg>Contact</a>
+        </div>
+      </nav>
+
+      <div id="mobileMenu" class="hidden border-t border-white/10 bg-navy-deep px-4 pb-5 pt-2 md:hidden">
+        <div class="grid grid-cols-2 gap-3 py-3">
+          <a href="#contact" class="btn btn-gold justify-center mobile-link">Book Now</a>
+          <a href="#assessment" class="btn btn-ghost justify-center mobile-link">Assessment</a>
+        </div>
+        <div class="space-y-2">
+          <a class="mobile-link mobile-nav-item" href="#home">Home</a>
+          <a class="mobile-link mobile-nav-item" href="#about">About Tiana</a>
+          <details class="mobile-details">
+            <summary>Treatments</summary>
+            <a class="mobile-link" href="#services">Treatments Overview</a>
+            <a class="mobile-link" href="#injectables">Injectables Hub</a>
+            <a class="mobile-link" href="#services">IV Drips and Wellness</a>
+          </details>
+          <details class="mobile-details">
+            <summary>Treatment Assessment</summary>
+            <a class="mobile-link" href="#assessment">Assessment Overview</a>
+            <a class="mobile-link" href="#assessment">Injectables Quiz</a>
+            <a class="mobile-link" href="#assessment">IV Drip Quiz</a>
+          </details>
+          <a class="mobile-link mobile-nav-item" href="#memberships">Memberships</a>
+          <a class="mobile-link mobile-nav-item" href="#results">Results</a>
+          <a class="mobile-link mobile-nav-item" href="#faq">FAQ</a>
+          <a class="mobile-link mobile-nav-item" href="#contact">Contact</a>
+        </div>
+      </div>
+    </div>
+
+    <main id="app" class="min-h-screen pt-[92px] md:pt-[122px]"></main>
+
+    <footer class="bg-navy-deep text-white">
+      <div class="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
+        <div class="grid gap-10 lg:grid-cols-[1.2fr_2fr]">
+          <div>
+            <p class="eyebrow">Mobile concierge aesthetics</p>
+            <h2 class="mt-3 font-serif text-4xl font-semibold leading-tight">Premium care, personalized around your goals.</h2>
+            <p class="mt-4 max-w-md text-sm leading-7 text-white/70">
+              Premium injectable, IV therapy, and wellness treatments performed by a Nurse Practitioner and certified injector, delivered through a private mobile concierge experience built around your goals.
+            </p>
+            <div class="mt-6 flex flex-wrap gap-3">
+              <a href="#contact" class="btn btn-gold">Book Now</a>
+              <a href="#assessment" class="btn btn-ghost">Start Treatment Assessment</a>
+            </div>
+          </div>
+          <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            <div>
+              <h3 class="footer-title">Main Pages</h3>
+              <a href="#home">Home</a><a href="#about">About</a><a href="#services">Services</a><a href="#assessment">Assessment</a><a href="#contact">Book Now</a>
+            </div>
+            <div>
+              <h3 class="footer-title">Injectables</h3>
+              <a href="#injectables">Botox</a><a href="#injectables">Dermal Fillers</a><a href="#injectables">Sculptra</a><a href="#injectables">Radiesse</a><a href="#injectables">PDO Threads</a>
+            </div>
+            <div>
+              <h3 class="footer-title">Wellness</h3>
+              <a href="#services">IV Drip Therapy</a><a href="#services">Hydration IV</a><a href="#services">Energy IV</a><a href="#services">Immunity IV</a><a href="#services">Vitamin Injections</a>
+            </div>
+            <div>
+              <h3 class="footer-title">Conversion</h3>
+              <a href="#assessment">Injectables Quiz</a><a href="#assessment">IV Drip Quiz</a><a href="#contact">Phone Consultation</a><a href="#results">Client Reviews</a><a href="#faq">Booking FAQ</a>
+            </div>
+          </div>
+        </div>
+        <div class="mt-12 flex flex-col gap-3 border-t border-white/10 pt-6 text-xs text-white/55 sm:flex-row sm:items-center sm:justify-between">
+          <p>Mockup prototype for Elite VitaMed Aesthetics. Final clinical language should be provider-reviewed.</p>
+          <p>New Hampshire mobile concierge injectables and IV therapy.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="./assets/app.js?v=52"></script>
+  </body>
+</html>
