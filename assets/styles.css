@@ -1170,6 +1170,62 @@ p.text-sm {
   text-transform: uppercase;
 }
 
+/* Redesigned footer: CTA band, contact, social, legal */
+.footer-cta {
+  background: rgba(255, 255, 255, .03);
+  border-bottom: 1px solid rgba(255, 255, 255, .08);
+}
+.footer-cta h2 { color: #fff; }
+.footer-contact li {
+  align-items: flex-start;
+  color: rgba(255, 255, 255, .7);
+  display: flex;
+  font-size: .85rem;
+  gap: .6rem;
+  line-height: 1.5;
+}
+.footer-icon {
+  color: #d5a85e;
+  flex-shrink: 0;
+  height: 1.05rem;
+  margin-top: .12rem;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.7;
+  width: 1.05rem;
+}
+.footer-social a {
+  align-items: center;
+  border: 1px solid rgba(214, 178, 94, .32);
+  border-radius: 999px;
+  color: #fff3c8 !important;
+  display: inline-flex !important;
+  height: 2.5rem;
+  justify-content: center;
+  transition: background .2s ease, border-color .2s ease, transform .2s ease;
+  width: 2.5rem;
+}
+.footer-social a:hover {
+  background: rgba(214, 178, 94, .14);
+  border-color: rgba(214, 178, 94, .6);
+  transform: translateY(-1px);
+}
+.footer-social svg {
+  height: 1.15rem;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.7;
+  width: 1.15rem;
+}
+.footer-legal a {
+  color: rgba(255, 255, 255, .55);
+  display: inline;
+  line-height: 1.5;
+}
+.footer-legal a:hover { color: #fff; }
+
 .neuro-face-card,
 .neuro-info-card {
   background: rgba(255, 255, 255, .9);
