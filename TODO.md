@@ -4,12 +4,12 @@
 - Results, Memberships, Contact, and Treatment Assessment built from approved copy (content-complete).
 - Fixed cross-page CTA routing (`#contact/contact-form` deep link) so phone-consultation/booking CTAs reach the contact form instead of falling back to Home.
 - Optimized image assets: converted hero/portrait/face-map/logo PNGs to WebP and resized oversized files (~6 MB -> ~0.36 MB); removed the unused `hero-concierge-cutout` asset.
+- Integrated the injectables assessment quiz into the SPA as route `#injectables-assessment` (shares the real nav/footer/design); extracted its inline 1.2 MB base64 face map to `face-map-detailed.webp`. The old standalone `injectables_assessment.html` was removed.
 
 ## Next Priority
 - Complete the FAQ page with approved live content.
 - Review Home and Treatments copy against the latest approved wording.
 - Fix any remaining placeholder text or encoding artifacts.
-- Sync the standalone injectables assessment page's nav/design if the global header changes.
 
 ## Content Needed
 - Add final Google rating, review count, review quotes, names, and Reviews URL.

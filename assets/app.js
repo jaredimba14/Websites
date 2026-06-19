@@ -338,7 +338,7 @@ function homeServices() {
       options: ["Botox or Neurotoxins", "Dermal Fillers", "Sculptra", "Radiesse", "PDO Threads", "Facial Balancing", "Non Surgical Face Lift", "Injectables Consultation"],
       bestFor: ["Fine lines", "Wrinkles", "Volume loss", "Facial balance", "Lip enhancement", "Cheek support", "Jawline definition", "Full face refresh goals"],
       primary: ["Explore Injectables", "#injectables"],
-      secondary: ["Start Injectable Assessment", "injectables_assessment.html"],
+      secondary: ["Start Injectable Assessment", "#injectables-assessment"],
       icon: "syringe",
       featured: true
     },
@@ -1311,7 +1311,7 @@ function assessmentPage() {
   ];
   const assessments = [
     { featured: true, title: "Start With The Main Treatment Assessment", bestFor: "Best for clients who are not sure where to begin.", lead: "This assessment can help guide you toward:", items: ["Injectables", "Regenerative Aesthetics", "Skin and Tightening", "IV and Wellness", "Intimate Wellness", "A provider consultation", "A phone consultation", "A treatment recommendation page"], cta: "Start Treatment Assessment", href: "#contact/contact-form", intent: "treatment-assessment", icon: "shield" },
-    { title: "Injectables Assessment", bestFor: "Best for clients interested in Botox, filler, facial balancing, PDO threads, Sculptra, Radiesse, or non surgical facial rejuvenation.", lead: "This assessment may help if you are wondering about:", items: ["Botox or neurotoxins", "Dermal fillers", "Restylane", "Radiesse", "Sculptra", "PDO threads", "Lip filler", "Cheek filler", "Chin filler", "Jawline contouring", "Under eye rejuvenation", "Facial balancing", "Non surgical face lift planning"], cta: "Start Injectable Assessment", href: "injectables_assessment.html", icon: "syringe" },
+    { title: "Injectables Assessment", bestFor: "Best for clients interested in Botox, filler, facial balancing, PDO threads, Sculptra, Radiesse, or non surgical facial rejuvenation.", lead: "This assessment may help if you are wondering about:", items: ["Botox or neurotoxins", "Dermal fillers", "Restylane", "Radiesse", "Sculptra", "PDO threads", "Lip filler", "Cheek filler", "Chin filler", "Jawline contouring", "Under eye rejuvenation", "Facial balancing", "Non surgical face lift planning"], cta: "Start Injectable Assessment", href: "#injectables-assessment", icon: "syringe" },
     { title: "Skin and Tightening Assessment", bestFor: "Best for clients interested in skin glow, texture, firmness, mild laxity, contouring, or skin rejuvenation.", lead: "This assessment may help if you are wondering about:", items: ["Breeze", "WonderTouch", "Ultimate Glow & Lift", "Facial Contouring", "Microneedling with Stem Cells", "Chemical Peels", "Skin texture", "Glow support", "Firmness support", "Fine lines", "Acne related texture concerns"], cta: "Start Skin Assessment", href: "#contact/contact-form", intent: "treatment-assessment", icon: "sparkle" },
     { title: "IV Therapy Assessment", bestFor: "Best for clients interested in hydration support, wellness support, vitamin shots, or IV drip therapy.", lead: "This assessment may help if you are wondering about:", items: ["Hydration IV", "Energy IV", "Immunity IV", "Beauty IV", "Recovery IV", "Vitamin Shots", "Travel recovery", "Post event support", "Energy support", "Wellness maintenance"], cta: "Start IV Therapy Assessment", href: "#contact/contact-form", intent: "treatment-assessment", icon: "droplet" },
     { title: "Regenerative Aesthetics Assessment", bestFor: "Best for clients interested in PRP, PRF, hair restoration, or collagen focused treatment planning.", lead: "This assessment may help if you are wondering about:", items: ["PRP and PRF", "Hair Restoration", "Collagen Stimulation Treatments", "Skin quality support", "Under eye support", "Hair thinning concerns", "Texture support", "Natural looking rejuvenation"], cta: "Start Regenerative Assessment", href: "#contact/contact-form", intent: "treatment-assessment", icon: "leaf" },
@@ -3692,6 +3692,8 @@ const pages = {
 
   faq: faqPage,
 
+  "injectables-assessment": () => window.INJECTABLES_ASSESSMENT_HTML || "",
+
   contact: () => `${contactHero()}${contactOptions()}${contactForm()}${contactLocation()}${contactExpect()}${contactReasons()}${contactProviderCare()}${contactTreatmentCategories()}${contactPrivateConsult()}${contactReviews()}${contactFaq()}${contactFinalCta()}`
 };
 
@@ -3829,6 +3831,7 @@ function render() {
     }, 40);
   }
   setupContactPage();
+  if (page === "injectables-assessment") window.setupInjectablesAssessment?.();
   setupFaqCategoryNav();
   setupNeurotoxinMap();
   setupDermalFillerMap();

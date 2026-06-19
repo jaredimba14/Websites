@@ -20,7 +20,7 @@
 - Final booking, Cherry financing, Google Reviews URLs, rating, review text, GHL endpoint, and consent wording are still placeholders.
 - Results, Memberships, Contact, and Treatment Assessment are content-complete from approved client copy. Home and About have production-facing content passes. FAQ still contains mockup or placeholder sections that need final implementation.
 - Membership plan names, benefits, eligibility, and pricing are built from approved copy but remain marked "confirm before publishing" until final details are locked.
-- The injectables assessment quiz (`injectables_assessment.html`) is a standalone page with its own duplicated header/nav and CSS; it matches the index design today but must be synced manually if the global nav changes.
+- The injectables assessment quiz is now a real SPA route (`#injectables-assessment`) inside `index.html`, so it shares the exact site nav, footer, and design automatically. Its markup/JS live in `assets/injectables-assessment.js` (loaded before `app.js`) and its styles are scoped under `.inj-quiz` in `assets/styles.css`.
 - The project is a prototype, not yet a WordPress theme or Elementor export.
 - Active runtime assets are `assets/logo-stacked.png` and `assets/hero-glow.png`.
 - `.gitignore` excludes screenshots and unused logo variants from publishing.
