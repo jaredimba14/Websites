@@ -3,6 +3,7 @@
 ## Done
 - Results, Memberships, Contact, and Treatment Assessment built from approved copy (content-complete).
 - Fixed cross-page CTA routing (`#contact/contact-form` deep link) so phone-consultation/booking CTAs reach the contact form instead of falling back to Home.
+- Optimized image assets: converted hero/portrait/face-map/logo PNGs to WebP and resized oversized files (~6 MB -> ~0.36 MB); removed the unused `hero-concierge-cutout` asset.
 
 ## Next Priority
 - Complete the FAQ page with approved live content.
@@ -29,3 +30,4 @@
 - Test dropdowns, mobile drawer, all CTAs, FAQ accordions, and Contact form states.
 - Confirm exactly one particle canvas after repeated route navigation.
 - Run accessibility, performance, compliance-copy, and final link checks.
+- Keep new image assets web-optimized (prefer WebP, size to display dimensions) so page weight stays low.
