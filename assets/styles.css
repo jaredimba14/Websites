@@ -4229,7 +4229,6 @@ p.text-sm {
 
     .inj-quiz .treatment-path-layout .path-card {
       grid-column: span 3;
-      min-height: 13rem;
     }
 
     .inj-quiz .treatment-path-layout .path-featured {
