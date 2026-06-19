@@ -40,7 +40,7 @@
         }
       };
     </script>
-    <link rel="stylesheet" href="./assets/styles.css?v=109" />
+    <link rel="stylesheet" href="./assets/styles.css?v=110" />
   </head>
   <body class="bg-ivory text-ink antialiased">
     <div class="site-header fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-navy-deep/95 backdrop-blur-xl">
@@ -275,37 +275,35 @@
 
     <footer class="site-footer text-white">
       <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
-        <div class="grid gap-10 lg:grid-cols-[1.05fr_2fr] lg:gap-16">
-          <div class="footer-brand">
-            <div class="flex flex-col gap-4 sm:flex-row sm:items-center">
-              <a class="footer-logo-link shrink-0" href="#home" aria-label="Elite VitaMed home">
-                <img class="footer-logo" src="./assets/logo-horizontal.webp" alt="Elite VitaMed Aesthetics" />
-              </a>
-              <p class="footer-tagline max-w-sm text-sm leading-7">Premium mobile concierge injectables, IV therapy, and wellness care, guided by natural-looking, provider-led treatment planning.</p>
-            </div>
-            <ul class="footer-contact mt-6 space-y-3">
-              <li data-content-placeholder="phone"><svg class="footer-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg><span>[Insert phone number]</span></li>
-              <li data-content-placeholder="email"><svg class="footer-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg><span>[Insert email address]</span></li>
-              <li><svg class="footer-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>Serving New Hampshire and surrounding areas</span></li>
-            </ul>
-            <div class="footer-social mt-6 flex gap-3">
+        <div class="footer-links grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 lg:grid-cols-5 lg:gap-x-8">
+          <div class="footer-brand col-span-2 sm:col-span-3 lg:col-span-1">
+            <a class="footer-logo-link" href="#home" aria-label="Elite VitaMed home">
+              <img class="footer-logo" src="./assets/logo-horizontal.webp" alt="Elite VitaMed Aesthetics" />
+            </a>
+            <div class="footer-social mt-5 flex gap-3">
               <a aria-label="Instagram" href="#contact" data-integration-placeholder="social"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.4"/><circle cx="12" cy="12" r="4"/><circle cx="17.6" cy="6.4" r="1.1" fill="currentColor" stroke="none"/></svg></a>
               <a aria-label="Facebook" href="#contact" data-integration-placeholder="social"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3Z"/></svg></a>
             </div>
           </div>
-          <div class="footer-links grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-3">
-            <div>
-              <h3 class="footer-title">Treatments</h3>
-              <a href="#injectables">Injectables</a><a href="#regenerative-aesthetics">Regenerative Aesthetics</a><a href="#skin-tightening">Skin &amp; Tightening</a><a href="#iv-wellness">IV &amp; Wellness</a><a href="#intimate-wellness">Intimate Wellness</a>
-            </div>
-            <div>
-              <h3 class="footer-title">Explore</h3>
-              <a href="#about">About</a><a href="#results">Results</a><a href="#memberships">Memberships</a><a href="#faq">FAQ</a><a href="#contact">Contact</a>
-            </div>
-            <div>
-              <h3 class="footer-title">Get Started</h3>
-              <a href="#contact">Book Your Appointment</a><a href="#assessment">Treatment Assessment</a><a href="#injectables-assessment">Injectables Quiz</a><a href="#contact/contact-form">Phone Consultation</a>
-            </div>
+          <div>
+            <h3 class="footer-title">Contact</h3>
+            <ul class="footer-contact space-y-3">
+              <li data-content-placeholder="phone"><svg class="footer-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg><span>[Insert phone number]</span></li>
+              <li data-content-placeholder="email"><svg class="footer-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg><span>[Insert email address]</span></li>
+              <li><svg class="footer-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>Serving New Hampshire and surrounding areas</span></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="footer-title">Treatments</h3>
+            <a href="#injectables">Injectables</a><a href="#regenerative-aesthetics">Regenerative Aesthetics</a><a href="#skin-tightening">Skin &amp; Tightening</a><a href="#iv-wellness">IV &amp; Wellness</a><a href="#intimate-wellness">Intimate Wellness</a>
+          </div>
+          <div>
+            <h3 class="footer-title">Explore</h3>
+            <a href="#about">About</a><a href="#results">Results</a><a href="#memberships">Memberships</a><a href="#faq">FAQ</a><a href="#contact">Contact</a>
+          </div>
+          <div>
+            <h3 class="footer-title">Get Started</h3>
+            <a href="#contact">Book Your Appointment</a><a href="#assessment">Treatment Assessment</a><a href="#injectables-assessment">Injectables Quiz</a><a href="#contact/contact-form">Phone Consultation</a>
           </div>
         </div>
 
