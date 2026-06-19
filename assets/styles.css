@@ -4540,4 +4540,8 @@ p.text-sm {
 /* slimmer status + detail boxes */
 .inj-quiz .map-status { font-size: .85rem; margin-top: 1.1rem; padding: .7rem .85rem; }
 .inj-quiz .map-detail { margin-top: 1.1rem; padding: .9rem 1rem; }
+/* soft facelift-style zones: drop the busy dashed outlines, keep gentle color tint */
+.inj-quiz .face-map-card .zone { stroke: transparent !important; stroke-dasharray: none !important; }
+.inj-quiz .face-map-card .zone.map-hover,
+.inj-quiz .face-map-card .zone.map-selected { stroke: rgba(44, 62, 80, .85) !important; stroke-dasharray: none !important; stroke-width: 2.4 !important; }
 
