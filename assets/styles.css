@@ -1170,7 +1170,11 @@ p.text-sm {
   text-transform: uppercase;
 }
 
-/* Redesigned footer: contact, social, legal */
+/* Redesigned footer: brand tagline, contact, social, legal */
+.footer-brand .footer-tagline {
+  /* beats base `p.text-sm` (dark) so the tagline is visible on the dark footer */
+  color: rgba(255, 255, 255, .62);
+}
 .footer-contact li {
   align-items: flex-start;
   color: rgba(255, 255, 255, .7);
