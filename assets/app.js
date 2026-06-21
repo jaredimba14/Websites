@@ -1233,7 +1233,7 @@ function aboutPage() {
         </div>
       </div>
     </section>
-    <section class="section-shell bg-white">
+    <section id="meet-tiana" class="section-shell bg-white scroll-mt-36">
       <div class="mx-auto grid max-w-7xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-[1.05fr_.95fr] lg:px-8">
         <div>
           <p class="eyebrow">Meet Your Provider</p>
@@ -1269,7 +1269,7 @@ function aboutPage() {
         </div>
       </div>
     </section>
-    <section class="section-shell bg-white">
+    <section id="concierge" class="section-shell bg-white scroll-mt-36">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="mx-auto max-w-4xl text-center">
           <p class="eyebrow">Why Clients Choose Elite VitaMed</p>
@@ -1668,7 +1668,7 @@ function resultsPage() {
 
     <section class="section-shell bg-white"><div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8"><p class="eyebrow">Results Introduction</p><h2 class="mt-3 font-serif text-4xl font-semibold text-navy sm:text-5xl">Results That Look Refreshed, Not Overdone</h2><p class="mt-5 leading-8 text-ink/70">At Elite VitaMed, the goal is not to make you look like someone else. The goal is to help you look refreshed, balanced, and confident in a way that still feels like you.</p><p class="mt-4 leading-8 text-ink/70">Every treatment plan is based on your goals, anatomy, skin quality, treatment history, medical history, and what is appropriate for you. Whether you are exploring injectables, skin and tightening treatments, regenerative aesthetics, IV therapy, or intimate wellness, your provider will help guide you toward the safest and most appropriate next step.</p><p class="mt-4 text-sm leading-7 text-ink/60">Individual results vary. Before and after outcomes depend on your starting point, treatment selected, provider evaluation, treatment consistency, and how your body responds.</p></div></section>
 
-    <section class="section-shell bg-ivory"><div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><div class="mx-auto max-w-4xl text-center"><p class="eyebrow">Before and After Gallery</p><h2 class="mt-3 font-serif text-4xl font-semibold text-navy sm:text-5xl">Before and After Results</h2><p class="mt-4 leading-8 text-ink/68">This section showcases real client before and after photos across the treatment categories below.</p></div><div class="mt-9 grid gap-5 md:grid-cols-2 lg:grid-cols-4">${galleryCategories.map(([name, items]) => `<article class="luxe-card p-5"><h3 class="font-serif text-2xl font-semibold text-navy">${name}</h3><div class="mt-4 flex flex-wrap gap-2">${items.map(x => `<span class="treatment-best-chip">${x}</span>`).join("")}</div></article>`).join("")}</div><div class="mt-9 grid gap-5 md:grid-cols-2 lg:grid-cols-3">${resultsGalleryCards()}</div><p class="mt-8 text-center text-sm leading-7 text-ink/58">Individual results vary. Final outcomes depend on anatomy, treatment plan, healing response, treatment history, and provider evaluation.</p></div></section>
+    <section id="before-after" class="section-shell bg-ivory scroll-mt-36"><div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><div class="mx-auto max-w-4xl text-center"><p class="eyebrow">Before and After Gallery</p><h2 class="mt-3 font-serif text-4xl font-semibold text-navy sm:text-5xl">Before and After Results</h2><p class="mt-4 leading-8 text-ink/68">This section showcases real client before and after photos across the treatment categories below.</p></div><div class="mt-9 grid gap-5 md:grid-cols-2 lg:grid-cols-4">${galleryCategories.map(([name, items]) => `<article class="luxe-card p-5"><h3 class="font-serif text-2xl font-semibold text-navy">${name}</h3><div class="mt-4 flex flex-wrap gap-2">${items.map(x => `<span class="treatment-best-chip">${x}</span>`).join("")}</div></article>`).join("")}</div><div class="mt-9 grid gap-5 md:grid-cols-2 lg:grid-cols-3">${resultsGalleryCards()}</div><p class="mt-8 text-center text-sm leading-7 text-ink/58">Individual results vary. Final outcomes depend on anatomy, treatment plan, healing response, treatment history, and provider evaluation.</p></div></section>
 
     <section class="section-shell bg-white"><div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><div class="mx-auto max-w-4xl text-center"><p class="eyebrow">Featured Results</p><h2 class="mt-3 font-serif text-4xl font-semibold text-navy sm:text-5xl">Featured Treatment Transformations</h2></div><div class="mt-10 grid gap-5 md:grid-cols-2">${featured.map(f => `<article class="luxe-card flex flex-col p-6 sm:p-7"><div class="icon-badge mb-4">${icon(f.icon)}</div><h3 class="font-serif text-3xl font-semibold text-navy">${f.eyebrow}</h3><p class="mt-3 text-sm leading-7 text-ink/66">${f.copy}</p><div class="mt-5 flex flex-wrap gap-2">${f.items.map(x => `<span class="treatment-best-chip">${x}</span>`).join("")}</div><div class="mt-auto pt-6"><a href="${f.route}" class="btn btn-navy justify-center">${icon("arrow")} ${f.cta}</a></div></article>`).join("")}</div></div></section>
 
