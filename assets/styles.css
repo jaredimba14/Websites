@@ -285,7 +285,8 @@ p.text-sm {
 .mega-feature span,
 .mega-note span,
 .mega-columns h3,
-.mega-assessment h3 {
+.mega-assessment h3,
+.mega-about h3 {
   color: #d5a85e;
   display: block;
   font-size: .65rem;
