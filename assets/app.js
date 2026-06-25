@@ -1173,10 +1173,10 @@ function contactForm() {
 
 function contactLocation() {
   const details = [
-    ["Phone", "[Insert phone number]", "phone"],
-    ["Email", "[Insert email address]", "users"],
+    ["Phone", `<a href="tel:+16037657760" class="text-navy underline decoration-champagne/60 underline-offset-2">(603) 765-7760</a> · <a href="tel:+17164520835" class="text-navy underline decoration-champagne/60 underline-offset-2">(716) 452-0835</a>`, "phone"],
+    ["Email", `<a href="mailto:elitevitamedaesthetics@gmail.com" class="text-navy underline decoration-champagne/60 underline-offset-2">elitevitamedaesthetics@gmail.com</a>`, "users"],
     ["Hours", "[Insert business hours]", "calendar"],
-    ["Booking Link", "[Insert booking link]", "arrow"]
+    ["Booking Link", `<a href="#book" class="text-navy underline decoration-champagne/60 underline-offset-2">Book online</a>`, "arrow"]
   ];
   return `
     <section class="section-shell bg-ivory">
@@ -3732,8 +3732,8 @@ function specialsSection(theme) {
       title: "Injectable New Client Special",
       items: [
         ["Botox", "$9.99 / unit", "Unlimited units · 40-unit minimum"],
-        ["Dermal Fillers", "$399", ""],
-        ["PDO Threads", "$500", "Full face · $500 neck"]
+        ["Dermal Fillers", "$499", "Per 1ml syringe"],
+        ["PDO Threads", "$500", "Per area · full face or neck"]
       ],
       note: "New client special. $50 deposit required to book.",
       cta: "Book Injectables",
