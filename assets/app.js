@@ -2,13 +2,13 @@ const images = {
   hero: "url('./assets/hero-glow.webp')",
   tiana: "url('https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=80')",
   clinic: "url('https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1400&q=80')",
-  iv: "url('https://images.unsplash.com/photo-1746806942787-947eebe640d6?auto=format&fit=crop&w=1300&q=80')",
+  iv: "url('./iv.webp')",
   wellness: "url('https://images.unsplash.com/photo-1591343395082-e120087004b4?auto=format&fit=crop&w=1300&q=80')",
   results: "url('https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&w=1200&q=80')",
   injectables: "url('./injectables.webp')",
   filler: "url('https://images.unsplash.com/photo-1746017062285-13c77e29fc25?auto=format&fit=crop&w=1200&q=80')",
   financing: "url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80')",
-  assessment: "url('https://images.unsplash.com/photo-1754039985017-92baef8ae63b?auto=format&fit=crop&w=1200&q=80')",
+  assessment: "url('./assessment.webp')",
   membership: "url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=1200&q=80')"
 };
 
