@@ -77,6 +77,34 @@ const BOOKING_FAMILY_ROUTES = {
   iv: ["iv-wellness", "iv-drips"],
   skin: ["skin-tightening", "breeze", "wondertouch", "ultimate-glow-lift", "facial-contouring", "microneedling-stem-cells", "chemical-peels"]
 };
+// Short, page-specific label shown in the header center "kicker" (eyebrow stays "Mobile Concierge Care").
+const HEADER_KICKERS = {
+  home: "Injectables + IV Therapy in New Hampshire",
+  services: "Explore Our Treatment Menu",
+  injectables: "Injectables in New Hampshire",
+  "regenerative-aesthetics": "Regenerative Aesthetics in NH",
+  "prp-prf": "PRP & PRF in New Hampshire",
+  "skin-tightening": "Skin & Tightening in New Hampshire",
+  "iv-wellness": "IV Therapy & Wellness in NH",
+  "iv-drips": "IV Drip Therapy in New Hampshire",
+  "intimate-wellness": "Intimate Wellness in New Hampshire",
+  assessment: "Treatment Assessment",
+  "injectables-assessment": "Injectables Assessment",
+  memberships: "Membership & Concierge Care",
+  results: "Real Client Results",
+  about: "Meet Your Provider",
+  faq: "Questions, Answered",
+  contact: "Book Your Consultation",
+  book: "Book Your Appointment"
+};
+function prettifyRoute(route) {
+  const caps = { iv: "IV", prp: "PRP", prf: "PRF", pdo: "PDO", nad: "NAD+" };
+  return route.split("-").map((w) => caps[w] || w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
+}
+function headerKickerFor(page) {
+  return HEADER_KICKERS[page] || prettifyRoute(page);
+}
+
 // Map the current route to the right booking entry point so "Book" buttons are context-aware.
 function bookingRouteForCurrentPage() {
   const route = (location.hash || "#home").replace("#", "").split("/")[0];
@@ -3695,10 +3723,49 @@ function bookPage() {
   `;
 }
 
+// Specials / promotions band. SAMPLE offers — replace with confirmed promos before launch.
+function specialsSection(theme) {
+  const dark = theme !== "light";
+  const specials = [
+    { badge: "New Clients", title: "New Client Welcome Offer", copy: "New to Elite VitaMed? Ask about our welcome offer on your first injectable or IV wellness visit.", cta: "Book Your First Visit", href: "#book" },
+    { badge: "Members Save", title: "Concierge Membership Savings", copy: "Members enjoy savings on every treatment, priority scheduling, and exclusive concierge perks all year.", cta: "View Memberships", href: "#memberships" },
+    { badge: "Seasonal", title: "Featured IV Drip of the Season", copy: "Refresh and recharge with this season's featured IV drip plus add-on vitamin boosts.", cta: "Book IV Therapy", href: "#book/iv" }
+  ];
+  const wrap = dark ? "bg-navy-deep text-white" : "bg-mist text-navy";
+  const sub = dark ? "text-white/70" : "text-ink/68";
+  const card = dark ? "border-champagne/25 bg-white/5" : "border-navy/10 bg-white shadow-luxe";
+  const cardTitle = dark ? "text-white" : "text-navy";
+  const cardCopy = dark ? "text-white/70" : "text-ink/68";
+  const fine = dark ? "text-white/45" : "text-ink/50";
+  return `
+    <section class="section-shell ${wrap}" data-content-placeholder="promo">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-3xl text-center">
+          <p class="eyebrow">Current Specials</p>
+          <h2 class="mt-3 font-serif text-4xl font-semibold sm:text-5xl">Specials and Promotions</h2>
+          <p class="mt-4 leading-8 ${sub}">Provider led care with offers designed to help you start, save, and stay refreshed. Ask your provider which offer fits your goals.</p>
+        </div>
+        <div class="mt-10 grid gap-6 md:grid-cols-3">
+          ${specials.map((s) => `
+            <article class="flex flex-col rounded-[1.5rem] border ${card} p-7">
+              <span class="self-start rounded-full bg-soft-gold px-3 py-1 text-xs font-bold uppercase tracking-[.14em] text-navy">${s.badge}</span>
+              <h3 class="mt-4 font-serif text-2xl font-semibold ${cardTitle}">${s.title}</h3>
+              <p class="mt-3 flex-1 leading-7 ${cardCopy}">${s.copy}</p>
+              <a href="${s.href}" class="btn btn-gold mt-6 justify-center">${icon("calendar")} ${s.cta}</a>
+            </article>
+          `).join("")}
+        </div>
+        <p class="mt-7 text-center text-xs leading-6 ${fine}">Offers are subject to provider evaluation and may change. Individual results vary.</p>
+      </div>
+    </section>
+  `;
+}
+
 const pages = {
   home: () => `
     ${homeHero()}
     ${homeServices()}
+    ${specialsSection("dark")}
     ${homeFinancing()}
     ${homeAssessment()}
     ${homeInjectables()}
@@ -3719,6 +3786,7 @@ const pages = {
     ${servicesIntro()}
     ${servicesCategories()}
     ${servicesProviderCare()}
+    ${specialsSection("light")}
     ${servicesNextSteps()}
     ${homeFinancing()}
     ${servicesFaq()}
@@ -3918,6 +3986,8 @@ function render() {
   const defaultMeta = "Premium mobile concierge injectables, IV therapy, and wellness care in New Hampshire.";
   document.title = pageMeta[page]?.title || `${page.charAt(0).toUpperCase() + page.slice(1)} | Elite VitaMed Aesthetics`;
   document.querySelector('meta[name="description"]')?.setAttribute("content", pageMeta[page]?.description || defaultMeta);
+  const kickerTitle = document.getElementById("header-kicker-title");
+  if (kickerTitle) kickerTitle.textContent = headerKickerFor(page);
   document.documentElement.scrollTop = 0;
   document.body.scrollTop = 0;
   window.scrollTo(0, 0);
