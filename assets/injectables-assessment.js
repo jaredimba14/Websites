@@ -796,14 +796,25 @@ function setupInjectablesAssessment() {
 
       const sortedSeeds = planSeeds.sort((aItem, bItem) => bItem.priority - aItem.priority);
       const budgetLimit = { "Under $500": 1, "$500-$1,000": 2, "$1,000-$2,000": 3, "$2,000+": 5 }[a.budget] || 3;
-      const minimumPlan = sortedSeeds.slice(0, Math.max(1, Math.min(1, budgetLimit)));
+      // Minimum plan: highest-impact priority first — at most one filler and one or two
+      // tox items, only for categories that are actually needed (kept around $500-$1,000).
+      const isToxSeed = item => item.treatment.includes("Botox") || item.treatment.includes("Xeomin");
+      const isFillerSeed = item => item.treatment.includes("Dermal filler") || item.treatment.includes("Filler");
+      const topFillerSeed = sortedSeeds.filter(isFillerSeed).slice(0, 1);
+      const topToxSeeds = sortedSeeds.filter(isToxSeed).slice(0, topFillerSeed.length ? 1 : 2);
+      let minimumPlan = [...topToxSeeds, ...topFillerSeed].sort((aItem, bItem) => bItem.priority - aItem.priority);
+      if (!minimumPlan.length) minimumPlan = sortedSeeds.slice(0, 1);
+      if (a.budget === "Under $500") minimumPlan = minimumPlan.slice(0, 1);
+
       const recommendedPlan = sortedSeeds.slice(0, Math.max(2, Math.min(4, budgetLimit + 1)));
       const comprehensivePlan = sortedSeeds.slice(0, Math.min(7, Math.max(4, sortedSeeds.length)));
-
-      if (a.budget === "Under $500") {
-        minimumPlan.splice(1);
-        if (botox.max > 0) minimumPlan[0] = sortedSeeds.find(item => item.treatment.includes("Botox")) || minimumPlan[0];
-      }
+      // Keep the tiers nested so the minimum plan's items also appear in the larger plans.
+      minimumPlan.forEach(item => {
+        if (!recommendedPlan.includes(item)) recommendedPlan.push(item);
+        if (!comprehensivePlan.includes(item)) comprehensivePlan.push(item);
+      });
+      recommendedPlan.sort((aItem, bItem) => bItem.priority - aItem.priority);
+      comprehensivePlan.sort((aItem, bItem) => bItem.priority - aItem.priority);
 
       const riskFlag = a.safetyFlags.length > 0;
       const providerReviewItem = {
