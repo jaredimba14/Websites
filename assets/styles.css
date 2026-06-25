@@ -2891,6 +2891,14 @@ p.text-sm {
       text-transform: uppercase;
     }
 
+    .inj-quiz .group-desc {
+      color: rgba(20, 37, 54, .62);
+      font-size: .82rem;
+      line-height: 1.45;
+      margin-top: .35rem;
+      max-width: 60ch;
+    }
+
     .inj-quiz .field input,
     .inj-quiz .field select {
       background: #fff;

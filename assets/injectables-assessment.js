@@ -112,25 +112,25 @@ function setupInjectablesAssessment() {
 
     const radioQuestions = {
       age: { name: "ageRange", options: ["20-29", "30-39", "40-49", "50-59", "60+"], defaultValue: "30-39" },
-      forehead: { label: "Forehead lines", options: [["none", "None"], ["raise", "Only when raising brows"], ["rest", "Visible at rest"]], defaultValue: "none" },
-      frown: { label: "Frown lines / 11s", options: [["none", "None"], ["frown", "Visible when frowning"], ["rest", "Visible at rest/deep"]], defaultValue: "none" },
-      crowsFeet: { label: "Crow's feet", options: [["none", "None"], ["smile", "Smile only"], ["rest", "Visible at rest"]], defaultValue: "none" },
-      bunnyLines: { label: "Bunny lines", options: [["no", "No"], ["yes", "Yes"]], defaultValue: "no" },
-      lipFlip: { label: "Lip flip interest", options: [["no", "No"], ["yes", "Yes"]], defaultValue: "no" },
-      chinDimpling: { label: "Chin dimpling", options: [["none", "No"], ["mild", "Mild"], ["moderate", "Moderate"]], defaultValue: "none" },
-      masseter: { label: "Masseter / jaw clenching", options: [["no", "No"], ["sometimes", "Sometimes"], ["daily", "Daily / grinding"]], defaultValue: "no" },
-      neckBands: { label: "Neck bands", options: [["none", "None"], ["mild", "Mild"], ["moderate", "Moderate"], ["severe", "Severe"]], defaultValue: "none" },
-      brow: { label: "Brow heaviness", options: [["normal", "Normal"], ["slight", "Slightly heavy"], ["drooping", "Drooping/heavy upper lid"]], defaultValue: "normal" },
-      underEye: { label: "Under-eye concern", options: [["none", "None"], ["dark", "Dark circles"], ["hollow", "Hollow/tired"], ["bags", "Bags/puffiness"]], defaultValue: "none" },
-      cheekVolume: { label: "Cheek volume", options: [["full", "Full"], ["slight", "Slightly flat"], ["flat", "Flat"], ["very_hollow", "Very hollow"]], defaultValue: "full" },
-      nasolabial: { label: "Nasolabial folds", options: [["none", "None"], ["mild", "Mild"], ["moderate", "Moderate"], ["deep", "Deep"]], defaultValue: "none" },
-      currentLips: { label: "Current lips", options: [["full", "Full"], ["average", "Average"], ["thin", "Thin"], ["very_thin", "Very thin"]], defaultValue: "average" },
-      lipGoal: { label: "Lip goal", options: [["hydration", "Hydration only"], ["natural", "Natural volume"], ["noticeable", "Noticeable volume"], ["dramatic", "Dramatic volume"]], defaultValue: "natural" },
-      marionette: { label: "Marionette lines", options: [["none", "None"], ["mild", "Mild"], ["moderate", "Moderate"], ["deep", "Deep"]], defaultValue: "none" },
-      jowls: { label: "Jowls", options: [["none", "None"], ["beginning", "Beginning"], ["moderate", "Moderate"], ["heavy", "Heavy"]], defaultValue: "none" },
-      chinProfile: { label: "Chin profile", options: [["balanced", "Balanced"], ["slight", "Slightly weak"], ["weak", "Weak/recessed"]], defaultValue: "balanced" },
-      jawlineGoal: { label: "Jawline goal", options: [["none", "No concern"], ["slight", "Slight definition"], ["sharper", "Sharper contour"], ["strong", "Strong contour"]], defaultValue: "none" },
-      looseSkin: { label: "Loose skin", options: [["none", "None"], ["mild", "Mild"], ["moderate", "Moderate"], ["severe", "Severe"]], defaultValue: "none" }
+      forehead: { label: "Forehead lines", desc: "The horizontal lines across your forehead. Do they show only when you raise your brows, or also when your face is relaxed?", options: [["none", "None"], ["raise", "Only when raising brows"], ["rest", "Visible at rest"]], defaultValue: "none" },
+      frown: { label: "Frown lines / 11s", desc: "The vertical \"11\" lines between your eyebrows that appear when you frown or concentrate.", options: [["none", "None"], ["frown", "Visible when frowning"], ["rest", "Visible at rest/deep"]], defaultValue: "none" },
+      crowsFeet: { label: "Crow's feet", desc: "The fine lines that fan out from the outer corners of your eyes, usually most visible when you smile.", options: [["none", "None"], ["smile", "Smile only"], ["rest", "Visible at rest"]], defaultValue: "none" },
+      bunnyLines: { label: "Bunny lines", desc: "The small diagonal wrinkles along the sides of your nose when you scrunch or smile.", options: [["no", "No"], ["yes", "Yes"]], defaultValue: "no" },
+      lipFlip: { label: "Lip flip interest", desc: "A subtle Botox technique that gently rolls the upper lip outward to show a little more lip, without filler.", options: [["no", "No"], ["yes", "Yes"]], defaultValue: "no" },
+      chinDimpling: { label: "Chin dimpling", desc: "A pebbled, \"orange-peel\" texture on the chin that appears when the chin muscle tenses.", options: [["none", "No"], ["mild", "Mild"], ["moderate", "Moderate"]], defaultValue: "none" },
+      masseter: { label: "Masseter / jaw clenching", desc: "Clenching or grinding (often at night) that can enlarge the jaw muscle and cause tension or a wider jaw.", options: [["no", "No"], ["sometimes", "Sometimes"], ["daily", "Daily / grinding"]], defaultValue: "no" },
+      neckBands: { label: "Neck bands", desc: "The vertical cords that can stand out on the front of the neck, especially when you tense it.", options: [["none", "None"], ["mild", "Mild"], ["moderate", "Moderate"], ["severe", "Severe"]], defaultValue: "none" },
+      brow: { label: "Brow heaviness", desc: "Whether your brows or upper eyelids feel heavy, low, or hooded.", options: [["normal", "Normal"], ["slight", "Slightly heavy"], ["drooping", "Drooping/heavy upper lid"]], defaultValue: "normal" },
+      underEye: { label: "Under-eye concern", desc: "The look of the area under your eyes — dark circles, hollowing, or puffiness/bags.", options: [["none", "None"], ["dark", "Dark circles"], ["hollow", "Hollow/tired"], ["bags", "Bags/puffiness"]], defaultValue: "none" },
+      cheekVolume: { label: "Cheek volume", desc: "How full or flat your cheeks look. Volume here helps lift and support the mid-face.", options: [["full", "Full"], ["slight", "Slightly flat"], ["flat", "Flat"], ["very_hollow", "Very hollow"]], defaultValue: "full" },
+      nasolabial: { label: "Nasolabial folds", desc: "The lines that run from the sides of your nose down to the corners of your mouth (\"smile lines\").", options: [["none", "None"], ["mild", "Mild"], ["moderate", "Moderate"], ["deep", "Deep"]], defaultValue: "none" },
+      currentLips: { label: "Current lips", desc: "How full your lips are right now — a starting point for any lip goals.", options: [["full", "Full"], ["average", "Average"], ["thin", "Thin"], ["very_thin", "Very thin"]], defaultValue: "average" },
+      lipGoal: { label: "Lip goal", desc: "How much change you'd like, from light hydration to noticeable added volume.", options: [["hydration", "Hydration only"], ["natural", "Natural volume"], ["noticeable", "Noticeable volume"], ["dramatic", "Dramatic volume"]], defaultValue: "natural" },
+      marionette: { label: "Marionette lines", desc: "The lines that run downward from the corners of your mouth toward the chin.", options: [["none", "None"], ["mild", "Mild"], ["moderate", "Moderate"], ["deep", "Deep"]], defaultValue: "none" },
+      jowls: { label: "Jowls", desc: "Softening or sagging along the lower jawline that can blur your jaw definition.", options: [["none", "None"], ["beginning", "Beginning"], ["moderate", "Moderate"], ["heavy", "Heavy"]], defaultValue: "none" },
+      chinProfile: { label: "Chin profile", desc: "How balanced your chin looks from the side — its projection and definition.", options: [["balanced", "Balanced"], ["slight", "Slightly weak"], ["weak", "Weak/recessed"]], defaultValue: "balanced" },
+      jawlineGoal: { label: "Jawline goal", desc: "How much jawline definition or contour you're hoping to achieve.", options: [["none", "No concern"], ["slight", "Slight definition"], ["sharper", "Sharper contour"], ["strong", "Strong contour"]], defaultValue: "none" },
+      looseSkin: { label: "Loose skin", desc: "Skin laxity or crepiness, which helps guide whether skin tightening may also help.", options: [["none", "None"], ["mild", "Mild"], ["moderate", "Moderate"], ["severe", "Severe"]], defaultValue: "none" }
     };
 
     const skinOptions = ["Fine lines", "Acne scars", "Large pores", "Crepey skin", "Uneven tone", "Texture"];
@@ -194,6 +194,7 @@ function setupInjectablesAssessment() {
         return `
           <div class="question-row">
             <p class="group-label">${question.label}</p>
+            ${question.desc ? `<p class="group-desc">${question.desc}</p>` : ""}
             <div class="option-grid ${question.options.length > 3 ? "compact" : ""}">
               ${question.options.map(([value, label]) => `
                 <label class="option"><input type="radio" name="${key}" value="${value}" ${value === question.defaultValue ? "checked" : ""}><span>${label}</span></label>
