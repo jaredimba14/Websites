@@ -167,7 +167,7 @@ function initHeroParticles() {
         polygon: { nb_sides: 5 }
       },
       opacity: {
-        value: 0.5,
+        value: 0.35,
         random: false,
         anim: { enable: false, speed: 1, opacity_min: 0.1, sync: false }
       },
@@ -180,7 +180,7 @@ function initHeroParticles() {
         enable: true,
         distance: 150,
         color: "#ffffff",
-        opacity: 0.4,
+        opacity: 0.22,
         width: 1
       },
       move: {
