@@ -1,15 +1,15 @@
 const images = {
   hero: "url('./assets/hero-glow.webp')",
-  tiana: "url('https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=80')",
-  clinic: "url('https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1400&q=80')",
+  tiana: "url('./provider-consult.webp')",
+  clinic: "url('./provider-consult.webp')",
   iv: "url('./iv.webp')",
-  wellness: "url('https://images.unsplash.com/photo-1591343395082-e120087004b4?auto=format&fit=crop&w=1300&q=80')",
-  results: "url('https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&w=1200&q=80')",
+  wellness: "url('./client-consult.webp')",
+  results: "url('./client-consult.webp')",
   injectables: "url('./injectables.webp')",
-  filler: "url('https://images.unsplash.com/photo-1746017062285-13c77e29fc25?auto=format&fit=crop&w=1200&q=80')",
-  financing: "url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80')",
+  filler: "url('./client-consult.webp')",
+  financing: "url('./provider-consult.webp')",
   assessment: "url('./assessment.webp')",
-  membership: "url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=1200&q=80')"
+  membership: "url('./client-consult.webp')"
 };
 
 const iconPaths = {
@@ -1590,21 +1590,17 @@ function resultsGalleryCategories() {
 }
 
 function resultsGalleryCards() {
-  // Placeholder gallery cards using the supplied photo placeholder format.
-  // Real before/after photos and details are added when the client provides them.
-  return Array.from({ length: 6 }, (_, i) => `
-    <article class="luxe-card flex flex-col overflow-hidden">
-      ${imageBox("results", "min-h-56")}
-      <div class="flex flex-1 flex-col p-6">
-        <p class="treatment-card-label">Before &amp; After ${i + 1}</p>
-        <dl class="mt-3 space-y-3 text-sm leading-6 text-ink/66">
-          <div><dt class="font-bold text-navy">Treatment</dt><dd class="mt-1 text-ink/55">[Insert treatment name]</dd></div>
-          <div><dt class="font-bold text-navy">Concern</dt><dd class="mt-1 text-ink/55">[Insert main concern, such as volume loss, fine lines, dull skin, jawline definition, skin texture, or facial balancing]</dd></div>
-          <div><dt class="font-bold text-navy">Treatment Plan</dt><dd class="mt-1 text-ink/55">[Insert treatment or combination plan]</dd></div>
-          <div><dt class="font-bold text-navy">Timeline</dt><dd class="mt-1 text-ink/55">[Insert timeline, such as immediate, 2 weeks, 6 weeks, 3 months, or after treatment series]</dd></div>
-          <div><dt class="font-bold text-navy">Provider Note</dt><dd class="mt-1 text-ink/55">[Insert short note about what was addressed and what changed]</dd></div>
-        </dl>
-        <p class="mt-4 text-xs font-medium uppercase tracking-[.14em] text-soft-gold/85" data-content-placeholder="results-photo">Provider-reviewed before &amp; after photo placeholder</p>
+  const beforeAfters = [
+    { src: "./assets/before-after-1.webp", caption: "Refreshed, balanced result after a provider led treatment plan." },
+    { src: "./assets/before-after-2.webp", caption: "Smoother texture and a more rested appearance over time." }
+  ];
+  return beforeAfters.map((b) => `
+    <article class="luxe-card overflow-hidden">
+      <img src="${b.src}" alt="Before and after result at Elite VitaMed" loading="lazy" class="block w-full" />
+      <div class="p-6">
+        <p class="treatment-card-label">Before &amp; After</p>
+        <p class="mt-2 text-sm leading-7 text-ink/66">${b.caption}</p>
+        <p class="mt-3 text-xs leading-6 text-ink/55">Individual results vary. Photos are examples only and depend on anatomy, treatment plan, healing response, and provider evaluation.</p>
       </div>
     </article>
   `).join("");
@@ -1675,7 +1671,7 @@ function resultsPage() {
 
     <section class="section-shell bg-white"><div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8"><p class="eyebrow">Results Introduction</p><h2 class="mt-3 font-serif text-4xl font-semibold text-navy sm:text-5xl">Results That Look Refreshed, Not Overdone</h2><p class="mt-5 leading-8 text-ink/70">At Elite VitaMed, the goal is not to make you look like someone else. The goal is to help you look refreshed, balanced, and confident in a way that still feels like you.</p><p class="mt-4 leading-8 text-ink/70">Every treatment plan is based on your goals, anatomy, skin quality, treatment history, medical history, and what is appropriate for you. Whether you are exploring injectables, skin and tightening treatments, regenerative aesthetics, IV therapy, or intimate wellness, your provider will help guide you toward the safest and most appropriate next step.</p><p class="mt-4 text-sm leading-7 text-ink/60">Individual results vary. Before and after outcomes depend on your starting point, treatment selected, provider evaluation, treatment consistency, and how your body responds.</p></div></section>
 
-    <section id="before-after" class="section-shell bg-ivory scroll-mt-36"><div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><div class="mx-auto max-w-4xl text-center"><p class="eyebrow">Before and After Gallery</p><h2 class="mt-3 font-serif text-4xl font-semibold text-navy sm:text-5xl">Before and After Results</h2><p class="mt-4 leading-8 text-ink/68">This section showcases real client before and after photos across the treatment categories below.</p></div><div class="mt-9 grid gap-5 md:grid-cols-2 lg:grid-cols-4">${galleryCategories.map(([name, items]) => `<article class="luxe-card p-5"><h3 class="font-serif text-2xl font-semibold text-navy">${name}</h3><div class="mt-4 flex flex-wrap gap-2">${items.map(x => `<span class="treatment-best-chip">${x}</span>`).join("")}</div></article>`).join("")}</div><div class="mt-9 grid gap-5 md:grid-cols-2 lg:grid-cols-3">${resultsGalleryCards()}</div><p class="mt-8 text-center text-sm leading-7 text-ink/58">Individual results vary. Final outcomes depend on anatomy, treatment plan, healing response, treatment history, and provider evaluation.</p></div></section>
+    <section id="before-after" class="section-shell bg-ivory scroll-mt-36"><div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><div class="mx-auto max-w-4xl text-center"><p class="eyebrow">Before and After Gallery</p><h2 class="mt-3 font-serif text-4xl font-semibold text-navy sm:text-5xl">Before and After Results</h2><p class="mt-4 leading-8 text-ink/68">This section showcases real client before and after photos across the treatment categories below.</p></div><div class="mt-9 grid gap-5 md:grid-cols-2 lg:grid-cols-4">${galleryCategories.map(([name, items]) => `<article class="luxe-card p-5"><h3 class="font-serif text-2xl font-semibold text-navy">${name}</h3><div class="mt-4 flex flex-wrap gap-2">${items.map(x => `<span class="treatment-best-chip">${x}</span>`).join("")}</div></article>`).join("")}</div><div class="mt-9 grid gap-5 md:grid-cols-2">${resultsGalleryCards()}</div><p class="mt-8 text-center text-sm leading-7 text-ink/58">Individual results vary. Final outcomes depend on anatomy, treatment plan, healing response, treatment history, and provider evaluation.</p></div></section>
 
     <section class="section-shell bg-white"><div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><div class="mx-auto max-w-4xl text-center"><p class="eyebrow">Featured Results</p><h2 class="mt-3 font-serif text-4xl font-semibold text-navy sm:text-5xl">Featured Treatment Transformations</h2></div><div class="mt-10 grid gap-5 md:grid-cols-2">${featured.map(f => `<article class="luxe-card flex flex-col p-6 sm:p-7"><div class="icon-badge mb-4">${icon(f.icon)}</div><h3 class="font-serif text-3xl font-semibold text-navy">${f.eyebrow}</h3><p class="mt-3 text-sm leading-7 text-ink/66">${f.copy}</p><div class="mt-5 flex flex-wrap gap-2">${f.items.map(x => `<span class="treatment-best-chip">${x}</span>`).join("")}</div><div class="mt-auto pt-6"><a href="${f.route}" class="btn btn-navy justify-center">${icon("arrow")} ${f.cta}</a></div></article>`).join("")}</div></div></section>
 
