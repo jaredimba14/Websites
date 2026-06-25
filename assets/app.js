@@ -3925,6 +3925,10 @@ function render() {
     link.classList.toggle("active", link.getAttribute("href") === `#${page}`);
   });
   const pageMeta = {
+    home: {
+      title: "Elite VitaMed Aesthetics | Mobile Botox, Fillers and IV Therapy in New Hampshire",
+      description: "Premium mobile concierge injectables, IV drip therapy, and wellness care across New Hampshire, performed by a Nurse Practitioner and certified injector. Book online or start a treatment assessment."
+    },
     injectables: {
       title: "Injectables in New Hampshire | Botox, Fillers, Sculptra and Facial Balancing",
       description: "Elite VitaMed offers mobile injectable treatments in New Hampshire, including Botox or neurotoxins, dermal fillers, Sculptra, Radiesse, PDO threads, and facial balancing, performed by a Nurse Practitioner and certified injector."
@@ -4035,8 +4039,13 @@ function render() {
     }
   };
   const defaultMeta = "Premium mobile concierge injectables, IV therapy, and wellness care in New Hampshire.";
-  document.title = pageMeta[page]?.title || `${page.charAt(0).toUpperCase() + page.slice(1)} | Elite VitaMed Aesthetics`;
-  document.querySelector('meta[name="description"]')?.setAttribute("content", pageMeta[page]?.description || defaultMeta);
+  const metaTitle = pageMeta[page]?.title || `${prettifyRoute(page)} | Elite VitaMed Aesthetics`;
+  const metaDescription = pageMeta[page]?.description || defaultMeta;
+  document.title = metaTitle;
+  document.querySelector('meta[name="description"]')?.setAttribute("content", metaDescription);
+  // Keep social-share tags in sync with the active route.
+  [['meta[property="og:title"]', metaTitle], ['meta[name="twitter:title"]', metaTitle], ['meta[property="og:description"]', metaDescription], ['meta[name="twitter:description"]', metaDescription]]
+    .forEach(([selector, value]) => document.querySelector(selector)?.setAttribute("content", value));
   const kickerTitle = document.getElementById("header-kicker-title");
   if (kickerTitle) kickerTitle.textContent = headerKickerFor(page);
   document.documentElement.scrollTop = 0;
