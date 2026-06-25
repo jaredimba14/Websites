@@ -1494,90 +1494,89 @@ function membershipsPage() {
 
 const faqGroups = [
   ["General Questions", [
-    ["What is Elite VitaMed?", "Elite VitaMed is a provider led aesthetic and wellness brand offering premium treatments such as injectables, IV drips, wellness support, regenerative aesthetics, skin and tightening treatments, and intimate wellness services. Care is performed by a Nurse Practitioner and certified injector, with mobile or in home concierge appointments available."],
-    ["Who performs the treatments?", "Treatments are performed by a Nurse Practitioner and certified injector. Care is guided by clinical knowledge, training, personalized planning, and the client's goals."],
-    ["What makes Elite VitaMed different?", "Elite VitaMed combines top tier provider led care with the privacy and convenience of mobile concierge appointments. The focus is not just convenience, it is high quality aesthetic and wellness care performed with professionalism, education, and personalized recommendations."],
-    ["What treatments does Elite VitaMed offer?", "Elite VitaMed offers treatment categories including injectables, regenerative aesthetics, skin and tightening, IV and wellness, and intimate wellness. Specific treatment options may include Botox or neurotoxins, dermal fillers, Sculptra, Radiesse, PDO threads, facial balancing, IV drip therapy, Vitamin Injections, PRP, PRF, hair restoration, skin rejuvenation, neck tightening, and feminine wellness services."],
-    ["What if I do not know what treatment I need?", "Start with the Treatment Assessment. It is designed to help guide you toward the right starting point based on your goals, concerns, and the type of result you are looking for. You can also request a phone consultation if you would rather speak with someone before booking."]
-  ]],
-  ["Treatment Assessment", [
-    ["What is the Treatment Assessment?", "The Treatment Assessment is a short questionnaire that helps guide you toward a possible treatment path. It can help you understand whether your goals may align with injectables, IV and wellness, skin and tightening, regenerative aesthetics, intimate wellness, or a consultation first approach."],
-    ["Is the Treatment Assessment a final treatment recommendation?", "No. Your assessment result is a helpful starting point, not a final medical recommendation. Final treatment recommendations are confirmed by the provider after reviewing your goals, treatment history, anatomy, comfort level, and what is appropriate for you."],
-    ["Which assessment should I take?", "If you are interested in Botox, filler, facial balancing, or a full face refresh, start with the Injectable Treatment Assessment. If you are unsure which category fits your goals, start with the Full Treatment Assessment. If you are interested in hydration, energy, immunity, recovery, beauty, or wellness support, start with the IV Drip Assessment."],
-    ["Do I have to book after taking the assessment?", "No. After your result, you can book an appointment, request a phone consultation, or wait until you are ready."],
-    ["Will someone follow up after I take the assessment?", "Yes. If you submit your information and do not book right away, the Elite VitaMed team may follow up to answer questions and help guide your next step."]
-  ]],
-  ["Injectables", [
-    ["What injectable treatments are available?", "Elite VitaMed offers injectable treatment options that may include Botox or neurotoxins, dermal fillers, Sculptra, Radiesse, PDO threads, facial balancing, non surgical face lift options, and injectable consultations."],
-    ["How do I know if I need Botox or filler?", "Botox or neurotoxins are often used for expression related lines, while dermal fillers are commonly used for volume, contour, and facial structure. If you are unsure, the Injectable Treatment Assessment or a consultation can help guide you toward the right starting point."],
-    ["What are neurotoxins used for?", "Neurotoxins may be used to address concerns such as forehead lines, frown lines, crow's feet, brow lift goals, bunny lines, lip flip, gummy smile, chin dimpling, jawline concerns, masseter or TMJ related concerns, neck bands, Nefertiti Lift, and hyperhidrosis. Final recommendations depend on provider evaluation."],
-    ["What are dermal fillers used for?", "Dermal fillers may be used to support volume, shape, contour, and facial balance. Common areas may include lips, cheeks, chin, jawline, under eyes, and overall facial balancing. Your provider will determine what is appropriate for your goals."],
-    ["What is facial balancing?", "Facial balancing is a personalized approach that looks at the face as a whole instead of focusing on only one area. It may involve discussing proportions, volume, structure, symmetry, and natural looking refinement."],
-    ["What is Sculptra?", "Sculptra is often discussed as a collagen support treatment option for clients who want gradual, natural looking improvement over time. Whether it is appropriate depends on your goals, history, and provider evaluation."],
-    ["What is Radiesse?", "Radiesse is commonly discussed as an injectable option for structure, contour, and collagen stimulating support. Your provider can determine whether Radiesse fits your goals during a consultation."],
-    ["What are PDO threads?", "PDO threads may be discussed for clients interested in subtle lifting or skin support without surgery. Candidacy depends on your anatomy, goals, and provider recommendation."],
-    ["Will injectable results look natural?", "The goal at Elite VitaMed is to support refreshed, balanced, natural looking results. Every injectable plan is based on your goals, anatomy, comfort level, treatment history, and what is appropriate for you."],
-    ["Can I book injectables if I am not sure what I need?", "Yes. You can book a consultation, request a phone consultation, or start with the Injectable Treatment Assessment before choosing a specific treatment."]
-  ]],
-  ["IV and Wellness", [
-    ["What IV and wellness treatments are available?", "Elite VitaMed offers IV and wellness options that may include Hydration & Recovery Drip, Energy & Performance Drip, Detox & Cleanse Drip, Beauty Glow Drip, Metabolism & Weight Management Drip, Immunity Boost Drip, Myers' Cocktail, NAD+ Therapy, Vitamin Injections, and wellness optimization."],
-    ["How do I know which IV drip is right for me?", "The IV Drip Assessment can help guide you toward a starting point based on whether you are looking for hydration, energy, immunity, beauty, recovery, or general wellness support."],
-    ["What can IV drip therapy support?", "IV drip therapy may support goals such as hydration, energy, recovery, immunity, beauty, glow, and general wellness. The right option depends on your needs and provider guidance."],
-    ["What are Vitamin Injections?", "Vitamin Injections are wellness injections that may be used to support certain wellness goals. Your provider can help determine whether a vitamin injection is appropriate for you."],
-    ["Can I book IV therapy at home?", "Yes. Elite VitaMed offers mobile or in home concierge care, depending on availability and service area."]
-  ]],
-  ["Regenerative Aesthetics", [
-    ["What is regenerative aesthetics?", "Regenerative aesthetics refers to treatment options designed to support natural rejuvenation, skin quality, hair restoration, collagen support, and long term aesthetic goals."],
-    ["What treatments are included under regenerative aesthetics?", "Regenerative aesthetics may include PRP, PRF, hair restoration, skin rejuvenation, and collagen stimulation treatments."],
-    ["Who is regenerative aesthetics best for?", "This category may be a fit for clients interested in natural rejuvenation, hair thinning support, skin quality improvement, collagen support, or long term aesthetic planning."],
-    ["Are regenerative treatments available now?", "Availability may depend on the current service menu and treatment launch schedule. Contact Elite VitaMed or request a consultation to confirm what is currently available."]
-  ]],
-  ["Skin and Tightening", [
-    ["What are skin and tightening treatments?", "Skin and tightening treatments are designed to support concerns such as skin texture, firmness, laxity, neck concerns, and non surgical tightening goals."],
-    ["What treatments are included under skin and tightening?", "This category may include skin rejuvenation, neck tightening, skin laxity treatments, radiofrequency, and body contouring if available."],
-    ["Who is skin tightening best for?", "Skin tightening may be a fit for clients concerned with loose skin, neck firmness, texture, laxity, or non surgical tightening goals. Candidacy depends on provider evaluation."]
-  ]],
-  ["Intimate Wellness", [
-    ["What is intimate wellness?", "Intimate wellness refers to private, provider led treatments focused on feminine wellness, comfort, confidence, and overall intimate health support."],
-    ["What treatments are included under intimate wellness?", "This category may include vaginal tightening, feminine rejuvenation, comfort focused wellness, and confidence focused care."],
-    ["Is intimate wellness private?", "Yes. Elite VitaMed's approach is designed to be private, respectful, professional, and guided by provider evaluation."]
-  ]],
-  ["Mobile Concierge Care", [
-    ["Does Elite VitaMed offer mobile appointments?", "Yes. Elite VitaMed offers mobile or in home concierge aesthetic and wellness care in New Hampshire and surrounding areas, depending on availability and service area."],
-    ["Does mobile care mean lower quality?", "No. Mobile concierge care is simply a more private and convenient way to receive premium provider led treatment. Your care is still performed by a Nurse Practitioner and certified injector."],
-    ["Where are mobile appointments available?", "Elite VitaMed serves New Hampshire and surrounding areas. If you are unsure whether you are within the service area, contact the team to confirm availability."],
-    ["What should I expect from a mobile concierge appointment?", "After booking, you will receive appointment details, preparation instructions, and what to expect. The goal is to make your experience feel private, convenient, and professionally guided."],
-    ["Can I request a phone consultation before a mobile appointment?", "Yes. You can request a phone consultation before booking if you have questions or need help choosing the right treatment path."]
-  ]],
-  ["Memberships", [
-    ["What are Elite VitaMed memberships?", "Memberships are designed for clients who want ongoing aesthetic and wellness care with a more structured approach to planning, consistency, and long term support."],
-    ["Who are memberships best for?", "Memberships may be a good fit if you want to maintain results, plan treatments ahead of time, receive ongoing support, or stay consistent with aesthetic and wellness goals."],
-    ["Do I need to know exactly what treatments I want before joining?", "No. You can request a membership consultation or start with a treatment assessment to better understand which services may fit your goals."],
-    ["Can memberships be used for injectables or IV therapy?", "Membership eligibility and included services depend on the specific membership option. The Elite VitaMed team can confirm what is included before you join."],
-    ["Can I ask about memberships before booking?", "Yes. You can request a membership consultation or send a message to learn more."]
-  ]],
-  ["Financing", [
-    ["Does Elite VitaMed offer financing?", "Yes. Elite VitaMed offers financing through Cherry for eligible clients and services."],
-    ["How does Cherry financing work?", "Cherry financing allows eligible clients to split their treatment investment into flexible payments instead of paying everything upfront."],
-    ["What can Cherry financing be used for?", "Cherry financing may be available for qualifying aesthetic, wellness, and treatment planning services. Eligibility depends on Cherry's terms and approval."],
-    ["Can I apply before booking?", "Yes. You can apply for Cherry financing before booking to understand your available payment options."],
-    ["Is approval guaranteed?", "No. Financing is offered through Cherry. Approval, payment plans, and eligibility are subject to Cherry's terms."]
+    ["What is Elite VitaMed?", "Elite VitaMed provides premium aesthetic and wellness treatments in New Hampshire, including injectables, skin and tightening treatments, regenerative aesthetics, IV drip therapy, vitamin shots, intimate wellness consultations, and treatment planning. Treatments are performed with a provider led approach by a Nurse Practitioner and certified injector."],
+    ["Who performs the treatments?", "Treatments are performed by a Nurse Practitioner and certified injector. Elite VitaMed focuses on provider led care, safety, candidacy, natural looking results, and personalized treatment planning."],
+    ["What does provider led care mean?", "Provider led care means your treatment plan is guided by a qualified provider who reviews your goals, anatomy, health history, treatment history, and what is appropriate for you before making recommendations. The goal is to avoid generic treatment planning and help you choose a treatment path that fits your needs."],
+    ["Do I need to know which treatment I want before booking?", "No. Many clients know what they want to improve, but they are not sure which treatment is right. You can start with the Treatment Assessment, request a phone consultation, or book a consultation so your provider can help guide you."],
+    ["What treatments does Elite VitaMed offer?", "Elite VitaMed offers treatments across several categories: injectables, regenerative aesthetics, skin and tightening, IV and wellness, and intimate wellness. Treatment options may include Botox or neurotoxins, dermal fillers, Radiesse, Restylane, Sculptra, PDO threads, facial balancing, PRP and PRF, hair restoration, collagen stimulation treatments, Breeze, WonderTouch, Ultimate Glow &amp; Lift, microneedling with stem cells, chemical peels, IV drip therapy, vitamin shots, feminine wellness, and vaginal tightening consultations."]
   ]],
   ["Booking and Appointments", [
-    ["How do I book an appointment?", "You can book directly using the Book Your Appointment button, request a phone consultation, or start with a Treatment Assessment if you are not sure which service to choose."],
-    ["Can I book if I am not sure what I need?", "Yes. You can book a consultation or start with the Treatment Assessment first. If you are unsure, requesting a phone consultation is also a good option."],
-    ["What happens after I book?", "After booking, you will receive appointment details and any necessary preparation instructions. The team may also follow up to confirm details or answer questions."],
-    ["What if I need to reschedule?", "Contact Elite VitaMed as soon as possible if you need to reschedule. The team can help you find another appointment time based on availability."],
-    ["Can I request someone to call me?", "Yes. You can request a phone consultation or submit a contact form and the team can follow up."],
-    ["What if I clicked booking but did not finish?", "You can return to the booking page at any time. The team may also follow up to help answer questions or guide you toward the right next step."]
+    ["How do I book an appointment?", "You can book directly through the website, start a treatment assessment, or contact Elite VitaMed to request guidance before booking."],
+    ["What if I am not sure where to start?", "Start with the Treatment Assessment. It is designed to help guide you toward the treatment category that may best fit your goals."],
+    ["Can I request a phone consultation first?", "Yes. A phone consultation is a helpful option if you have questions, are new to treatments, or want help choosing the right starting point."],
+    ["Do you offer mobile or concierge appointments?", "Elite VitaMed provides aesthetic and wellness care with a concierge focused approach. Mobile or in home availability may depend on the treatment, location, schedule, and provider recommendation. Availability should be confirmed when booking."],
+    ["How should I prepare for my appointment?", "Preparation depends on the treatment you are receiving. Your provider may give you instructions related to skincare, medications, hydration, alcohol, exercise, sun exposure, or aftercare planning. If you are unsure, contact Elite VitaMed before your appointment."]
   ]],
-  ["Safety and Results", [
-    ["Are results guaranteed?", "No. Individual results vary. Final outcomes depend on many factors including anatomy, treatment history, lifestyle, goals, and provider recommendation."],
-    ["How do I know if I am a candidate?", "Candidacy depends on your goals, medical history, treatment history, anatomy, and what is appropriate for you. Your provider will help determine this during consultation or appointment review."],
-    ["Is there downtime?", "Downtime depends on the treatment. Some treatments may have little to no downtime, while others may involve temporary swelling, redness, tenderness, or aftercare instructions. Your provider will explain what to expect."],
-    ["What should I do before treatment?", "Preparation depends on the service you are receiving. After booking, you will receive any relevant instructions. You can also ask questions before your appointment."],
-    ["What should I do after treatment?", "Aftercare depends on the treatment. Your provider will give you instructions based on the service performed and your individual needs."],
-    ["Can I combine treatments?", "In some cases, combining treatments may be appropriate. Your provider can help determine the best plan based on your goals, safety, timing, and what is appropriate for you."]
+  ["Treatment Assessment", [
+    ["What is the Treatment Assessment?", "The Treatment Assessment is an educational tool that helps guide you toward the treatment category or next step that may fit your goals. It does not replace consultation or provider evaluation."],
+    ["Is the Treatment Assessment a medical recommendation?", "No. Your assessment result is only a starting point. Final recommendations depend on provider evaluation, your goals, anatomy, medical history, treatment history, and what is appropriate for you."],
+    ["What assessments are available?", "Elite VitaMed may offer a Full Treatment Assessment, Injectables Assessment, Skin and Tightening Assessment, IV Therapy Assessment, Regenerative Aesthetics Assessment, and Intimate Wellness Assessment."],
+    ["Can I still book if I skip the assessment?", "Yes. If you already know which treatment you want, you can book directly. Your provider will still confirm whether the treatment is appropriate during your consultation."]
+  ]],
+  ["Injectables", [
+    ["What injectable treatments does Elite VitaMed offer?", "Injectable treatments may include Botox or neurotoxins, dermal fillers, Restylane, Radiesse, Sculptra, PDO threads, facial balancing, jawline contouring, under eye rejuvenation, lip filler, cheek filler, chin filler, and non surgical face lift planning."],
+    ["How do I know whether I need Botox or filler?", "Botox and filler are used for different concerns. Botox or neurotoxins may be discussed for expression related lines and muscle movement. Fillers may be discussed for volume, contour, facial balancing, and structure. Your provider will evaluate your goals and anatomy before recommending a treatment plan."],
+    ["Will injectables make me look overdone?", "Elite VitaMed focuses on refreshed, balanced, natural looking treatment planning. The goal is not to change your face or chase trends. The goal is to support your features in a way that still feels like you."],
+    ["How long do injectable results last?", "Longevity depends on the treatment used, treatment area, amount placed, metabolism, lifestyle, and how your body responds. Your provider will explain expected timelines during your consultation."],
+    ["Are injectable results immediate?", "Some injectable treatments may create visible changes sooner, while others develop gradually. Dermal fillers may show more immediate contour or volume changes, while Sculptra and collagen focused treatments may develop over time."],
+    ["Can I combine injectable treatments?", "Combination plans may be appropriate for some clients. Your provider may discuss Botox, fillers, Sculptra, Radiesse, PDO threads, facial balancing, or skin treatments depending on your goals."]
+  ]],
+  ["Skin and Tightening", [
+    ["What skin and tightening treatments does Elite VitaMed offer?", "Skin and Tightening treatments include Breeze, WonderTouch, Ultimate Glow &amp; Lift, Facial Contouring, Microneedling with Stem Cells, and Chemical Peels."],
+    ["What is Breeze?", "Breeze is a skin focused treatment that may be discussed for clients who want support for glow, texture, and a more refreshed looking complexion."],
+    ["What is WonderTouch?", "WonderTouch may be discussed for clients interested in non surgical tightening support, tone support, and contouring goals in appropriate candidates."],
+    ["What is Ultimate Glow &amp; Lift?", "Ultimate Glow &amp; Lift combines Breeze and WonderTouch into 1 treatment direction for clients who want skin refresh support along with firmness or contouring support."],
+    ["What skin treatment is best for texture?", "The best treatment depends on your skin, sensitivity, history, and goals. Microneedling with stem cells, chemical peels, Breeze, or other options may be discussed depending on provider evaluation."],
+    ["Do skin and tightening treatments replace surgery?", "No. Skin and tightening treatments may support mild to moderate concerns in appropriate candidates, but they do not replace surgery for significant laxity, advanced sagging, or excess skin."]
+  ]],
+  ["Regenerative Aesthetics", [
+    ["What is regenerative aesthetics?", "Regenerative aesthetics focuses on treatments that may support skin quality, collagen response, hair restoration planning, and natural looking rejuvenation over time."],
+    ["What regenerative treatments does Elite VitaMed offer?", "Regenerative Aesthetics may include PRP and PRF, Hair Restoration, and Collagen Stimulation Treatments."],
+    ["What is the difference between PRP and PRF?", "PRP and PRF both use components from your own blood, but they are processed differently and may be selected for different goals. Your provider will explain which option may be appropriate based on your concerns and candidacy."],
+    ["Can PRP or PRF help with hair restoration?", "PRP or PRF may be discussed as part of a hair restoration plan for appropriate candidates. Hair concerns can have many causes, so your provider may recommend additional evaluation depending on your history and symptoms."],
+    ["Do collagen stimulation treatments work right away?", "Collagen focused treatments are typically gradual. Some treatments may create early visible changes, while collagen related improvement may develop over time and may require a series or maintenance plan."]
+  ]],
+  ["IV and Wellness", [
+    ["What IV and wellness treatments does Elite VitaMed offer?", "IV and Wellness treatments may include IV Drip Therapy, Hydration IV, Energy IV, Immunity IV, Beauty IV, Recovery IV, and Vitamin Shots."],
+    ["What is IV Drip Therapy?", "IV Drip Therapy is a wellness treatment that delivers fluids and selected nutrients through an intravenous infusion. It may be discussed for hydration support, nutrient replenishment, recovery planning, and wellness goals in appropriate candidates."],
+    ["Which IV drip should I choose?", "The right IV drip depends on your goals, health history, medications, symptoms, and provider evaluation. If you are unsure, start with the IV Therapy Assessment or request an IV Therapy Phone Consult."],
+    ["Does IV therapy cure illness?", "No. IV therapy does not cure, prevent, or treat illness and does not replace medical care. It may be discussed as supportive wellness care in appropriate candidates."],
+    ["What is the difference between IV therapy and vitamin shots?", "IV therapy delivers fluids and selected nutrients through an intravenous infusion. Vitamin shots are delivered by injection and may be discussed for clients who want a quicker wellness support option."],
+    ["Is IV therapy right for everyone?", "No. IV therapy is not appropriate for everyone. Certain medical conditions, medications, allergies, kidney concerns, heart concerns, pregnancy status, active illness, or hydration concerns may affect candidacy."]
+  ]],
+  ["Intimate Wellness", [
+    ["What is intimate wellness?", "Intimate Wellness is a private consultation based treatment category focused on feminine wellness concerns, tissue support goals, intimate confidence, and non surgical treatment discussions in appropriate candidates."],
+    ["What intimate wellness treatments does Elite VitaMed offer?", "Intimate Wellness includes Feminine Wellness and Vaginal Tightening consultations."],
+    ["Is intimate wellness private?", "Yes. Intimate wellness consultations are designed to be discreet, respectful, and provider led."],
+    ["Is vaginal tightening right for everyone?", "No. Vaginal tightening is not appropriate for everyone. Candidacy depends on your anatomy, symptoms, goals, medical history, pregnancy status, postpartum status, prior procedures, and provider evaluation."],
+    ["Is intimate wellness the same as gynecologic care?", "No. Elite VitaMed's intimate wellness care does not replace gynecologic care. If your concern involves pain, bleeding, infection symptoms, urinary symptoms, pelvic symptoms, or new medical changes, medical evaluation may be recommended first."],
+    ["Can I request a private consultation before discussing details?", "Yes. You can request a private consultation and share your concerns at your comfort level."]
+  ]],
+  ["Results", [
+    ["Are results guaranteed?", "No. Individual results vary. Your outcome depends on your anatomy, treatment plan, health history, treatment history, lifestyle, healing response, and provider evaluation."],
+    ["Will I look natural?", "Elite VitaMed focuses on natural looking, balanced treatment planning. The goal is to help you look refreshed and confident, not overdone."],
+    ["How long do results last?", "Longevity depends on the treatment selected, treatment area, your metabolism, skin quality, lifestyle, and maintenance plan. Your provider will explain expected timelines during your consultation."],
+    ["Do some treatments take longer to show results?", "Yes. Some treatments may create visible changes sooner, while others develop gradually. Collagen stimulation, regenerative aesthetics, microneedling, and hair restoration plans may require more time and consistency."],
+    ["Can I combine treatments for better results?", "Combination treatment planning may be appropriate for some clients. Your provider will determine whether combining treatments is safe, suitable, and aligned with your goals."]
+  ]],
+  ["Memberships", [
+    ["Does Elite VitaMed offer memberships?", "Yes. Elite VitaMed may offer memberships for clients who want a more consistent approach to aesthetic and wellness care."],
+    ["What can memberships include?", "Memberships may include treatment credits, skin care planning, injectable maintenance, IV wellness support, priority booking, preferred member benefits, or provider led treatment planning depending on the final membership structure."],
+    ["Are memberships good for first time clients?", "Memberships may be appropriate for first time clients who want ongoing care, but a consultation or treatment assessment may be recommended first."],
+    ["Can membership plans change over time?", "Your treatment plan may evolve as your goals, skin, wellness needs, or aesthetic priorities change. Membership structure and flexibility should be confirmed before joining."]
+  ]],
+  ["Financing", [
+    ["Does Elite VitaMed offer financing?", "Yes. Elite VitaMed offers financing through Cherry for eligible clients."],
+    ["What can financing be used for?", "Financing may be available for aesthetic, wellness, and treatment planning options, depending on eligibility and Cherry's terms."],
+    ["How does Cherry financing work?", "With Cherry financing, eligible clients may be able to split their treatment investment into flexible payments instead of paying everything upfront."],
+    ["Is financing approval guaranteed?", "No. Financing is offered through Cherry. Approval, payment plans, and eligibility are subject to Cherry's terms."]
+  ]],
+  ["Safety and Candidacy", [
+    ["How does Elite VitaMed determine if I am a candidate?", "Your provider reviews your goals, anatomy, medical history, medications, allergies, treatment history, and what is appropriate for you before recommending treatment."],
+    ["Why do some treatments require consultation first?", "Some treatments require more detailed evaluation because candidacy depends on anatomy, health history, symptoms, medications, skin condition, or safety considerations."],
+    ["What if I am pregnant or breastfeeding?", "Certain treatments may not be appropriate during pregnancy or breastfeeding. Your provider will review your health status and discuss what options may or may not be suitable."],
+    ["What if I have a medical condition?", "Certain medical conditions or medications may affect treatment candidacy. Your provider will review your history before recommending any treatment."],
+    ["Can I receive treatment if I have an active infection or illness?", "Treatment may need to be postponed if you have an active infection, illness, skin irritation, or symptoms that require medical evaluation. Your provider will guide you based on your situation."]
   ]]
 ];
 
@@ -1709,19 +1708,20 @@ function faqPage() {
       ${particles()}
       <div class="relative z-10 mx-auto max-w-7xl px-4 pb-16 pt-20 sm:px-6 lg:px-8 lg:pt-24">
         <div class="reveal max-w-4xl">
-          <p class="eyebrow">Frequently Asked Questions</p>
-          <h1 class="mt-4 text-balance font-serif text-[2.7rem] font-semibold leading-[.98] sm:text-6xl lg:text-7xl">Questions Before You Book? Start Here.</h1>
+          <p class="eyebrow">Elite VitaMed FAQ</p>
+          <h1 class="mt-4 text-balance font-serif text-[2.7rem] font-semibold leading-[.98] sm:text-6xl lg:text-7xl">Answers To Common Questions Before You Book</h1>
           <div class="gold-rule mt-6"><span></span></div>
-          <p class="hero-copy mt-6 max-w-3xl leading-8">Find answers about Elite VitaMed treatments, mobile concierge care, treatment assessments, financing, memberships, booking, and what to expect before your appointment.</p>
-          <p class="hero-copy mt-4 max-w-3xl leading-7">If you are not sure which treatment is right for you, you can start with a Treatment Assessment or request a phone consultation. Every treatment is performed by a Nurse Practitioner and certified injector, with recommendations guided by your goals, history, and what is appropriate for you.</p>
+          <p class="hero-copy mt-6 max-w-3xl leading-8">Learn more about Elite VitaMed treatments, provider led care, appointment options, treatment assessments, financing, and what to expect before your visit.</p>
+          <p class="hero-copy mt-4 max-w-3xl leading-7">Whether you are new to aesthetic and wellness treatments or already know what you are interested in, this FAQ page can help you feel more confident about your next step.</p>
           <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <a href="#assessment" class="btn btn-gold justify-center">${icon("sparkle")} Start Treatment Assessment</a>
-            <a href="#contact" class="btn btn-ghost justify-center">${icon("calendar")} Book Your Appointment</a>
+            <a href="#contact" class="btn btn-gold justify-center">${icon("calendar")} Book Your Appointment</a>
+            <a href="#assessment" class="btn btn-ghost justify-center">${icon("sparkle")} Start Treatment Assessment</a>
           </div>
-          <p class="mt-5 flex items-center gap-2 text-xs font-medium uppercase tracking-[.14em] text-soft-gold/85">${icon("shield")} Provider led care performed by a Nurse Practitioner and certified injector.</p>
+          <p class="mt-5 flex items-center gap-2 text-xs font-medium uppercase tracking-[.14em] text-soft-gold/85">${icon("shield")} Care is performed by a Nurse Practitioner and certified injector.</p>
         </div>
       </div>
     </section>
+    <section class="section-shell bg-white"><div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8"><p class="eyebrow">Before You Book</p><h2 class="mt-3 font-serif text-4xl font-semibold text-navy sm:text-5xl">Have Questions Before Booking?</h2><p class="mt-5 leading-8 text-ink/70">Choosing the right treatment can feel overwhelming, especially if you are comparing injectables, skin treatments, IV therapy, regenerative aesthetics, or intimate wellness options.</p><p class="mt-4 leading-8 text-ink/70">Elite VitaMed is built around provider led care, thoughtful treatment planning, and realistic expectations. You do not need to know exactly what to book before reaching out. You can start with a treatment assessment, request a phone consultation, or book directly if you already know which treatment you are interested in.</p></div></section>
     <section class="section-shell bg-ivory">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="mx-auto max-w-4xl text-center">
@@ -1755,12 +1755,13 @@ function faqPage() {
     <section class="bg-navy-deep px-4 py-16 text-white">
       <div class="mx-auto max-w-7xl rounded-[1.5rem] border border-champagne/25 bg-white/5 p-7 text-center sm:px-10">
         <p class="eyebrow">Your Next Step</p>
-        <h2 class="mx-auto mt-3 max-w-4xl font-serif text-4xl font-semibold sm:text-5xl">Still Have Questions?</h2>
-        <p class="mx-auto mt-4 max-w-3xl leading-8 text-white/70">Start with a Treatment Assessment, request a phone consultation, or book your appointment when you are ready.</p>
+        <h2 class="mx-auto mt-3 max-w-4xl font-serif text-4xl font-semibold sm:text-5xl">Still Have Questions? Start With The Right Next Step</h2>
+        <p class="mx-auto mt-4 max-w-3xl leading-8 text-white/70">If you still have questions, Elite VitaMed can help you choose the best starting point.</p>
         <div class="mt-7 flex flex-col justify-center gap-3 sm:flex-row sm:flex-wrap">
-          <a href="#assessment" class="btn btn-gold justify-center">${icon("sparkle")} Start Treatment Assessment</a>
-          <a href="#contact" class="btn btn-ghost justify-center">${icon("phone")} Request A Phone Consultation</a>
-          <a href="#contact" class="btn border border-white/25 bg-white text-navy justify-center">${icon("calendar")} Book Your Appointment</a>
+          <a href="#contact" class="btn btn-gold justify-center">${icon("calendar")} Book Your Appointment</a>
+          <a href="#assessment" class="btn btn-ghost justify-center">${icon("sparkle")} Start Treatment Assessment</a>
+          <a href="#contact/contact-form" data-contact-intent="phone-consultation" class="btn border border-white/25 bg-white text-navy justify-center">${icon("phone")} Request A Phone Consultation</a>
+          <a href="#contact/contact-form" data-contact-intent="phone-consultation" class="btn btn-ghost justify-center">${icon("heart")} Request A Private Consultation</a>
         </div>
       </div>
     </section>
