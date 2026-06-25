@@ -810,6 +810,11 @@ p.text-sm {
   min-height: 18rem;
 }
 
+/* Card photos: bias the crop to the top so faces/heads stay in frame */
+.luxe-card .image-tile {
+  background-position: top center;
+}
+
 .hero-photo {
   background:
     linear-gradient(90deg, rgba(3, 29, 46, .03), rgba(3, 29, 46, .14)),

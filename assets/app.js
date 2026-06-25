@@ -9,7 +9,9 @@ const images = {
   filler: "url('./client-consult.webp')",
   financing: "url('./provider-consult.webp')",
   assessment: "url('./assessment.webp')",
-  membership: "url('./client-consult.webp')"
+  membership: "url('./client-consult.webp')",
+  beforeAfter1: "url('./before-after-1.webp')",
+  beforeAfter2: "url('./before-after-2.webp')"
 };
 
 const iconPaths = {
@@ -507,7 +509,7 @@ function homeAssessment() {
         <div class="mt-10 grid gap-5 lg:grid-cols-3">
           ${items.map((item) => `
             <article class="luxe-card overflow-hidden">
-              ${imageBox(item[3], "min-h-44")}
+              ${imageBox(item[3], "min-h-[12.1rem]")}
               <div class="p-6">
                 <div class="icon-badge mb-4">${icon(item[2])}</div>
                 <h3 class="font-serif text-3xl font-semibold text-navy">${item[0]}</h3>
@@ -629,12 +631,12 @@ function homeResults() {
         </div>
         <div class="mt-10 grid gap-5 md:grid-cols-3">
           ${[
-            ["Before and after photos", "Provider-reviewed treatment photos can be featured here.", "results"],
-            ["Client testimonials", "Client confidence stories and experience highlights can be featured here.", "clinic"],
-            ["Natural looking results", "Thoughtful planning supports a refreshed and balanced result.", "hero"]
+            ["Before and after photos", "Provider-reviewed treatment photos can be featured here.", "beforeAfter1"],
+            ["Client testimonials", "Client confidence stories and experience highlights can be featured here.", "results"],
+            ["Natural looking results", "Thoughtful planning supports a refreshed and balanced result.", "beforeAfter2"]
           ].map((item) => `
             <article class="luxe-card overflow-hidden">
-              ${imageBox(item[2], "min-h-52")}
+              ${imageBox(item[2], "min-h-[14.3rem]")}
               <div class="p-5">
                 <h3 class="font-serif text-2xl font-semibold text-navy">${item[0]}</h3>
                 <p class="mt-2 text-sm leading-6 text-ink/64">${item[1]}</p>
