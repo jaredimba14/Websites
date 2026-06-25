@@ -805,14 +805,10 @@ p.text-sm {
   background:
     linear-gradient(135deg, rgba(6, 50, 74, .16), rgba(213, 168, 94, .2)),
     var(--image-url);
-  background-position: center;
+  /* top-center so faces/heads stay in frame across cards and section photos */
+  background-position: top center;
   background-size: cover;
   min-height: 18rem;
-}
-
-/* Card photos: bias the crop to the top so faces/heads stay in frame */
-.luxe-card .image-tile {
-  background-position: top center;
 }
 
 .hero-photo {
