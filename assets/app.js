@@ -185,7 +185,7 @@ function initHeroParticles() {
       },
       move: {
         enable: true,
-        speed: 2,
+        speed: 3.5,
         direction: "none",
         random: false,
         straight: false,
