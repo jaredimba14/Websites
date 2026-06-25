@@ -5,7 +5,7 @@ const images = {
   iv: "url('https://images.unsplash.com/photo-1746806942787-947eebe640d6?auto=format&fit=crop&w=1300&q=80')",
   wellness: "url('https://images.unsplash.com/photo-1591343395082-e120087004b4?auto=format&fit=crop&w=1300&q=80')",
   results: "url('https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&w=1200&q=80')",
-  injectables: "url('https://images.unsplash.com/photo-1746708810803-722593e53772?auto=format&fit=crop&w=1200&q=80')",
+  injectables: "url('./injectables.webp')",
   filler: "url('https://images.unsplash.com/photo-1746017062285-13c77e29fc25?auto=format&fit=crop&w=1200&q=80')",
   financing: "url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80')",
   assessment: "url('https://images.unsplash.com/photo-1754039985017-92baef8ae63b?auto=format&fit=crop&w=1200&q=80')",
