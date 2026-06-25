@@ -14,6 +14,8 @@
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@300;500;600;700;800&family=Roboto+Condensed:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    <!-- Lato: used by the Cherry financing widget -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -329,6 +331,46 @@
 
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script src="./assets/injectables-assessment.js?v=3"></script>
-    <script src="./assets/app.js?v=107"></script>
+    <script src="./assets/app.js?v=108"></script>
+
+    <!-- CHERRY WIDGET BEGIN -->
+    <script>
+      (function (w, d, s, o, f, js, fjs) {
+        w[o] = w[o] || function () { (w[o].q = w[o].q || []).push(arguments); };
+        (js = d.createElement(s)), (fjs = d.getElementsByTagName(s)[0]);
+        js.id = o; js.src = f; js.async = 1;
+        fjs.parentNode.insertBefore(js, fjs);
+      })(window, document, "script", "_hw", "https://files.withcherry.com/widgets/widget.js");
+      _hw("init", {
+        debug: false,
+        variables: {
+          slug: "elite-vitamed-aesthetics",
+          name: "Elite Vitamed Aesthetics",
+          images: [46],
+          customLogo: "https://elitevitamedaesthetics.com/wp-content/uploads/2026/02/EVA-2-e1770131433945-300x225.webp",
+          defaultPurchaseAmount: 750,
+          customImage: "",
+          imageCategory: "medspa",
+          language: "en"
+        },
+        styles: {
+          primaryColor: "#142536",
+          secondaryColor: "#14253610",
+          fontFamily: "Lato",
+          headerFontFamily: "Lato",
+          floatingEstimator: {
+            position: "bottom-right",
+            offset: { x: "0px", y: "0px" },
+            zIndex: 9999,
+            ctaFontFamily: "Lato",
+            bodyFontFamily: "Lato",
+            ctaColor: "#142536",
+            ctaTextColor: "#FFFFFF"
+          }
+        }
+      }, ["floatingEstimator"]);
+    </script>
+    <div id="floatingEstimator"></div>
+    <!-- CHERRY WIDGET END -->
   </body>
 </html>
