@@ -3727,35 +3727,68 @@ function bookPage() {
 function specialsSection(theme) {
   const dark = theme !== "light";
   const specials = [
-    { badge: "New Clients", title: "New Client Welcome Offer", copy: "New to Elite VitaMed? Ask about our welcome offer on your first injectable or IV wellness visit.", cta: "Book Your First Visit", href: "#book" },
-    { badge: "Members Save", title: "Concierge Membership Savings", copy: "Members enjoy savings on every treatment, priority scheduling, and exclusive concierge perks all year.", cta: "View Memberships", href: "#memberships" },
-    { badge: "Seasonal", title: "Featured IV Drip of the Season", copy: "Refresh and recharge with this season's featured IV drip plus add-on vitamin boosts.", cta: "Book IV Therapy", href: "#book/iv" }
+    {
+      badge: "New Client Special",
+      title: "Injectable New Client Special",
+      items: [
+        ["Botox", "$9.99 / unit", "Unlimited units · 40-unit minimum"],
+        ["Dermal Fillers", "$399", ""],
+        ["PDO Threads", "$500", "Full face · $500 neck"]
+      ],
+      note: "New client special. $50 deposit required to book.",
+      cta: "Book Injectables",
+      href: "#book/injectables"
+    },
+    {
+      badge: "Limited Time",
+      title: "IV Drip Therapy Special",
+      items: [
+        ["Any IV Drip", "$50 OFF", "New client special"],
+        ["IV Drip Packages", "20% OFF", "Save on a package plan"]
+      ],
+      note: "$50 deposit required to book. Ask about add-on vitamin boosts.",
+      cta: "Book IV Therapy",
+      href: "#book/iv"
+    }
   ];
   const wrap = dark ? "bg-navy-deep text-white" : "bg-mist text-navy";
   const sub = dark ? "text-white/70" : "text-ink/68";
   const card = dark ? "border-champagne/25 bg-white/5" : "border-navy/10 bg-white shadow-luxe";
   const cardTitle = dark ? "text-white" : "text-navy";
-  const cardCopy = dark ? "text-white/70" : "text-ink/68";
+  const cardDetail = dark ? "text-white/55" : "text-ink/55";
+  const divide = dark ? "divide-white/10" : "divide-navy/10";
+  const price = dark ? "text-champagne" : "text-navy";
   const fine = dark ? "text-white/45" : "text-ink/50";
   return `
-    <section class="section-shell ${wrap}" data-content-placeholder="promo">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section class="section-shell ${wrap}" data-section="specials">
+      <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         <div class="mx-auto max-w-3xl text-center">
           <p class="eyebrow">Current Specials</p>
           <h2 class="mt-3 font-serif text-4xl font-semibold sm:text-5xl">Specials and Promotions</h2>
-          <p class="mt-4 leading-8 ${sub}">Provider led care with offers designed to help you start, save, and stay refreshed. Ask your provider which offer fits your goals.</p>
+          <p class="mt-4 leading-8 ${sub}">New client injectable pricing and IV drip savings, all delivered with provider led care. Ask your provider which offer fits your goals.</p>
         </div>
-        <div class="mt-10 grid gap-6 md:grid-cols-3">
+        <div class="mt-10 grid gap-6 md:grid-cols-2">
           ${specials.map((s) => `
-            <article class="flex flex-col rounded-[1.5rem] border ${card} p-7">
+            <article class="flex flex-col rounded-[1.5rem] border ${card} p-7 sm:p-8">
               <span class="self-start rounded-full bg-soft-gold px-3 py-1 text-xs font-bold uppercase tracking-[.14em] text-navy">${s.badge}</span>
               <h3 class="mt-4 font-serif text-2xl font-semibold ${cardTitle}">${s.title}</h3>
-              <p class="mt-3 flex-1 leading-7 ${cardCopy}">${s.copy}</p>
+              <ul class="mt-5 divide-y ${divide}">
+                ${s.items.map(([name, amount, detail]) => `
+                  <li class="flex items-baseline justify-between gap-4 py-3">
+                    <div>
+                      <p class="font-semibold ${cardTitle}">${name}</p>
+                      ${detail ? `<p class="mt-0.5 text-xs leading-5 ${cardDetail}">${detail}</p>` : ""}
+                    </div>
+                    <p class="shrink-0 font-serif text-2xl font-semibold ${price}">${amount}</p>
+                  </li>
+                `).join("")}
+              </ul>
+              <p class="mt-4 text-xs leading-6 ${fine}">${s.note}</p>
               <a href="${s.href}" class="btn btn-gold mt-6 justify-center">${icon("calendar")} ${s.cta}</a>
             </article>
           `).join("")}
         </div>
-        <p class="mt-7 text-center text-xs leading-6 ${fine}">Offers are subject to provider evaluation and may change. Individual results vary.</p>
+        <p class="mt-7 text-center text-xs leading-6 ${fine}">Offers are for new clients and are subject to provider evaluation and may change. Individual results vary.</p>
       </div>
     </section>
   `;
