@@ -1173,7 +1173,7 @@ function contactForm() {
 
 function contactLocation() {
   const details = [
-    ["Phone", `<a href="tel:+16037657760" class="text-navy underline decoration-champagne/60 underline-offset-2">(603) 765-7760</a> · <a href="tel:+17164520835" class="text-navy underline decoration-champagne/60 underline-offset-2">(716) 452-0835</a>`, "phone"],
+    ["Phone", `<a href="tel:+16037657760" class="text-navy underline decoration-champagne/60 underline-offset-2">(603) 765-7760</a><br><a href="tel:+17164520835" class="text-navy underline decoration-champagne/60 underline-offset-2">(716) 452-0835</a>`, "phone"],
     ["Email", `<a href="mailto:elitevitamedaesthetics@gmail.com" class="text-navy underline decoration-champagne/60 underline-offset-2">elitevitamedaesthetics@gmail.com</a>`, "users"],
     ["Hours", "[Insert business hours]", "calendar"],
     ["Booking Link", `<a href="#book" class="text-navy underline decoration-champagne/60 underline-offset-2">Book online</a>`, "arrow"]

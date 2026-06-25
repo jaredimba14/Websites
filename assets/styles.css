@@ -1181,6 +1181,11 @@ p.text-sm {
   gap: .6rem;
   line-height: 1.5;
 }
+/* Let long values (e.g. the email) wrap within the column instead of overflowing */
+.footer-contact li > span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
 .footer-icon {
   color: #d5a85e;
   flex-shrink: 0;
@@ -1192,6 +1197,24 @@ p.text-sm {
   stroke-width: 1.7;
   width: 1.05rem;
 }
+/* Phone/email links match the surrounding contact text, not the global footer-link size */
+.footer-contact a {
+  color: inherit;
+  display: inline;
+  font-size: inherit;
+  line-height: inherit;
+}
+.footer-contact a:hover { color: #fff; }
+.footer-credit a {
+  color: rgba(255, 255, 255, .7);
+  display: inline;
+  font-size: inherit;
+  line-height: inherit;
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 255, 255, .25);
+  text-underline-offset: 2px;
+}
+.footer-credit a:hover { color: #fff; }
 .footer-social a {
   align-items: center;
   border: 1px solid rgba(214, 178, 94, .32);
