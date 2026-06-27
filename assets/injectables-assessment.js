@@ -597,6 +597,17 @@ function setupInjectablesAssessment() {
       return `Full face $${pdoThreadsFullFacePrice}`;
     }
 
+    function planCostMax(plan) {
+      let max = 0;
+      (plan || []).forEach(item => {
+        if (/Botox|Xeomin/.test(item.treatment)) { const r = parseRangeForUnit(item.estimate || "", "units?"); if (r) max += r.max * botoxPricePerUnit; }
+        else if (/filler|Filler/.test(item.treatment)) { const r = parseRangeForUnit(item.estimate || "", "syringes?"); if (r) max += r.max * fillerPricePerSyringe; }
+        else if (/PDO/.test(item.treatment)) { max += pdoThreadPlanPrice(item); }
+        else if (/biostimulator|Combination/.test(item.treatment)) { if ((item.estimate || "").toLowerCase().includes("possible pdo")) max += pdoThreadPlanPrice(item); }
+      });
+      return max;
+    }
+
     function estimatePlanPricing(plan) {
       let min = 0;
       let max = 0;
@@ -844,13 +855,18 @@ function setupInjectablesAssessment() {
       // (Minimum ⊆ Recommended ⊆ Comprehensive) and cost-ordered (Minimum ≤ Recommended ≤ Comprehensive).
       const comprehensivePlan = sortedSeeds.slice(0, Math.min(7, sortedSeeds.length));
       const total = comprehensivePlan.length;
-      const minimumPlan = sortedSeeds.slice(0, Math.min(1, total));
-      const recUpper = total > 2 ? total - 1 : total;   // leave at least one item for Comprehensive when total >= 3
-      const recLower = Math.min(2, total);              // at least two items when available (more than Minimum)
+      // Minimum plan: stack the most important treatments (in priority order) until the estimate
+      // reaches ~$500, but leave at least one item so Comprehensive stays larger. Capped at 3.
+      const minCap = Math.min(3, Math.max(1, total - 1));
+      let minSize = Math.min(1, total);
+      while (minSize < minCap && planCostMax(sortedSeeds.slice(0, minSize)) < 500) minSize++;
+      const minimumPlan = sortedSeeds.slice(0, minSize);
+      const recUpper = total > minSize + 1 ? total - 1 : total;   // strictly fewer than Comprehensive when there is room
+      const recLower = Math.min(minSize + 1, total);              // at least one more than Minimum when available
       // First-timers are guided to start conservatively (smaller Recommended plan); experienced
       // clients can see a fuller Recommended plan.
       const recTargetBase = Math.min(4, budgetLimit + 1);
-      const recTarget = firstTimer ? Math.min(2, recTargetBase) : (experiencedClient ? Math.min(5, budgetLimit + 2) : recTargetBase);
+      const recTarget = firstTimer ? recLower : (experiencedClient ? Math.min(6, budgetLimit + 2) : recTargetBase);
       const recSize = Math.min(recUpper, Math.max(recLower, recTarget));
       const recommendedPlan = sortedSeeds.slice(0, recSize);
 
@@ -1029,17 +1045,50 @@ function setupInjectablesAssessment() {
       document.getElementById(id).innerHTML = items.map(item => `<li>${item.text}</li>`).join("");
     }
 
+    // Compact codes shorten the shareable results link: only non-default answers are encoded,
+    // with short keys, and goals/skin/safety stored as list indices.
+    const ANSWER_KEY_CODES = { goals: "g", skinConcerns: "k", safetyFlags: "s", ageRange: "a", experience: "x", budget: "b", forehead: "fh", frown: "fr", crowsFeet: "cf", bunnyLines: "bl", lipFlip: "lf", chinDimpling: "cd", masseter: "ms", neckBands: "nb", brow: "bw", underEye: "ue", cheekVolume: "cv", nasolabial: "nl", currentLips: "cl", lipGoal: "lg", marionette: "mr", jowls: "jw", chinProfile: "cp", jawlineGoal: "jg", looseSkin: "ls" };
+    const ANSWER_CODE_KEYS = Object.keys(ANSWER_KEY_CODES).reduce((acc, key) => { acc[ANSWER_KEY_CODES[key]] = key; return acc; }, {});
+    const LIST_KEYS = { goals, skinConcerns: skinOptions, safetyFlags: safetyQuestions.map(q => q[1]) };
+    const ANSWER_DEFAULTS = (function () {
+      const d = { goals: [], skinConcerns: [], safetyFlags: [], ageRange: radioQuestions.age.defaultValue, budget: budgetOptions[2] };
+      ["experience", "forehead", "frown", "crowsFeet", "bunnyLines", "lipFlip", "chinDimpling", "masseter", "neckBands", "brow", "underEye", "cheekVolume", "nasolabial", "currentLips", "lipGoal", "marionette", "jowls", "chinProfile", "jawlineGoal", "looseSkin"].forEach(key => { d[key] = radioQuestions[key].defaultValue; });
+      return d;
+    })();
+
     function encodeAnswers(a) {
-      const picked = {};
-      CLINICAL_KEYS.forEach(key => { if (a[key] !== undefined) picked[key] = a[key]; });
-      const json = JSON.stringify(picked);
-      return btoa(unescape(encodeURIComponent(json))).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+      const compact = {};
+      CLINICAL_KEYS.forEach(key => {
+        const value = a[key];
+        if (value === undefined) return;
+        if (LIST_KEYS[key]) {
+          if (!value || !value.length) return;
+          const indices = value.map(v => LIST_KEYS[key].indexOf(v)).filter(i => i >= 0);
+          if (indices.length) compact[ANSWER_KEY_CODES[key]] = indices;
+        } else if (value !== ANSWER_DEFAULTS[key]) {
+          compact[ANSWER_KEY_CODES[key]] = value;
+        }
+      });
+      return btoa(unescape(encodeURIComponent(JSON.stringify(compact)))).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
     }
 
     function decodeAnswers(code) {
       try {
-        const b64 = code.replace(/-/g, "+").replace(/_/g, "/");
-        return JSON.parse(decodeURIComponent(escape(atob(b64))));
+        const parsed = JSON.parse(decodeURIComponent(escape(atob(code.replace(/-/g, "+").replace(/_/g, "/")))));
+        const a = {};
+        CLINICAL_KEYS.forEach(key => { const d = ANSWER_DEFAULTS[key]; a[key] = Array.isArray(d) ? d.slice() : d; });
+        const legacy = Object.keys(parsed).some(k => CLINICAL_KEYS.includes(k));
+        Object.keys(parsed).forEach(rawKey => {
+          const key = legacy ? rawKey : ANSWER_CODE_KEYS[rawKey];
+          if (!key || a[key] === undefined && !CLINICAL_KEYS.includes(key)) return;
+          const value = parsed[rawKey];
+          if (LIST_KEYS[key]) {
+            a[key] = legacy ? value : (value || []).map(i => LIST_KEYS[key][i]).filter(Boolean);
+          } else {
+            a[key] = value;
+          }
+        });
+        return a;
       } catch (e) {
         return null;
       }
