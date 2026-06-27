@@ -807,32 +807,20 @@ function setupInjectablesAssessment() {
 
       const sortedSeeds = planSeeds.sort((aItem, bItem) => bItem.priority - aItem.priority);
       const budgetLimit = { "Under $500": 1, "$500-$1,000": 2, "$1,000-$2,000": 3, "$2,000+": 5 }[a.budget] || 3;
-      // Minimum plan: highest-impact priority first — at most one filler and one or two
-      // tox items, only for categories that are actually needed. It may exceed $1,000 when
-      // the concerns warrant it; the nesting below guarantees it never costs more than the
-      // Recommended or Comprehensive plans.
-      const isToxSeed = item => item.treatment.includes("Botox") || item.treatment.includes("Xeomin");
-      const isFillerSeed = item => item.treatment.includes("Dermal filler") || item.treatment.includes("Filler");
-      const topFillerSeed = sortedSeeds.filter(isFillerSeed).slice(0, 1);
-      const topToxSeeds = sortedSeeds.filter(isToxSeed).slice(0, 2);
-      let minimumPlan = [...topToxSeeds, ...topFillerSeed].sort((aItem, bItem) => bItem.priority - aItem.priority);
-      if (!minimumPlan.length) minimumPlan = sortedSeeds.slice(0, 1);
-      if (a.budget === "Under $500") minimumPlan = minimumPlan.slice(0, 1);
-
-      // Recommended is at least one item larger than Minimum; Comprehensive is the broadest.
-      const recommendedPlan = sortedSeeds.slice(0, Math.max(minimumPlan.length + 1, Math.min(4, budgetLimit + 1)));
-      const comprehensivePlan = sortedSeeds.slice(0, Math.min(7, Math.max(4, sortedSeeds.length)));
-      // Keep the tiers strictly nested (Minimum ⊆ Recommended ⊆ Comprehensive) so each larger
-      // plan always contains the smaller one and therefore costs at least as much.
-      minimumPlan.forEach(item => {
-        if (!recommendedPlan.includes(item)) recommendedPlan.push(item);
-        if (!comprehensivePlan.includes(item)) comprehensivePlan.push(item);
-      });
-      recommendedPlan.forEach(item => {
-        if (!comprehensivePlan.includes(item)) comprehensivePlan.push(item);
-      });
-      recommendedPlan.sort((aItem, bItem) => bItem.priority - aItem.priority);
-      comprehensivePlan.sort((aItem, bItem) => bItem.priority - aItem.priority);
+      // Three nested tiers built from the priority-sorted seeds:
+      //   Minimum       = the single highest-impact treatment to start with
+      //   Recommended   = a balanced middle (strictly more than Minimum, strictly fewer than
+      //                   Comprehensive whenever there are enough treatments to differentiate)
+      //   Comprehensive = every relevant treatment (cap 7)
+      // Because each plan is a prefix of the same sorted list, they are automatically nested
+      // (Minimum ⊆ Recommended ⊆ Comprehensive) and cost-ordered (Minimum ≤ Recommended ≤ Comprehensive).
+      const comprehensivePlan = sortedSeeds.slice(0, Math.min(7, sortedSeeds.length));
+      const total = comprehensivePlan.length;
+      const minimumPlan = sortedSeeds.slice(0, Math.min(1, total));
+      const recUpper = total > 2 ? total - 1 : total;   // leave at least one item for Comprehensive when total >= 3
+      const recLower = Math.min(2, total);              // at least two items when available (more than Minimum)
+      const recSize = Math.min(recUpper, Math.max(recLower, Math.min(4, budgetLimit + 1)));
+      const recommendedPlan = sortedSeeds.slice(0, recSize);
 
       const riskFlag = a.safetyFlags.length > 0;
       const providerReviewItem = {
