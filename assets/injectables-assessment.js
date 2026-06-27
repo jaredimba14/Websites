@@ -1054,7 +1054,7 @@ function setupInjectablesAssessment() {
         email: result.email || "",
         city: result.city || "",
         source: "Injectables Assessment (Website)",
-        tags: ["Injectables Assessment", ...recommendedTreatments.map(treatment => `Interested: ${treatment}`)],
+        tags: ["injectable_assessment"],
         consent: true,
         results_link: buildResultsLink(result),
         notes,
@@ -1067,15 +1067,16 @@ function setupInjectablesAssessment() {
 
     function sendAssessmentToWebhook(payload) {
       if (!ASSESSMENT_WEBHOOK_URL) { if (DEBUG) console.log("[assessment] webhook URL not set; skipping send", payload); return; }
-      const body = JSON.stringify(payload);
       try {
-        if (window.fetch) {
-          fetch(ASSESSMENT_WEBHOOK_URL, { method: "POST", mode: "no-cors", headers: { "Content-Type": "text/plain;charset=UTF-8" }, body }).catch(() => {
-            if (navigator.sendBeacon) navigator.sendBeacon(ASSESSMENT_WEBHOOK_URL, body);
-          });
-        } else if (navigator.sendBeacon) {
-          navigator.sendBeacon(ASSESSMENT_WEBHOOK_URL, body);
-        }
+        // GHL requires a JSON body and allows cross-origin requests (Access-Control-Allow-Origin: *),
+        // so a normal CORS POST works. keepalive lets the request finish even if the page navigates.
+        fetch(ASSESSMENT_WEBHOOK_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+          keepalive: true
+        }).then(response => { if (DEBUG) console.log("[assessment] webhook status", response.status); })
+          .catch(error => { if (DEBUG) console.log("[assessment] webhook error", error); });
       } catch (e) {
         if (DEBUG) console.log("[assessment] webhook send failed", e);
       }
