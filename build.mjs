@@ -27,6 +27,14 @@ execSync("npx -y tailwindcss@3.4.17 -c tailwind.config.js -o assets/tailwind.css
   stdio: ["ignore", "ignore", "inherit"]
 });
 
+// Minify the served JS/CSS (sources stay as-is; pages reference the .min files).
+console.log("Minifying JS/CSS...");
+execSync(
+  "npx -y esbuild assets/app.js assets/injectables-assessment.js --minify --outdir=assets --out-extension:.js=.min.js" +
+    " && npx -y esbuild assets/styles.css --minify --outfile=assets/styles.min.css",
+  { cwd: ROOT, stdio: ["ignore", "ignore", "inherit"], shell: true }
+);
+
 const template = fs.readFileSync(path.join(ROOT, "template.html"), "utf8");
 const appSource = fs.readFileSync(path.join(ROOT, "assets", "app.js"), "utf8");
 const quizSource = fs.readFileSync(path.join(ROOT, "assets", "injectables-assessment.js"), "utf8");
@@ -139,9 +147,29 @@ function buildPage(routePath, routeKey) {
     (m, attrs) => `<main id="app"${attrs} data-prerendered="${routeKey}">${appHtml}</main>`
   );
 
-  // The 116KB quiz script is only needed on its own page.
+  // Serve the minified bundles.
+  html = html.replace('src="./assets/app.js?', 'src="./assets/app.min.js?');
+  html = html.replace('src="./assets/injectables-assessment.js?', 'src="./assets/injectables-assessment.min.js?');
+  html = html.replace('href="./assets/styles.css?', 'href="./assets/styles.min.css?');
+
+  // Page-specific scripts: the quiz bundle only on its page, particles only on the home
+  // hero, the GHL iframe-resizer only where GHL widgets are embedded (/book/*).
   if (routeKey !== "injectables-assessment") {
-    html = html.replace(/[ \t]*<script[^>]*injectables-assessment\.js[^>]*><\/script>\r?\n?/, "");
+    html = html.replace(/[ \t]*<script[^>]*injectables-assessment\.min\.js[^>]*><\/script>\r?\n?/, "");
+  }
+  if (routeKey !== "home") {
+    html = html.replace(/[ \t]*<script[^>]*particles\.min\.js[^>]*><\/script>\r?\n?/, "");
+  }
+  if (routeKey !== "book") {
+    html = html.replace(/[ \t]*<script[^>]*form_embed\.js[^>]*><\/script>\r?\n?/, "");
+  }
+
+  // Preload the home hero portrait — it is the LCP element.
+  if (routeKey === "home") {
+    html = html.replace(
+      '<link rel="stylesheet" href="./assets/tailwind.css',
+      '<link rel="preload" as="image" href="./assets/hero-portrait-warm.webp" fetchpriority="high" />\n    <link rel="stylesheet" href="./assets/tailwind.css'
+    );
   }
 
   html = rewriteLinks(html, prefix, routeKey);
@@ -225,12 +253,20 @@ RewriteRule ^(.*/)?index\\.html$ /$1 [R=301,L]
 <IfModule mod_expires.c>
   ExpiresActive On
   ExpiresByType text/html "access plus 0 seconds"
-  ExpiresByType text/css "access plus 1 month"
-  ExpiresByType application/javascript "access plus 1 month"
-  ExpiresByType image/webp "access plus 6 months"
-  ExpiresByType image/png "access plus 6 months"
-  ExpiresByType image/jpeg "access plus 6 months"
-  ExpiresByType image/svg+xml "access plus 6 months"
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+</IfModule>
+<IfModule mod_headers.c>
+  <FilesMatch "\\.(css|js|webp|png|jpe?g|svg)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "\\.html$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
 </IfModule>
 `
 );

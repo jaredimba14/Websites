@@ -63,15 +63,19 @@
     <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png?v=1" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Fonts load without blocking first paint (display=swap shows fallback text immediately). -->
     <link
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@300;500;600;700;800&family=Roboto+Condensed:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
+      rel="stylesheet" media="print" onload="this.media='all'"
     />
     <!-- Lato: used by the Cherry financing widget -->
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+    <noscript>
+      <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@300;500;600;700;800&family=Roboto+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    </noscript>
     <!-- Tailwind utilities precompiled by build.mjs (tailwind.config.js) — no runtime compiler. -->
     <link rel="stylesheet" href="../assets/tailwind.css?v=1" />
-    <link rel="stylesheet" href="../assets/styles.css?v=120" />
+    <link rel="stylesheet" href="../assets/styles.min.css?v=120" />
   </head>
   <body class="bg-ivory text-ink antialiased">
     <div class="site-header fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-navy-deep/95 backdrop-blur-xl">
@@ -332,7 +336,7 @@
         <div class="neuro-map-shell mt-10 grid gap-7 lg:grid-cols-[.92fr_1.08fr]">
           <div class="neuro-face-card">
             <div class="neuro-face-stage">
-              <img class="neuro-face" src="../assets/treatment-face-map.webp" alt="Front-facing educational non surgical face lift combination treatment map" />
+              <img class="neuro-face" loading="lazy" decoding="async" src="../assets/treatment-face-map.webp" alt="Front-facing educational non surgical face lift combination treatment map" />
               <div class="face-zone-layer" aria-hidden="true"><span class="face-treatment-zone family-neurotoxins" style="--x:50%;--y:20%;--zone-width:34%;--zone-height:15%;--zone-rotate:0deg" data-lift-zone="forehead-lines"></span><span class="face-treatment-zone family-neurotoxins" style="--x:30%;--y:33%;--zone-width:21%;--zone-height:8%;--zone-rotate:-9deg" data-lift-zone="brow-lift"></span><span class="face-treatment-zone family-neurotoxins" style="--x:73%;--y:37%;--zone-width:18%;--zone-height:10%;--zone-rotate:0deg" data-lift-zone="crows-feet"></span><span class="face-treatment-zone family-biostimulators" style="--x:29%;--y:28%;--zone-width:18%;--zone-height:16%;--zone-rotate:0deg" data-lift-zone="temples"></span><span class="face-treatment-zone family-fillers" style="--x:68%;--y:40%;--zone-width:23%;--zone-height:10%;--zone-rotate:0deg" data-lift-zone="under-eyes"></span><span class="face-treatment-zone family-biostimulators" style="--x:29%;--y:46%;--zone-width:27%;--zone-height:20%;--zone-rotate:-18deg" data-lift-zone="cheeks"></span><span class="face-treatment-zone family-fillers" style="--x:64%;--y:54%;--zone-width:14%;--zone-height:17%;--zone-rotate:-18deg" data-lift-zone="smile-lines"></span><span class="face-treatment-zone family-fillers" style="--x:50%;--y:61%;--zone-width:22%;--zone-height:8%;--zone-rotate:0deg" data-lift-zone="lips"></span><span class="face-treatment-zone family-fillers" style="--x:66%;--y:67%;--zone-width:15%;--zone-height:16%;--zone-rotate:-12deg" data-lift-zone="marionette-lines"></span><span class="face-treatment-zone family-fillers" style="--x:50%;--y:75%;--zone-width:24%;--zone-height:12%;--zone-rotate:0deg" data-lift-zone="chin"></span><span class="face-treatment-zone family-fillers" style="--x:28%;--y:72%;--zone-width:25%;--zone-height:25%;--zone-rotate:-26deg" data-lift-zone="jawline"></span><span class="face-treatment-zone family-threads" style="--x:58%;--y:72%;--zone-width:42%;--zone-height:25%;--zone-rotate:0deg" data-lift-zone="lower-face-threads"></span><span class="face-treatment-zone family-neurotoxins" style="--x:54%;--y:84%;--zone-width:19%;--zone-height:29%;--zone-rotate:0deg" data-lift-zone="neck-bands"></span><span class="face-treatment-zone family-skin-tightening" style="--x:40%;--y:86%;--zone-width:36%;--zone-height:26%;--zone-rotate:0deg" data-lift-zone="neck-tightening"></span><span class="face-treatment-zone family-skin-tightening" style="--x:50%;--y:50%;--zone-width:52%;--zone-height:48%;--zone-rotate:0deg" data-lift-zone="skin-quality"></span></div>
               <button class="neuro-marker" type="button" style="--x:50%;--y:20%" data-lift-area="forehead-lines" aria-label="Learn about Forehead Lines"><span></span><small>Forehead Lines</small></button><button class="neuro-marker" type="button" style="--x:30%;--y:33%" data-lift-area="brow-lift" aria-label="Learn about Brows"><span></span><small>Brows</small></button><button class="neuro-marker" type="button" style="--x:73%;--y:37%" data-lift-area="crows-feet" aria-label="Learn about Crow's Feet"><span></span><small>Crow's Feet</small></button><button class="neuro-marker" type="button" style="--x:29%;--y:28%" data-lift-area="temples" aria-label="Learn about Temples"><span></span><small>Temples</small></button><button class="neuro-marker" type="button" style="--x:68%;--y:40%" data-lift-area="under-eyes" aria-label="Learn about Under Eyes"><span></span><small>Under Eyes</small></button><button class="neuro-marker" type="button" style="--x:29%;--y:46%" data-lift-area="cheeks" aria-label="Learn about Cheeks"><span></span><small>Cheeks</small></button><button class="neuro-marker" type="button" style="--x:64%;--y:54%" data-lift-area="smile-lines" aria-label="Learn about Smile Lines"><span></span><small>Smile Lines</small></button><button class="neuro-marker" type="button" style="--x:50%;--y:61%" data-lift-area="lips" aria-label="Learn about Lips"><span></span><small>Lips</small></button><button class="neuro-marker" type="button" style="--x:66%;--y:67%" data-lift-area="marionette-lines" aria-label="Learn about Marionette Area"><span></span><small>Marionette Area</small></button><button class="neuro-marker" type="button" style="--x:50%;--y:75%" data-lift-area="chin" aria-label="Learn about Chin"><span></span><small>Chin</small></button><button class="neuro-marker" type="button" style="--x:28%;--y:72%" data-lift-area="jawline" aria-label="Learn about Jawline"><span></span><small>Jawline</small></button><button class="neuro-marker" type="button" style="--x:58%;--y:72%" data-lift-area="lower-face-threads" aria-label="Learn about Lower Face"><span></span><small>Lower Face</small></button><button class="neuro-marker" type="button" style="--x:54%;--y:84%" data-lift-area="neck-bands" aria-label="Learn about Neck Bands"><span></span><small>Neck Bands</small></button><button class="neuro-marker" type="button" style="--x:40%;--y:86%" data-lift-area="neck-tightening" aria-label="Learn about Neck Tightening"><span></span><small>Neck Tightening</small></button><button class="neuro-marker" type="button" style="--x:50%;--y:50%" data-lift-area="skin-quality" aria-label="Learn about Skin Quality"><span></span><small>Skin Quality</small></button>
             </div>
@@ -477,13 +481,12 @@
       </div>
     </footer>
 
-    <script defer src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-    <script defer src="../assets/app.js?v=132"></script>
+    <script defer src="../assets/app.min.js?v=132"></script>
     <!-- GHL booking widget auto-resize -->
-    <script defer src="https://link.msgsndr.com/js/form_embed.js" type="text/javascript"></script>
 
-    <!-- CHERRY WIDGET BEGIN -->
+    <!-- CHERRY WIDGET BEGIN (loaded after the page is idle so it never competes with first paint) -->
     <script>
+      function __initCherry() {
       (function (w, d, s, o, f, js, fjs) {
         w[o] = w[o] || function () { (w[o].q = w[o].q || []).push(arguments); };
         (js = d.createElement(s)), (fjs = d.getElementsByTagName(s)[0]);
@@ -518,6 +521,11 @@
           }
         }
       }, ["floatingEstimator"]);
+      }
+      window.addEventListener("load", function () {
+        if ("requestIdleCallback" in window) requestIdleCallback(__initCherry, { timeout: 4000 });
+        else setTimeout(__initCherry, 2500);
+      });
     </script>
     <div id="floatingEstimator"></div>
     <!-- CHERRY WIDGET END -->

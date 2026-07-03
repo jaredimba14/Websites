@@ -63,15 +63,19 @@
     <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png?v=1" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Fonts load without blocking first paint (display=swap shows fallback text immediately). -->
     <link
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@300;500;600;700;800&family=Roboto+Condensed:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
+      rel="stylesheet" media="print" onload="this.media='all'"
     />
     <!-- Lato: used by the Cherry financing widget -->
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+    <noscript>
+      <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@300;500;600;700;800&family=Roboto+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    </noscript>
     <!-- Tailwind utilities precompiled by build.mjs (tailwind.config.js) — no runtime compiler. -->
     <link rel="stylesheet" href="../assets/tailwind.css?v=1" />
-    <link rel="stylesheet" href="../assets/styles.css?v=120" />
+    <link rel="stylesheet" href="../assets/styles.min.css?v=120" />
   </head>
   <body class="bg-ivory text-ink antialiased">
     <div class="site-header fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-navy-deep/95 backdrop-blur-xl">
@@ -325,7 +329,7 @@
         <div class="neuro-map-shell mt-10 grid gap-7 lg:grid-cols-[.92fr_1.08fr]">
           <div class="neuro-face-card">
             <div class="neuro-face-stage">
-              <img class="neuro-face" src="../assets/treatment-face-map.webp" alt="Front-facing educational PDO thread planning map illustration" />
+              <img class="neuro-face" loading="lazy" decoding="async" src="../assets/treatment-face-map.webp" alt="Front-facing educational PDO thread planning map illustration" />
               <div class="thread-vector-layer" aria-hidden="true"><span class="thread-vector vector-tone-0" style="--x:46%;--y:31%;--vector-length:16%;--vector-rotate:-150deg" data-thread-vector="brow-lift"></span><span class="thread-vector vector-tone-0" style="--x:54%;--y:31%;--vector-length:16%;--vector-rotate:-30deg" data-thread-vector="brow-lift"></span><span class="thread-vector vector-tone-1" style="--x:38%;--y:39%;--vector-length:16%;--vector-rotate:-135deg" data-thread-vector="temple-lift"></span><span class="thread-vector vector-tone-1" style="--x:62%;--y:39%;--vector-length:16%;--vector-rotate:-45deg" data-thread-vector="temple-lift"></span><span class="thread-vector vector-tone-2" style="--x:43%;--y:44%;--vector-length:11%;--vector-rotate:-170deg" data-thread-vector="under-eye-tightening"></span><span class="thread-vector vector-tone-2" style="--x:57%;--y:44%;--vector-length:11%;--vector-rotate:-10deg" data-thread-vector="under-eye-tightening"></span><span class="thread-vector vector-tone-3" style="--x:43%;--y:56%;--vector-length:20%;--vector-rotate:-145deg" data-thread-vector="mid-face-lift"></span><span class="thread-vector vector-tone-3" style="--x:57%;--y:56%;--vector-length:20%;--vector-rotate:-35deg" data-thread-vector="mid-face-lift"></span><span class="thread-vector vector-tone-0" style="--x:44%;--y:59%;--vector-length:16%;--vector-rotate:-155deg" data-thread-vector="smile-lines"></span><span class="thread-vector vector-tone-0" style="--x:56%;--y:59%;--vector-length:16%;--vector-rotate:-25deg" data-thread-vector="smile-lines"></span><span class="thread-vector vector-tone-1" style="--x:44%;--y:67%;--vector-length:18%;--vector-rotate:-150deg" data-thread-vector="marionette-lift"></span><span class="thread-vector vector-tone-1" style="--x:56%;--y:67%;--vector-length:18%;--vector-rotate:-30deg" data-thread-vector="marionette-lift"></span><span class="thread-vector vector-tone-2" style="--x:43%;--y:73%;--vector-length:25%;--vector-rotate:-155deg" data-thread-vector="jowl-lift"></span><span class="thread-vector vector-tone-2" style="--x:57%;--y:73%;--vector-length:25%;--vector-rotate:-25deg" data-thread-vector="jowl-lift"></span><span class="thread-vector vector-tone-3" style="--x:43%;--y:77%;--vector-length:28%;--vector-rotate:-165deg" data-thread-vector="jawline-contouring"></span><span class="thread-vector vector-tone-3" style="--x:57%;--y:77%;--vector-length:28%;--vector-rotate:-15deg" data-thread-vector="jawline-contouring"></span><span class="thread-vector vector-tone-0" style="--x:47%;--y:80%;--vector-length:12%;--vector-rotate:-135deg" data-thread-vector="chin-enhancement"></span><span class="thread-vector vector-tone-0" style="--x:53%;--y:80%;--vector-length:12%;--vector-rotate:-45deg" data-thread-vector="chin-enhancement"></span><span class="thread-vector vector-tone-1" style="--x:46%;--y:89%;--vector-length:22%;--vector-rotate:-110deg" data-thread-vector="neck-lift"></span><span class="thread-vector vector-tone-1" style="--x:54%;--y:89%;--vector-length:22%;--vector-rotate:-70deg" data-thread-vector="neck-lift"></span><span class="thread-vector vector-tone-2" style="--x:42%;--y:91%;--vector-length:18%;--vector-rotate:0deg" data-thread-vector="neck-lines"></span><span class="thread-vector vector-tone-2" style="--x:52%;--y:94%;--vector-length:18%;--vector-rotate:0deg" data-thread-vector="neck-lines"></span><span class="thread-vector vector-tone-3" style="--x:42%;--y:97%;--vector-length:16%;--vector-rotate:-10deg" data-thread-vector="decolletage"></span><span class="thread-vector vector-tone-3" style="--x:58%;--y:97%;--vector-length:16%;--vector-rotate:-170deg" data-thread-vector="decolletage"></span></div>
               <button class="neuro-marker" type="button" style="--x:50%;--y:29%" data-thread-area="brow-lift" aria-label="Learn about Brow Lift"><span></span><small>Brow Lift</small></button><button class="neuro-marker" type="button" style="--x:29%;--y:35%" data-thread-area="temple-lift" aria-label="Learn about Temple Lift"><span></span><small>Temple Lift</small></button><button class="neuro-marker" type="button" style="--x:70%;--y:43%" data-thread-area="under-eye-tightening" aria-label="Learn about Under Eye Tightening"><span></span><small>Under Eye Tightening</small></button><button class="neuro-marker" type="button" style="--x:30%;--y:53%" data-thread-area="mid-face-lift" aria-label="Learn about Mid Face Lift"><span></span><small>Mid Face Lift</small></button><button class="neuro-marker" type="button" style="--x:68%;--y:57%" data-thread-area="smile-lines" aria-label="Learn about Smile Lines"><span></span><small>Smile Lines</small></button><button class="neuro-marker" type="button" style="--x:66%;--y:66%" data-thread-area="marionette-lift" aria-label="Learn about Marionette Line Lift"><span></span><small>Marionette Line Lift</small></button><button class="neuro-marker" type="button" style="--x:72%;--y:71%" data-thread-area="jowl-lift" aria-label="Learn about Jowl Lift"><span></span><small>Jowl Lift</small></button><button class="neuro-marker" type="button" style="--x:28%;--y:76%" data-thread-area="jawline-contouring" aria-label="Learn about Jawline Contouring"><span></span><small>Jawline Contouring</small></button><button class="neuro-marker" type="button" style="--x:50%;--y:79%" data-thread-area="chin-enhancement" aria-label="Learn about Chin Enhancement"><span></span><small>Chin Enhancement</small></button><button class="neuro-marker" type="button" style="--x:45%;--y:87%" data-thread-area="neck-lift" aria-label="Learn about Neck Lift"><span></span><small>Neck Lift</small></button><button class="neuro-marker" type="button" style="--x:57%;--y:91%" data-thread-area="neck-lines" aria-label="Learn about Horizontal Neck Lines"><span></span><small>Horizontal Neck Lines</small></button><button class="neuro-marker" type="button" style="--x:50%;--y:96%" data-thread-area="decolletage" aria-label="Learn about Decolletage Rejuvenation"><span></span><small>Decolletage Rejuvenation</small></button>
             </div>
@@ -443,13 +447,12 @@
       </div>
     </footer>
 
-    <script defer src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-    <script defer src="../assets/app.js?v=132"></script>
+    <script defer src="../assets/app.min.js?v=132"></script>
     <!-- GHL booking widget auto-resize -->
-    <script defer src="https://link.msgsndr.com/js/form_embed.js" type="text/javascript"></script>
 
-    <!-- CHERRY WIDGET BEGIN -->
+    <!-- CHERRY WIDGET BEGIN (loaded after the page is idle so it never competes with first paint) -->
     <script>
+      function __initCherry() {
       (function (w, d, s, o, f, js, fjs) {
         w[o] = w[o] || function () { (w[o].q = w[o].q || []).push(arguments); };
         (js = d.createElement(s)), (fjs = d.getElementsByTagName(s)[0]);
@@ -484,6 +487,11 @@
           }
         }
       }, ["floatingEstimator"]);
+      }
+      window.addEventListener("load", function () {
+        if ("requestIdleCallback" in window) requestIdleCallback(__initCherry, { timeout: 4000 });
+        else setTimeout(__initCherry, 2500);
+      });
     </script>
     <div id="floatingEstimator"></div>
     <!-- CHERRY WIDGET END -->

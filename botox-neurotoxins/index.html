@@ -63,15 +63,19 @@
     <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png?v=1" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Fonts load without blocking first paint (display=swap shows fallback text immediately). -->
     <link
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@300;500;600;700;800&family=Roboto+Condensed:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
+      rel="stylesheet" media="print" onload="this.media='all'"
     />
     <!-- Lato: used by the Cherry financing widget -->
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+    <noscript>
+      <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@300;500;600;700;800&family=Roboto+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    </noscript>
     <!-- Tailwind utilities precompiled by build.mjs (tailwind.config.js) — no runtime compiler. -->
     <link rel="stylesheet" href="../assets/tailwind.css?v=1" />
-    <link rel="stylesheet" href="../assets/styles.css?v=120" />
+    <link rel="stylesheet" href="../assets/styles.min.css?v=120" />
   </head>
   <body class="bg-ivory text-ink antialiased">
     <div class="site-header fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-navy-deep/95 backdrop-blur-xl">
@@ -330,7 +334,7 @@
         <div class="neuro-map-shell mt-10 grid gap-7 lg:grid-cols-[.92fr_1.08fr]">
           <div class="neuro-face-card">
             <div class="neuro-face-stage">
-              <img class="neuro-face" src="../assets/treatment-face-map.webp" alt="Front-facing facial treatment map illustration for Botox and neurotoxin education" />
+              <img class="neuro-face" loading="lazy" decoding="async" src="../assets/treatment-face-map.webp" alt="Front-facing facial treatment map illustration for Botox and neurotoxin education" />
               <div class="face-zone-layer" aria-hidden="true"><span class="face-treatment-zone zone-tone-0" style="--x:50%;--y:20%;--zone-width:34%;--zone-height:15%;--zone-rotate:0deg" data-map-zone="forehead-lines"></span><span class="face-treatment-zone zone-tone-1" style="--x:50%;--y:29%;--zone-width:15%;--zone-height:11%;--zone-rotate:0deg" data-map-zone="frown-lines"></span><span class="face-treatment-zone zone-tone-2" style="--x:73%;--y:37%;--zone-width:18%;--zone-height:10%;--zone-rotate:0deg" data-map-zone="crows-feet"></span><span class="face-treatment-zone zone-tone-3" style="--x:30%;--y:33%;--zone-width:21%;--zone-height:8%;--zone-rotate:-9deg" data-map-zone="brow-lift"></span><span class="face-treatment-zone zone-tone-4" style="--x:50%;--y:43%;--zone-width:10%;--zone-height:11%;--zone-rotate:0deg" data-map-zone="bunny-lines"></span><span class="face-treatment-zone zone-tone-0" style="--x:50%;--y:55%;--zone-width:20%;--zone-height:7%;--zone-rotate:0deg" data-map-zone="lip-flip"></span><span class="face-treatment-zone zone-tone-1" style="--x:42%;--y:51%;--zone-width:15%;--zone-height:6%;--zone-rotate:0deg" data-map-zone="gummy-smile"></span><span class="face-treatment-zone zone-tone-2" style="--x:39%;--y:61%;--zone-width:17%;--zone-height:8%;--zone-rotate:-12deg" data-map-zone="downturned-smile"></span><span class="face-treatment-zone zone-tone-3" style="--x:50%;--y:68%;--zone-width:20%;--zone-height:10%;--zone-rotate:0deg" data-map-zone="chin-dimpling"></span><span class="face-treatment-zone zone-tone-4" style="--x:28%;--y:70%;--zone-width:21%;--zone-height:28%;--zone-rotate:-23deg" data-map-zone="jawline-slimming"></span><span class="face-treatment-zone zone-tone-0" style="--x:72%;--y:69%;--zone-width:21%;--zone-height:28%;--zone-rotate:23deg" data-map-zone="masseter-botox"></span><span class="face-treatment-zone zone-tone-1" style="--x:77%;--y:75%;--zone-width:18%;--zone-height:23%;--zone-rotate:18deg" data-map-zone="tmj-teeth-grinding"></span><span class="face-treatment-zone zone-tone-2" style="--x:54%;--y:84%;--zone-width:19%;--zone-height:29%;--zone-rotate:0deg" data-map-zone="neck-bands"></span><span class="face-treatment-zone zone-tone-3" style="--x:35%;--y:80%;--zone-width:24%;--zone-height:20%;--zone-rotate:-22deg" data-map-zone="nefertiti-lift"></span></div>
               <button class="neuro-marker" type="button" style="--x:50%;--y:20%" data-neuro-area="forehead-lines" aria-label="Learn about Forehead Lines"><span></span><small>Forehead Lines</small></button><button class="neuro-marker" type="button" style="--x:50%;--y:29%" data-neuro-area="frown-lines" aria-label="Learn about Frown Lines"><span></span><small>Frown Lines</small></button><button class="neuro-marker" type="button" style="--x:73%;--y:37%" data-neuro-area="crows-feet" aria-label="Learn about Crow's Feet"><span></span><small>Crow's Feet</small></button><button class="neuro-marker" type="button" style="--x:30%;--y:33%" data-neuro-area="brow-lift" aria-label="Learn about Brow Lift"><span></span><small>Brow Lift</small></button><button class="neuro-marker" type="button" style="--x:50%;--y:43%" data-neuro-area="bunny-lines" aria-label="Learn about Bunny Lines"><span></span><small>Bunny Lines</small></button><button class="neuro-marker" type="button" style="--x:50%;--y:55%" data-neuro-area="lip-flip" aria-label="Learn about Lip Flip"><span></span><small>Lip Flip</small></button><button class="neuro-marker" type="button" style="--x:42%;--y:51%" data-neuro-area="gummy-smile" aria-label="Learn about Gummy Smile"><span></span><small>Gummy Smile</small></button><button class="neuro-marker" type="button" style="--x:39%;--y:61%" data-neuro-area="downturned-smile" aria-label="Learn about Downturned Smile"><span></span><small>Downturned Smile</small></button><button class="neuro-marker" type="button" style="--x:50%;--y:68%" data-neuro-area="chin-dimpling" aria-label="Learn about Chin Dimpling"><span></span><small>Chin Dimpling</small></button><button class="neuro-marker" type="button" style="--x:28%;--y:70%" data-neuro-area="jawline-slimming" aria-label="Learn about Jawline Slimming"><span></span><small>Jawline Slimming</small></button><button class="neuro-marker" type="button" style="--x:72%;--y:69%" data-neuro-area="masseter-botox" aria-label="Learn about Masseter Botox"><span></span><small>Masseter Botox</small></button><button class="neuro-marker" type="button" style="--x:77%;--y:75%" data-neuro-area="tmj-teeth-grinding" aria-label="Learn about TMJ and Teeth Grinding"><span></span><small>TMJ and Teeth Grinding</small></button><button class="neuro-marker" type="button" style="--x:54%;--y:84%" data-neuro-area="neck-bands" aria-label="Learn about Neck Bands"><span></span><small>Neck Bands</small></button><button class="neuro-marker" type="button" style="--x:35%;--y:80%" data-neuro-area="nefertiti-lift" aria-label="Learn about Nefertiti Lift"><span></span><small>Nefertiti Lift</small></button>
             </div>
@@ -419,13 +423,12 @@
       </div>
     </footer>
 
-    <script defer src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-    <script defer src="../assets/app.js?v=132"></script>
+    <script defer src="../assets/app.min.js?v=132"></script>
     <!-- GHL booking widget auto-resize -->
-    <script defer src="https://link.msgsndr.com/js/form_embed.js" type="text/javascript"></script>
 
-    <!-- CHERRY WIDGET BEGIN -->
+    <!-- CHERRY WIDGET BEGIN (loaded after the page is idle so it never competes with first paint) -->
     <script>
+      function __initCherry() {
       (function (w, d, s, o, f, js, fjs) {
         w[o] = w[o] || function () { (w[o].q = w[o].q || []).push(arguments); };
         (js = d.createElement(s)), (fjs = d.getElementsByTagName(s)[0]);
@@ -460,6 +463,11 @@
           }
         }
       }, ["floatingEstimator"]);
+      }
+      window.addEventListener("load", function () {
+        if ("requestIdleCallback" in window) requestIdleCallback(__initCherry, { timeout: 4000 });
+        else setTimeout(__initCherry, 2500);
+      });
     </script>
     <div id="floatingEstimator"></div>
     <!-- CHERRY WIDGET END -->

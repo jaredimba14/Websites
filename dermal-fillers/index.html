@@ -63,15 +63,19 @@
     <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png?v=1" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Fonts load without blocking first paint (display=swap shows fallback text immediately). -->
     <link
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@300;500;600;700;800&family=Roboto+Condensed:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
+      rel="stylesheet" media="print" onload="this.media='all'"
     />
     <!-- Lato: used by the Cherry financing widget -->
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+    <noscript>
+      <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@300;500;600;700;800&family=Roboto+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    </noscript>
     <!-- Tailwind utilities precompiled by build.mjs (tailwind.config.js) — no runtime compiler. -->
     <link rel="stylesheet" href="../assets/tailwind.css?v=1" />
-    <link rel="stylesheet" href="../assets/styles.css?v=120" />
+    <link rel="stylesheet" href="../assets/styles.min.css?v=120" />
   </head>
   <body class="bg-ivory text-ink antialiased">
     <div class="site-header fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-navy-deep/95 backdrop-blur-xl">
@@ -326,7 +330,7 @@
         <div class="neuro-map-shell mt-10 grid gap-7 lg:grid-cols-[.92fr_1.08fr]">
           <div class="neuro-face-card">
             <div class="neuro-face-stage">
-              <img class="neuro-face" src="../assets/treatment-face-map.webp" alt="Front-facing facial treatment map illustration for dermal filler education" />
+              <img class="neuro-face" loading="lazy" decoding="async" src="../assets/treatment-face-map.webp" alt="Front-facing facial treatment map illustration for dermal filler education" />
               <div class="face-zone-layer" aria-hidden="true"><span class="face-treatment-zone zone-tone-0" style="--x:29%;--y:28%;--zone-width:18%;--zone-height:16%;--zone-rotate:0deg" data-map-zone="temples"></span><span class="face-treatment-zone zone-tone-1" style="--x:68%;--y:40%;--zone-width:23%;--zone-height:10%;--zone-rotate:0deg" data-map-zone="under-eyes"></span><span class="face-treatment-zone zone-tone-2" style="--x:29%;--y:46%;--zone-width:27%;--zone-height:20%;--zone-rotate:-18deg" data-map-zone="cheeks"></span><span class="face-treatment-zone zone-tone-3" style="--x:64%;--y:54%;--zone-width:14%;--zone-height:17%;--zone-rotate:-18deg" data-map-zone="smile-lines"></span><span class="face-treatment-zone zone-tone-4" style="--x:50%;--y:61%;--zone-width:22%;--zone-height:8%;--zone-rotate:0deg" data-map-zone="lips"></span><span class="face-treatment-zone zone-tone-0" style="--x:66%;--y:67%;--zone-width:15%;--zone-height:16%;--zone-rotate:-12deg" data-map-zone="marionette-lines"></span><span class="face-treatment-zone zone-tone-1" style="--x:50%;--y:75%;--zone-width:24%;--zone-height:12%;--zone-rotate:0deg" data-map-zone="chin"></span><span class="face-treatment-zone zone-tone-2" style="--x:28%;--y:72%;--zone-width:25%;--zone-height:25%;--zone-rotate:-26deg" data-map-zone="jawline"></span></div>
               <button class="neuro-marker" type="button" style="--x:29%;--y:28%" data-filler-area="temples" aria-label="Learn about Temples"><span></span><small>Temples</small></button><button class="neuro-marker" type="button" style="--x:68%;--y:40%" data-filler-area="under-eyes" aria-label="Learn about Under Eyes"><span></span><small>Under Eyes</small></button><button class="neuro-marker" type="button" style="--x:29%;--y:46%" data-filler-area="cheeks" aria-label="Learn about Cheeks"><span></span><small>Cheeks</small></button><button class="neuro-marker" type="button" style="--x:64%;--y:54%" data-filler-area="smile-lines" aria-label="Learn about Smile Lines"><span></span><small>Smile Lines</small></button><button class="neuro-marker" type="button" style="--x:50%;--y:61%" data-filler-area="lips" aria-label="Learn about Lips"><span></span><small>Lips</small></button><button class="neuro-marker" type="button" style="--x:66%;--y:67%" data-filler-area="marionette-lines" aria-label="Learn about Marionette Lines"><span></span><small>Marionette Lines</small></button><button class="neuro-marker" type="button" style="--x:50%;--y:75%" data-filler-area="chin" aria-label="Learn about Chin"><span></span><small>Chin</small></button><button class="neuro-marker" type="button" style="--x:28%;--y:72%" data-filler-area="jawline" aria-label="Learn about Jawline"><span></span><small>Jawline</small></button>
             </div>
@@ -475,13 +479,12 @@
       </div>
     </footer>
 
-    <script defer src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-    <script defer src="../assets/app.js?v=132"></script>
+    <script defer src="../assets/app.min.js?v=132"></script>
     <!-- GHL booking widget auto-resize -->
-    <script defer src="https://link.msgsndr.com/js/form_embed.js" type="text/javascript"></script>
 
-    <!-- CHERRY WIDGET BEGIN -->
+    <!-- CHERRY WIDGET BEGIN (loaded after the page is idle so it never competes with first paint) -->
     <script>
+      function __initCherry() {
       (function (w, d, s, o, f, js, fjs) {
         w[o] = w[o] || function () { (w[o].q = w[o].q || []).push(arguments); };
         (js = d.createElement(s)), (fjs = d.getElementsByTagName(s)[0]);
@@ -516,6 +519,11 @@
           }
         }
       }, ["floatingEstimator"]);
+      }
+      window.addEventListener("load", function () {
+        if ("requestIdleCallback" in window) requestIdleCallback(__initCherry, { timeout: 4000 });
+        else setTimeout(__initCherry, 2500);
+      });
     </script>
     <div id="floatingEstimator"></div>
     <!-- CHERRY WIDGET END -->

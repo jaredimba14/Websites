@@ -390,7 +390,7 @@ function homeHero() {
   return `
     <section class="home-hero hero-gradient -mt-[200px] overflow-hidden bg-navy-deep pt-[200px] text-white">
       ${particles()}
-      <img class="home-hero-portrait home-hero-portrait-warm" src="./assets/hero-portrait-warm.webp" alt="" aria-hidden="true" />
+      <img class="home-hero-portrait home-hero-portrait-warm" src="./assets/hero-portrait-warm.webp" alt="" aria-hidden="true" fetchpriority="high" decoding="async" />
       <div class="relative z-10 mx-auto max-w-7xl px-4 pb-12 pt-20 sm:px-6 lg:px-8 lg:pb-14 lg:pt-24">
         <div class="reveal max-w-5xl">
           <p class="eyebrow">Mobile Botox, Fillers, IV Drips and Wellness Care in New Hampshire</p>
@@ -1880,7 +1880,7 @@ function neurotoxinFaceMap() {
         <div class="neuro-map-shell mt-10 grid gap-7 lg:grid-cols-[.92fr_1.08fr]">
           <div class="neuro-face-card">
             <div class="neuro-face-stage">
-              <img class="neuro-face" src="./assets/treatment-face-map.webp" alt="Front-facing facial treatment map illustration for Botox and neurotoxin education" />
+              <img class="neuro-face" loading="lazy" decoding="async" src="./assets/treatment-face-map.webp" alt="Front-facing facial treatment map illustration for Botox and neurotoxin education" />
               ${faceTreatmentZones(neurotoxinAreas)}
               ${neurotoxinAreas.map((area) => `<button class="neuro-marker" type="button" style="--x:${area.x}%;--y:${area.y}%" data-neuro-area="${area.id}" aria-label="Learn about ${area.label}"><span></span><small>${area.label}</small></button>`).join("")}
             </div>
@@ -1937,7 +1937,7 @@ function dermalFillerFaceMap() {
         <div class="neuro-map-shell mt-10 grid gap-7 lg:grid-cols-[.92fr_1.08fr]">
           <div class="neuro-face-card">
             <div class="neuro-face-stage">
-              <img class="neuro-face" src="./assets/treatment-face-map.webp" alt="Front-facing facial treatment map illustration for dermal filler education" />
+              <img class="neuro-face" loading="lazy" decoding="async" src="./assets/treatment-face-map.webp" alt="Front-facing facial treatment map illustration for dermal filler education" />
               ${faceTreatmentZones(dermalFillerAreas)}
               ${dermalFillerAreas.map((area) => `<button class="neuro-marker" type="button" style="--x:${area.x}%;--y:${area.y}%" data-filler-area="${area.id}" aria-label="Learn about ${area.label}"><span></span><small>${area.label}</small></button>`).join("")}
             </div>
@@ -1996,7 +1996,7 @@ function facialPlanningFaceMap(mode) {
         <div class="neuro-map-shell mt-10 grid gap-7 lg:grid-cols-[.92fr_1.08fr]">
           <div class="neuro-face-card">
             <div class="neuro-face-stage">
-              <img class="neuro-face" src="./assets/treatment-face-map.webp" alt="Front-facing facial planning map illustration" />
+              <img class="neuro-face" loading="lazy" decoding="async" src="./assets/treatment-face-map.webp" alt="Front-facing facial planning map illustration" />
               ${faceTreatmentZones(fullFacePlanningAreas)}
               ${fullFacePlanningAreas.map((area) => `<button class="neuro-marker" type="button" style="--x:${area.x}%;--y:${area.y}%" data-planning-area="${area.id}" aria-label="Learn about ${area.label}"><span></span><small>${area.label}</small></button>`).join("")}
             </div>
@@ -2071,7 +2071,7 @@ function nonSurgicalLiftFaceMap() {
         <div class="neuro-map-shell mt-10 grid gap-7 lg:grid-cols-[.92fr_1.08fr]">
           <div class="neuro-face-card">
             <div class="neuro-face-stage">
-              <img class="neuro-face" src="./assets/treatment-face-map.webp" alt="Front-facing educational non surgical face lift combination treatment map" />
+              <img class="neuro-face" loading="lazy" decoding="async" src="./assets/treatment-face-map.webp" alt="Front-facing educational non surgical face lift combination treatment map" />
               ${nonSurgicalLiftZones()}
               ${nonSurgicalLiftAreas.map((area) => `<button class="neuro-marker" type="button" style="--x:${area.x}%;--y:${area.y}%" data-lift-area="${area.id}" aria-label="Learn about ${area.label}"><span></span><small>${area.label}</small></button>`).join("")}
             </div>
@@ -2129,7 +2129,7 @@ function pdoThreadFaceMap() {
         <div class="neuro-map-shell mt-10 grid gap-7 lg:grid-cols-[.92fr_1.08fr]">
           <div class="neuro-face-card">
             <div class="neuro-face-stage">
-              <img class="neuro-face" src="./assets/treatment-face-map.webp" alt="Front-facing educational PDO thread planning map illustration" />
+              <img class="neuro-face" loading="lazy" decoding="async" src="./assets/treatment-face-map.webp" alt="Front-facing educational PDO thread planning map illustration" />
               ${pdoThreadVectors()}
               ${pdoThreadAreas.map((area) => `<button class="neuro-marker" type="button" style="--x:${area.x}%;--y:${area.y}%" data-thread-area="${area.id}" aria-label="Learn about ${area.label}"><span></span><small>${area.label}</small></button>`).join("")}
             </div>
