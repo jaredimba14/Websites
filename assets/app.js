@@ -1177,7 +1177,7 @@ function contactLocation() {
   const details = [
     ["Phone", `<a href="tel:+16037657760" class="text-navy underline decoration-champagne/60 underline-offset-2">(603) 765-7760</a><br><a href="tel:+17164520835" class="text-navy underline decoration-champagne/60 underline-offset-2">(716) 452-0835</a>`, "phone"],
     ["Email", `<a href="mailto:elitevitamedaesthetics@gmail.com" class="text-navy underline decoration-champagne/60 underline-offset-2">elitevitamedaesthetics@gmail.com</a>`, "users"],
-    ["Hours", "[Insert business hours]", "calendar"],
+    ["Hours", `8:00 AM &ndash; 7:00 PM<br><span class="text-ink/50">Appointments by request or via the online calendar</span>`, "calendar"],
     ["Booking Link", `<a href="#book" class="text-navy underline decoration-champagne/60 underline-offset-2">Book online</a>`, "arrow"]
   ];
   return `
@@ -1189,8 +1189,8 @@ function contactLocation() {
           <p class="mt-4 leading-8 text-ink/70">Elite VitaMed provides premium aesthetic and wellness treatments in New Hampshire with a provider led, concierge focused approach.</p>
           <p class="mt-4 leading-8 text-ink/70">Care may include injectable treatments, skin and tightening, regenerative aesthetics, IV drip therapy, vitamin shots, intimate wellness consultations, and personalized treatment planning.</p>
           <div class="mt-6 space-y-3">
-            <div class="rounded-2xl border border-navy/10 bg-white p-5" data-content-placeholder="location"><p class="text-xs font-bold uppercase tracking-[.12em] text-soft-gold/90">Service Area or Business Location</p><p class="mt-1 text-sm leading-7 text-ink/55">[Insert service area or business location details here.]</p></div>
-            <div class="rounded-2xl border border-navy/10 bg-white p-5" data-content-placeholder="service-area"><p class="text-xs font-bold uppercase tracking-[.12em] text-soft-gold/90">New Hampshire Service Areas</p><p class="mt-1 text-sm leading-7 text-ink/55">[Insert New Hampshire service areas here.]</p></div>
+            <div class="rounded-2xl border border-navy/10 bg-white p-5"><p class="text-xs font-bold uppercase tracking-[.12em] text-soft-gold/90">Service Area or Business Location</p><p class="mt-1 text-sm leading-7 text-ink/66">Elite VitaMed is a mobile concierge practice — your provider comes to you for in-home appointments across New Hampshire and surrounding areas.</p></div>
+            <div class="rounded-2xl border border-navy/10 bg-white p-5" data-content-placeholder="service-area"><p class="text-xs font-bold uppercase tracking-[.12em] text-soft-gold/90">New Hampshire Service Areas</p><p class="mt-1 text-sm leading-7 text-ink/66">Mobile appointments are available throughout New Hampshire. Not sure if you're in range? Reach out and we'll confirm availability in your area.</p></div>
           </div>
         </div>
         <div class="rounded-[1.5rem] border border-champagne/30 bg-white p-6 shadow-sm sm:p-8">
