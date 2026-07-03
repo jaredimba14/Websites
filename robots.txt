@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://jaredimba14.github.io/Websites/sitemap.xml
+Sitemap: https://elitevitamedaesthetics.com/sitemap.xml

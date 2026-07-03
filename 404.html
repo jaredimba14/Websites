@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Page Not Found | Elite VitaMed Aesthetics</title>
+<meta name="robots" content="noindex" />
+<style>body{font-family:Georgia,serif;background:#fbf7ee;color:#06324a;display:grid;place-items:center;min-height:100vh;margin:0;text-align:center;padding:2rem}a{color:#b88a44}</style>
+</head>
+<body>
+<div>
+  <h1>Page not found</h1>
+  <p>The page you were looking for has moved.</p>
+  <p><a href="/">Go to the Elite VitaMed homepage</a></p>
+</div>
+<script>
+  (function () {
+    var routes = ["home","about","services","injectables","botox-neurotoxins","dermal-fillers","radiesse-fillers","restylane-fillers","jawline-contouring","under-eye-rejuvenation","sculptra","facial-balancing","non-surgical-face-lift","pdo-threads","regenerative-aesthetics","prp-prf","hair-restoration","collagen-stimulation","skin-tightening","breeze","wondertouch","ultimate-glow-lift","facial-contouring","microneedling-stem-cells","chemical-peels","iv-wellness","iv-drips","intimate-wellness","feminine-wellness","vaginal-tightening","assessment","memberships","results","faq","book","injectables-assessment","contact"];
+    var raw = (location.hash || "").replace(/^#/, "");
+    var route = raw.split("/")[0];
+    if (routes.indexOf(route) >= 0) location.replace("/" + (route === "home" ? "" : route + "/"));
+  })();
+</script>
+</body>
+</html>

@@ -10,8 +10,8 @@ function setupInjectablesAssessment() {
 
     // GoHighLevel inbound webhook — leads + results are POSTed here on completion.
     const ASSESSMENT_WEBHOOK_URL = "https://services.leadconnectorhq.com/hooks/T47y0ST5JBUfqTuqEE3m/webhook-trigger/f6db6f18-e823-4484-9afd-3e53a6878f01";
-    // Base URL for the shareable results link texted to leads (production domain).
-    const RESULTS_LINK_BASE = "https://elitevitamedaesthetics.com/";
+    // Base URL for the shareable results link texted to leads (production domain, multi-page site).
+    const RESULTS_LINK_BASE = "https://elitevitamedaesthetics.com/injectables-assessment/";
     const DEBUG = (() => { try { return new URLSearchParams(location.search).has("debug") || localStorage.getItem("eva_debug") === "1"; } catch (e) { return false; } })();
     const CLINICAL_KEYS = ["safetyFlags", "goals", "ageRange", "experience", "skinConcerns", "budget", "forehead", "frown", "crowsFeet", "bunnyLines", "lipFlip", "chinDimpling", "masseter", "neckBands", "brow", "underEye", "cheekVolume", "nasolabial", "currentLips", "lipGoal", "marionette", "jowls", "chinProfile", "jawlineGoal", "looseSkin"];
 
@@ -1096,7 +1096,7 @@ function setupInjectablesAssessment() {
     }
 
     function buildResultsLink(a) {
-      return `${RESULTS_LINK_BASE}#injectables-assessment/r/${encodeAnswers(a)}`;
+      return `${RESULTS_LINK_BASE}#r/${encodeAnswers(a)}`;
     }
 
     function buildWebhookPayload(result) {
@@ -1226,8 +1226,9 @@ function setupInjectablesAssessment() {
       if (!latestResult) updateFaceMapFromAnswers();
     });
 
-    // Shareable results link: #injectables-assessment/r/<code> re-renders a lead's plan with no form/PII.
-    const sharedMatch = location.hash.match(/\/r\/([^/]+)$/);
+    // Shareable results link re-renders a lead's plan with no form/PII. Accepts the
+    // multi-page format #r/<code> and the legacy #injectables-assessment/r/<code>.
+    const sharedMatch = location.hash.match(/^#r\/([^/]+)$/) || location.hash.match(/\/r\/([^/]+)$/);
     if (sharedMatch) {
       const decoded = decodeAnswers(sharedMatch[1]);
       if (decoded) {

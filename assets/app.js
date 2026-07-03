@@ -107,11 +107,25 @@ function headerKickerFor(page) {
   return HEADER_KICKERS[page] || prettifyRoute(page);
 }
 
+// URL helpers for the multi-page site: routes live at /<route>/, with legacy #route links redirected.
+function pathSegments() {
+  return (location.pathname || "").split("/").filter((s) => s && s.toLowerCase() !== "index.html").map((s) => {
+    try { return decodeURIComponent(s); } catch (e) { return s; }
+  });
+}
+function hashRouteSegment() {
+  return (location.hash || "").replace(/^#/, "").split("/")[0];
+}
+
 // Map the current route to the right booking entry point so "Book" buttons are context-aware.
 function bookingRouteForCurrentPage() {
-  const route = (location.hash || "#home").replace("#", "").split("/")[0];
-  for (const family of Object.keys(BOOKING_FAMILY_ROUTES)) {
-    if (BOOKING_FAMILY_ROUTES[family].includes(route)) return "#book/" + family;
+  const segments = pathSegments();
+  const candidates = [segments[segments.length - 1], hashRouteSegment()];
+  for (const route of candidates) {
+    if (!route) continue;
+    for (const family of Object.keys(BOOKING_FAMILY_ROUTES)) {
+      if (BOOKING_FAMILY_ROUTES[family].includes(route)) return "#book/" + family;
+    }
   }
   return "#book";
 }
@@ -3698,7 +3712,10 @@ function bookingEmbed(menuUrl, menuId) {
 }
 
 function bookPage() {
-  const seg = (location.hash.split("/")[1] || "").toLowerCase();
+  const segments = pathSegments();
+  const bookIdx = segments.lastIndexOf("book");
+  const fromPath = bookIdx >= 0 ? (segments[bookIdx + 1] || "") : "";
+  const seg = (fromPath || location.hash.split("/")[1] || "").toLowerCase();
   const menuKey = BOOKING_MENUS[seg] ? seg : "all";
   const headings = {
     all: "Book Your Appointment",
@@ -3814,6 +3831,154 @@ function specialsSection(theme) {
   `;
 }
 
+// Per-route SEO metadata; also read by build.mjs when prerendering static pages.
+const pageMeta = {
+  about: {
+    title: "About Elite VitaMed Aesthetics | Nurse Practitioner Led Mobile Aesthetics in NH",
+    description: "Meet Tiana and the Elite VitaMed team. Provider led mobile concierge injectables, IV therapy, and wellness care across New Hampshire, performed by a Nurse Practitioner and certified injector."
+  },
+  services: {
+    title: "Treatments in New Hampshire | Injectables, Skin, Regenerative and IV Therapy",
+    description: "Explore Elite VitaMed's treatment menu: Botox and fillers, facial balancing, PDO threads, regenerative aesthetics, skin tightening, IV drip therapy, and intimate wellness — mobile across New Hampshire."
+  },
+  assessment: {
+    title: "Treatment Assessment | Find Your Best Starting Point | Elite VitaMed",
+    description: "Not sure where to start? Take the Elite VitaMed treatment assessment and get guided toward the injectable, skin, regenerative, or IV wellness path that fits your goals."
+  },
+  "injectables-assessment": {
+    title: "Injectables Assessment | Botox and Filler Starting Point Quiz | Elite VitaMed",
+    description: "Take the free injectables assessment to see whether Botox, dermal fillers, PDO threads, or facial balancing fits your goals — with three provider guided plan options and pricing estimates."
+  },
+  memberships: {
+    title: "Aesthetic and Wellness Memberships in New Hampshire | Elite VitaMed",
+    description: "Elite VitaMed memberships make provider led aesthetic and wellness care easier to maintain, with member savings, priority scheduling, and concierge perks across New Hampshire."
+  },
+  results: {
+    title: "Before and After Results | Elite VitaMed Aesthetics New Hampshire",
+    description: "See real Elite VitaMed client results: natural looking Botox, dermal filler, facial balancing, and skin treatment outcomes from provider led treatment plans in New Hampshire."
+  },
+  faq: {
+    title: "FAQ | Injectables, IV Therapy and Booking Questions | Elite VitaMed",
+    description: "Answers to common questions about Botox, fillers, PDO threads, IV drip therapy, mobile concierge visits, pricing, financing, and booking with Elite VitaMed in New Hampshire."
+  },
+  contact: {
+    title: "Contact Elite VitaMed Aesthetics | Book Mobile Aesthetics in New Hampshire",
+    description: "Contact Elite VitaMed to book Botox, fillers, IV drip therapy, or a phone consultation. Mobile concierge appointments across New Hampshire, 8:00 AM to 7:00 PM."
+  },
+  home: {
+    title: "Elite VitaMed Aesthetics | Mobile Botox, Fillers and IV Therapy in New Hampshire",
+    description: "Premium mobile concierge injectables, IV drip therapy, and wellness care across New Hampshire, performed by a Nurse Practitioner and certified injector. Book online or start a treatment assessment."
+  },
+  injectables: {
+    title: "Injectables in New Hampshire | Botox, Fillers, Sculptra and Facial Balancing",
+    description: "Elite VitaMed offers mobile injectable treatments in New Hampshire, including Botox or neurotoxins, dermal fillers, Sculptra, Radiesse, PDO threads, and facial balancing, performed by a Nurse Practitioner and certified injector."
+  },
+  "regenerative-aesthetics": {
+    title: "Regenerative Aesthetics in New Hampshire | PRP, PRF, Hair Restoration and Skin Rejuvenation",
+    description: "Elite VitaMed offers regenerative aesthetics in New Hampshire, including PRP, PRF, hair restoration, skin rejuvenation, and collagen support treatments performed with provider led care."
+  },
+  "prp-prf": {
+    title: "PRP and PRF in New Hampshire | Elite VitaMed",
+    description: "PRP and PRF treatments in New Hampshire for skin rejuvenation, under eye support, collagen stimulation, and hair restoration planning. Provider led care by a Nurse Practitioner and certified injector."
+  },
+  "hair-restoration": {
+    title: "Hair Restoration in New Hampshire | Elite VitaMed",
+    description: "Hair restoration in New Hampshire using provider led regenerative treatment planning for thinning hair, shedding concerns, and scalp support. Performed by a Nurse Practitioner and certified injector."
+  },
+  "collagen-stimulation": {
+    title: "Collagen Stimulation Treatments in New Hampshire | Elite VitaMed",
+    description: "Collagen stimulation treatments in New Hampshire for skin quality, firmness, texture, and natural looking rejuvenation. Provider led care by a Nurse Practitioner and certified injector."
+  },
+  "skin-tightening": {
+    title: "Skin and Tightening Treatments in New Hampshire | Breeze, WonderTouch, Chemical Peels and Microneedling",
+    description: "Elite VitaMed offers skin and tightening treatments in New Hampshire, including Breeze, WonderTouch, Ultimate Glow & Lift, chemical peels, facial contouring, and microneedling with stem cells."
+  },
+  breeze: {
+    title: "Breeze Treatment in New Hampshire | Elite VitaMed",
+    description: "Breeze treatment in New Hampshire for clients interested in refreshed skin, smoother texture, glow support, and provider led skin rejuvenation planning."
+  },
+  wondertouch: {
+    title: "WonderTouch in New Hampshire | Elite VitaMed",
+    description: "WonderTouch treatment in New Hampshire for skin tightening support, facial contouring, texture, firmness, and non surgical rejuvenation planning."
+  },
+  "ultimate-glow-lift": {
+    title: "Ultimate Glow & Lift in New Hampshire | Elite VitaMed",
+    description: "Ultimate Glow & Lift in New Hampshire combines Breeze and WonderTouch for skin refresh, firmness support, glow, and non surgical contouring planning."
+  },
+  "facial-contouring": {
+    title: "Facial Contouring in New Hampshire | Elite VitaMed",
+    description: "Facial contouring in New Hampshire for clients who want more definition, balance, and a refreshed appearance through provider led aesthetic treatment planning."
+  },
+  "microneedling-stem-cells": {
+    title: "Microneedling with Stem Cells in New Hampshire | Elite VitaMed",
+    description: "Microneedling with stem cells in New Hampshire for skin texture, fine lines, collagen support, acne scarring support, and provider led skin rejuvenation planning."
+  },
+  "chemical-peels": {
+    title: "Chemical Peels in New Hampshire | Elite VitaMed",
+    description: "Chemical peels in New Hampshire for smoother texture, brighter looking skin, uneven tone, fine lines, and skin renewal planning. Provider led care by a Nurse Practitioner and certified injector."
+  },
+  "iv-wellness": {
+    title: "IV and Wellness Treatments in New Hampshire | Elite VitaMed",
+    description: "Explore IV and wellness treatments in New Hampshire, including Hydration & Recovery Drip, Energy & Performance Drip, Detox & Cleanse Drip, Beauty Glow Drip, Metabolism & Weight Management Drip, Immunity Boost Drip, Myers' Cocktail, NAD+ Therapy, and Vitamin Injections."
+  },
+  "intimate-wellness": {
+    title: "Intimate Wellness in New Hampshire | Feminine Wellness and Private Provider Led Care",
+    description: "Elite VitaMed offers intimate wellness consultations in New Hampshire with private, provider led care focused on confidence, comfort, education, and personalized treatment planning."
+  },
+  "feminine-wellness": {
+    title: "Feminine Wellness in New Hampshire | Elite VitaMed",
+    description: "Private feminine wellness consultations in New Hampshire for clients who want discreet, provider led guidance around intimate wellness, confidence, and treatment options."
+  },
+  "vaginal-tightening": {
+    title: "Vaginal Tightening in New Hampshire | Elite VitaMed",
+    description: "Private vaginal tightening consultations in New Hampshire for clients who want discreet, provider led guidance around feminine wellness, tissue support, and treatment options."
+  },
+  "botox-neurotoxins": {
+    title: "Botox and Neurotoxin Treatments in New Hampshire | Elite VitaMed",
+    description: "Explore Botox and neurotoxin treatments in New Hampshire with Elite VitaMed. Learn about common treatment areas, candidacy, aftercare, and provider guided planning."
+  },
+  "dermal-fillers": {
+    title: "Dermal Fillers in New Hampshire | Radiesse, Restylane, Jawline and Under Eye Filler",
+    description: "Elite VitaMed offers mobile dermal fillers in New Hampshire, including Radiesse fillers, Restylane fillers, jawline contouring, and under eye rejuvenation, performed by a Nurse Practitioner and certified injector."
+  },
+  "radiesse-fillers": {
+    title: "Radiesse Fillers in New Hampshire | Elite VitaMed",
+    description: "Radiesse fillers in New Hampshire for facial contouring, volume support, and collagen stimulation planning. Provider led injectable care by a Nurse Practitioner and certified injector."
+  },
+  "restylane-fillers": {
+    title: "Restylane Fillers in New Hampshire | Elite VitaMed",
+    description: "Restylane fillers in New Hampshire for lips, facial volume, contouring, smoothing, and natural looking facial balancing. Provider led injectable care by a Nurse Practitioner and certified injector."
+  },
+  "jawline-contouring": {
+    title: "Jawline Contouring in New Hampshire | Elite VitaMed",
+    description: "Jawline contouring in New Hampshire for clients who want a more defined, balanced, and refreshed lower face. Provider led injectable care by a Nurse Practitioner and certified injector."
+  },
+  "under-eye-rejuvenation": {
+    title: "Under Eye Rejuvenation in New Hampshire | Elite VitaMed",
+    description: "Under eye rejuvenation in New Hampshire for tired looking eyes, hollowness, shadows, and facial balance. Provider led aesthetic care by a Nurse Practitioner and certified injector."
+  },
+  sculptra: {
+    title: "Sculptra in New Hampshire | Collagen Stimulator and Facial Rejuvenation",
+    description: "Elite VitaMed offers Sculptra in New Hampshire for clients interested in gradual collagen support, natural looking facial rejuvenation, and provider led injectable treatment planning."
+  },
+  "facial-balancing": {
+    title: "Facial Balancing in New Hampshire | Fillers, Botox and Full Face Rejuvenation",
+    description: "Elite VitaMed offers facial balancing in New Hampshire using provider led injectable treatment planning, including fillers, Botox or neurotoxins, Sculptra, Radiesse, and personalized consultation."
+  },
+  "non-surgical-face-lift": {
+    title: "Non Surgical Face Lift in New Hampshire | Fillers, Threads and Facial Rejuvenation",
+    description: "Elite VitaMed offers non surgical face lift consultations in New Hampshire using provider led treatment planning with fillers, Botox or neurotoxins, PDO threads, Sculptra, Radiesse, and skin support options."
+  },
+  "pdo-threads": {
+    title: "PDO Threads in New Hampshire | Elite VitaMed",
+    description: "PDO thread treatments in New Hampshire for facial lifting, jawline definition, brow support, neck rejuvenation, and collagen support. Provider led aesthetic care by a Nurse Practitioner and certified injector."
+  },
+  "iv-drips": {
+    title: "IV Drip Therapy in New Hampshire | Elite VitaMed",
+    description: "IV drip therapy in New Hampshire for Hydration & Recovery Drip, Energy & Performance Drip, Detox & Cleanse Drip, Beauty Glow Drip, Metabolism & Weight Management Drip, Immunity Boost Drip, Myers' Cocktail, NAD+ Therapy, and Vitamin Injections."
+  }
+};
+
 const pages = {
   home: () => `
     ${homeHero()}
@@ -3915,141 +4080,55 @@ const pages = {
   contact: () => `${contactHero()}${contactOptions()}${contactForm()}${contactLocation()}${contactExpect()}${contactReasons()}${contactProviderCare()}${contactTreatmentCategories()}${contactPrivateConsult()}${contactReviews()}${contactFaq()}${contactFinalCta()}`
 };
 
+// Resolve the active page from the URL path (multi-page site); falls back to the legacy
+// hash route, then home. Works at the domain root and under a subpath (GitHub Pages staging).
+function currentRoute() {
+  const segments = pathSegments();
+  for (let i = segments.length - 1; i >= 0; i--) {
+    if (pages[segments[i]]) return segments[i];
+  }
+  const hashRoute = hashRouteSegment();
+  if (pages[hashRoute]) return hashRoute;
+  return "home";
+}
+
+// Route named by a rewritten internal href ("./x/", "../x/", "#x", "../") for nav highlighting.
+function routeFromHref(href) {
+  if (!href) return "";
+  if (href.startsWith("#")) return href.slice(1).split("/")[0] || "home";
+  const clean = href.split("#")[0].split("?")[0];
+  const segments = clean.split("/").filter((s) => s && s !== "." && s !== ".." && s.toLowerCase() !== "index.html");
+  return segments.length ? segments[segments.length - 1] : "home";
+}
+
 function render() {
-  const rawPage = (location.hash || "#home").replace("#", "");
-  const [page, sectionTarget] = rawPage.split("/");
+  const page = currentRoute();
+  // Section to scroll to: legacy "#page/section" or a plain "#section" anchor on this page.
+  const hashParts = (location.hash || "").replace(/^#/, "").split("/");
+  const sectionTarget = hashParts[0] === page ? hashParts[1] : (hashParts[0] && !pages[hashParts[0]] ? hashParts[0] : undefined);
   const app = document.querySelector("#app");
   const renderPage = pages[page] || pages.home;
   destroyHeroParticles();
   destroyPageMotion();
-  app.innerHTML = renderPage();
+  // Pages generated by build.mjs already contain this route's HTML with rewritten,
+  // crawlable links — keep that DOM and only wire up behavior.
+  if (app.dataset.prerendered !== page) app.innerHTML = renderPage();
   document.querySelectorAll(".nav-link").forEach((link) => {
-    link.classList.toggle("active", link.getAttribute("href") === `#${page}`);
+    link.classList.toggle("active", routeFromHref(link.getAttribute("href")) === page);
   });
-  const pageMeta = {
-    home: {
-      title: "Elite VitaMed Aesthetics | Mobile Botox, Fillers and IV Therapy in New Hampshire",
-      description: "Premium mobile concierge injectables, IV drip therapy, and wellness care across New Hampshire, performed by a Nurse Practitioner and certified injector. Book online or start a treatment assessment."
-    },
-    injectables: {
-      title: "Injectables in New Hampshire | Botox, Fillers, Sculptra and Facial Balancing",
-      description: "Elite VitaMed offers mobile injectable treatments in New Hampshire, including Botox or neurotoxins, dermal fillers, Sculptra, Radiesse, PDO threads, and facial balancing, performed by a Nurse Practitioner and certified injector."
-    },
-    "regenerative-aesthetics": {
-      title: "Regenerative Aesthetics in New Hampshire | PRP, PRF, Hair Restoration and Skin Rejuvenation",
-      description: "Elite VitaMed offers regenerative aesthetics in New Hampshire, including PRP, PRF, hair restoration, skin rejuvenation, and collagen support treatments performed with provider led care."
-    },
-    "prp-prf": {
-      title: "PRP and PRF in New Hampshire | Elite VitaMed",
-      description: "PRP and PRF treatments in New Hampshire for skin rejuvenation, under eye support, collagen stimulation, and hair restoration planning. Provider led care by a Nurse Practitioner and certified injector."
-    },
-    "hair-restoration": {
-      title: "Hair Restoration in New Hampshire | Elite VitaMed",
-      description: "Hair restoration in New Hampshire using provider led regenerative treatment planning for thinning hair, shedding concerns, and scalp support. Performed by a Nurse Practitioner and certified injector."
-    },
-    "collagen-stimulation": {
-      title: "Collagen Stimulation Treatments in New Hampshire | Elite VitaMed",
-      description: "Collagen stimulation treatments in New Hampshire for skin quality, firmness, texture, and natural looking rejuvenation. Provider led care by a Nurse Practitioner and certified injector."
-    },
-    "skin-tightening": {
-      title: "Skin and Tightening Treatments in New Hampshire | Breeze, WonderTouch, Chemical Peels and Microneedling",
-      description: "Elite VitaMed offers skin and tightening treatments in New Hampshire, including Breeze, WonderTouch, Ultimate Glow & Lift, chemical peels, facial contouring, and microneedling with stem cells."
-    },
-    breeze: {
-      title: "Breeze Treatment in New Hampshire | Elite VitaMed",
-      description: "Breeze treatment in New Hampshire for clients interested in refreshed skin, smoother texture, glow support, and provider led skin rejuvenation planning."
-    },
-    wondertouch: {
-      title: "WonderTouch in New Hampshire | Elite VitaMed",
-      description: "WonderTouch treatment in New Hampshire for skin tightening support, facial contouring, texture, firmness, and non surgical rejuvenation planning."
-    },
-    "ultimate-glow-lift": {
-      title: "Ultimate Glow & Lift in New Hampshire | Elite VitaMed",
-      description: "Ultimate Glow & Lift in New Hampshire combines Breeze and WonderTouch for skin refresh, firmness support, glow, and non surgical contouring planning."
-    },
-    "facial-contouring": {
-      title: "Facial Contouring in New Hampshire | Elite VitaMed",
-      description: "Facial contouring in New Hampshire for clients who want more definition, balance, and a refreshed appearance through provider led aesthetic treatment planning."
-    },
-    "microneedling-stem-cells": {
-      title: "Microneedling with Stem Cells in New Hampshire | Elite VitaMed",
-      description: "Microneedling with stem cells in New Hampshire for skin texture, fine lines, collagen support, acne scarring support, and provider led skin rejuvenation planning."
-    },
-    "chemical-peels": {
-      title: "Chemical Peels in New Hampshire | Elite VitaMed",
-      description: "Chemical peels in New Hampshire for smoother texture, brighter looking skin, uneven tone, fine lines, and skin renewal planning. Provider led care by a Nurse Practitioner and certified injector."
-    },
-    "iv-wellness": {
-      title: "IV and Wellness Treatments in New Hampshire | Elite VitaMed",
-      description: "Explore IV and wellness treatments in New Hampshire, including Hydration & Recovery Drip, Energy & Performance Drip, Detox & Cleanse Drip, Beauty Glow Drip, Metabolism & Weight Management Drip, Immunity Boost Drip, Myers' Cocktail, NAD+ Therapy, and Vitamin Injections."
-    },
-    "intimate-wellness": {
-      title: "Intimate Wellness in New Hampshire | Feminine Wellness and Private Provider Led Care",
-      description: "Elite VitaMed offers intimate wellness consultations in New Hampshire with private, provider led care focused on confidence, comfort, education, and personalized treatment planning."
-    },
-    "feminine-wellness": {
-      title: "Feminine Wellness in New Hampshire | Elite VitaMed",
-      description: "Private feminine wellness consultations in New Hampshire for clients who want discreet, provider led guidance around intimate wellness, confidence, and treatment options."
-    },
-    "vaginal-tightening": {
-      title: "Vaginal Tightening in New Hampshire | Elite VitaMed",
-      description: "Private vaginal tightening consultations in New Hampshire for clients who want discreet, provider led guidance around feminine wellness, tissue support, and treatment options."
-    },
-    "botox-neurotoxins": {
-      title: "Botox and Neurotoxin Treatments in New Hampshire | Elite VitaMed",
-      description: "Explore Botox and neurotoxin treatments in New Hampshire with Elite VitaMed. Learn about common treatment areas, candidacy, aftercare, and provider guided planning."
-    },
-    "dermal-fillers": {
-      title: "Dermal Fillers in New Hampshire | Radiesse, Restylane, Jawline and Under Eye Filler",
-      description: "Elite VitaMed offers mobile dermal fillers in New Hampshire, including Radiesse fillers, Restylane fillers, jawline contouring, and under eye rejuvenation, performed by a Nurse Practitioner and certified injector."
-    },
-    "radiesse-fillers": {
-      title: "Radiesse Fillers in New Hampshire | Elite VitaMed",
-      description: "Radiesse fillers in New Hampshire for facial contouring, volume support, and collagen stimulation planning. Provider led injectable care by a Nurse Practitioner and certified injector."
-    },
-    "restylane-fillers": {
-      title: "Restylane Fillers in New Hampshire | Elite VitaMed",
-      description: "Restylane fillers in New Hampshire for lips, facial volume, contouring, smoothing, and natural looking facial balancing. Provider led injectable care by a Nurse Practitioner and certified injector."
-    },
-    "jawline-contouring": {
-      title: "Jawline Contouring in New Hampshire | Elite VitaMed",
-      description: "Jawline contouring in New Hampshire for clients who want a more defined, balanced, and refreshed lower face. Provider led injectable care by a Nurse Practitioner and certified injector."
-    },
-    "under-eye-rejuvenation": {
-      title: "Under Eye Rejuvenation in New Hampshire | Elite VitaMed",
-      description: "Under eye rejuvenation in New Hampshire for tired looking eyes, hollowness, shadows, and facial balance. Provider led aesthetic care by a Nurse Practitioner and certified injector."
-    },
-    sculptra: {
-      title: "Sculptra in New Hampshire | Collagen Stimulator and Facial Rejuvenation",
-      description: "Elite VitaMed offers Sculptra in New Hampshire for clients interested in gradual collagen support, natural looking facial rejuvenation, and provider led injectable treatment planning."
-    },
-    "facial-balancing": {
-      title: "Facial Balancing in New Hampshire | Fillers, Botox and Full Face Rejuvenation",
-      description: "Elite VitaMed offers facial balancing in New Hampshire using provider led injectable treatment planning, including fillers, Botox or neurotoxins, Sculptra, Radiesse, and personalized consultation."
-    },
-    "non-surgical-face-lift": {
-      title: "Non Surgical Face Lift in New Hampshire | Fillers, Threads and Facial Rejuvenation",
-      description: "Elite VitaMed offers non surgical face lift consultations in New Hampshire using provider led treatment planning with fillers, Botox or neurotoxins, PDO threads, Sculptra, Radiesse, and skin support options."
-    },
-    "pdo-threads": {
-      title: "PDO Threads in New Hampshire | Elite VitaMed",
-      description: "PDO thread treatments in New Hampshire for facial lifting, jawline definition, brow support, neck rejuvenation, and collagen support. Provider led aesthetic care by a Nurse Practitioner and certified injector."
-    },
-    "iv-drips": {
-      title: "IV Drip Therapy in New Hampshire | Elite VitaMed",
-      description: "IV drip therapy in New Hampshire for Hydration & Recovery Drip, Energy & Performance Drip, Detox & Cleanse Drip, Beauty Glow Drip, Metabolism & Weight Management Drip, Immunity Boost Drip, Myers' Cocktail, NAD+ Therapy, and Vitamin Injections."
-    }
-  };
-  const defaultMeta = "Premium mobile concierge injectables, IV therapy, and wellness care in New Hampshire.";
-  const metaTitle = pageMeta[page]?.title || `${prettifyRoute(page)} | Elite VitaMed Aesthetics`;
-  const metaDescription = pageMeta[page]?.description || defaultMeta;
-  document.title = metaTitle;
-  document.querySelector('meta[name="description"]')?.setAttribute("content", metaDescription);
-  // Keep social-share tags in sync with the active route.
-  [['meta[property="og:title"]', metaTitle], ['meta[name="twitter:title"]', metaTitle], ['meta[property="og:description"]', metaDescription], ['meta[name="twitter:description"]', metaDescription]]
-    .forEach(([selector, value]) => document.querySelector(selector)?.setAttribute("content", value));
-  const kickerTitle = document.getElementById("header-kicker-title");
-  if (kickerTitle) kickerTitle.textContent = headerKickerFor(page);
+  // Prerendered pages already carry their (route-specific, sometimes more precise) title,
+  // meta, and kicker from build.mjs — only client-rendered fallbacks need these set here.
+  if (app.dataset.prerendered !== page) {
+    const defaultMeta = "Premium mobile concierge injectables, IV therapy, and wellness care in New Hampshire.";
+    const metaTitle = pageMeta[page]?.title || `${prettifyRoute(page)} | Elite VitaMed Aesthetics`;
+    const metaDescription = pageMeta[page]?.description || defaultMeta;
+    document.title = metaTitle;
+    document.querySelector('meta[name="description"]')?.setAttribute("content", metaDescription);
+    [['meta[property="og:title"]', metaTitle], ['meta[name="twitter:title"]', metaTitle], ['meta[property="og:description"]', metaDescription], ['meta[name="twitter:description"]', metaDescription]]
+      .forEach(([selector, value]) => document.querySelector(selector)?.setAttribute("content", value));
+    const kickerTitle = document.getElementById("header-kicker-title");
+    if (kickerTitle) kickerTitle.textContent = headerKickerFor(page);
+  }
   document.documentElement.scrollTop = 0;
   document.body.scrollTop = 0;
   window.scrollTo(0, 0);
@@ -4300,6 +4379,12 @@ function setupContactPage() {
     });
   });
 
+  // Cross-page intent links arrive as /contact/?intent=<value>#contact-form.
+  const intentParam = new URLSearchParams(location.search || "").get("intent");
+  if (intentParam && [...requestType.options].some((option) => option.value === intentParam)) {
+    requestType.value = intentParam;
+  }
+
   form.addEventListener("submit", (event) => {
     event.preventDefault();
     const invalid = [];
@@ -4395,27 +4480,6 @@ function setupMenu() {
   const menu = document.querySelector("#mobileMenu");
   if (!button || !menu) return;
 
-  function normalizeHashHref(href) {
-    if (href.startsWith("#")) return href;
-    const url = new URL(href, location.href);
-    const currentPath = location.pathname.split("/").pop() || "index.html";
-    const targetPath = url.pathname.split("/").pop() || "index.html";
-    if (url.origin === location.origin && targetPath === currentPath && url.hash) return url.hash;
-    return "";
-  }
-
-  function navigateHashLink(href) {
-    const hash = normalizeHashHref(href);
-    if (!hash) return false;
-    const currentHash = location.hash || "#home";
-    if (hash === currentHash) {
-      render();
-    } else {
-      location.hash = hash;
-    }
-    return true;
-  }
-
   function closeMobileMenu() {
     menu.classList.add("hidden");
     button.setAttribute("aria-expanded", "false");
@@ -4432,16 +4496,8 @@ function setupMenu() {
   });
 
   menu.addEventListener("click", (event) => {
-    const link = event.target.closest("a");
-    if (!link) return;
-
-    const href = link.getAttribute("href") || "";
+    if (!event.target.closest("a")) return;
     closeMobileMenu();
-
-    if (normalizeHashHref(href)) {
-      event.preventDefault();
-      navigateHashLink(href);
-    }
   });
 
   document.querySelectorAll(".nav-group").forEach((group) => {
@@ -4480,21 +4536,68 @@ function setupMenu() {
   });
 
   document.querySelectorAll(".mega-menu a").forEach((link) => {
-    link.addEventListener("click", (event) => {
-      const href = link.getAttribute("href") || "";
+    link.addEventListener("click", () => {
       document.querySelectorAll(".nav-group").forEach((group) => {
         group.classList.remove("open");
         group.classList.add("dismissed");
       });
       link.blur();
-      if (normalizeHashHref(href)) {
-        event.preventDefault();
-        navigateHashLink(href);
-      }
     });
   });
 }
 
-window.addEventListener("hashchange", render);
-setupMenu();
-render();
+// Depth of the current page below the site root (0 at root, 1 at /route/, 2 at /book/iv/).
+function routeDepth() {
+  const segments = pathSegments();
+  for (let i = 0; i < segments.length; i++) {
+    if (pages[segments[i]]) return segments.length - i;
+  }
+  return 0;
+}
+
+// Redirect legacy single-page links (#route, #route/section, #injectables-assessment/r/<code>)
+// to their real multi-page URLs. Returns true when a full navigation was issued.
+function redirectLegacyHash() {
+  const raw = (location.hash || "").replace(/^#/, "");
+  if (!raw) return false;
+  const [route, ...rest] = raw.split("/");
+  if (!pages[route]) return false; // plain #section anchor — the browser handles it
+  // Compare against the PATH-derived route only (currentRoute() falls back to the hash,
+  // which would make every legacy hash look like "already here").
+  const segments = pathSegments();
+  let pathRoute = "home";
+  for (let i = segments.length - 1; i >= 0; i--) {
+    if (pages[segments[i]]) { pathRoute = segments[i]; break; }
+  }
+  const samePage = route === pathRoute && !(route === "book" && rest.length);
+  if (samePage && !rest.length) return false;
+  if (samePage) {
+    // Same page: rewrite to a plain anchor without reloading and let init continue.
+    const newHash = route === "injectables-assessment" && rest[0] === "r" ? `#r/${rest.slice(1).join("/")}` : `#${rest.join("/")}`;
+    if (location.hash !== newHash) history.replaceState(null, "", newHash);
+    return false;
+  }
+  const depth = routeDepth();
+  const prefix = depth ? "../".repeat(depth) : "./";
+  let target;
+  if (route === "injectables-assessment" && rest[0] === "r" && rest[1]) {
+    target = `${prefix}injectables-assessment/#r/${rest.slice(1).join("/")}`;
+  } else if (route === "book" && rest[0] && BOOKING_MENUS[rest[0]]) {
+    target = `${prefix}book/${rest[0]}/`;
+  } else if (route === "home") {
+    target = prefix + (rest.length ? `#${rest.join("/")}` : "");
+  } else {
+    target = `${prefix}${route}/${rest.length ? `#${rest.join("/")}` : ""}`;
+  }
+  location.replace(target);
+  return true;
+}
+
+// Browser bootstrap (skipped when this file is evaluated by build.mjs in Node).
+if (typeof document !== "undefined") {
+  if (!redirectLegacyHash()) {
+    window.addEventListener("hashchange", redirectLegacyHash);
+    setupMenu();
+    render();
+  }
+}
