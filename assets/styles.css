@@ -4715,22 +4715,27 @@ p.text-sm {
 .inj-quiz .face-map-card .zone.map-selected { stroke: rgba(44, 62, 80, .85) !important; stroke-dasharray: none !important; stroke-width: 2.4 !important; }
 
 
-/* Pull the quiz hero up under the fixed header so the ivory body background never
+/* Pull the quiz page up under the fixed header so the ivory body background never
    shows as a strip between the header and the hero (#app pads 92px / 122px at md+,
-   but the header can render shorter, e.g. ~79px on phones). */
-.inj-quiz .hero {
+   but the header can render shorter, e.g. ~79px on phones). The negative margin
+   must live on the .inj-quiz WRAPPER: it has overflow hidden, so a negative margin
+   on the hero itself gets clipped and the strip stays visible. */
+.inj-quiz {
   margin-top: -92px;
+}
+.inj-quiz .hero {
   padding-top: calc(clamp(4rem, 7vw, 5.75rem) + 92px);
 }
 @media (min-width: 768px) {
-  .inj-quiz .hero {
+  .inj-quiz {
     margin-top: -122px;
+  }
+  .inj-quiz .hero {
     padding-top: calc(clamp(4rem, 7vw, 5.75rem) + 122px);
   }
 }
 @media (max-width: 760px) {
   .inj-quiz .hero {
-    margin-top: -92px;
     padding-top: calc(2.75rem + 92px);
   }
 }

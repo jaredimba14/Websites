@@ -152,13 +152,11 @@ function buildPage(routePath, routeKey) {
   html = html.replace('src="./assets/injectables-assessment.js?', 'src="./assets/injectables-assessment.min.js?');
   html = html.replace('href="./assets/styles.css?', 'href="./assets/styles.min.css?');
 
-  // Page-specific scripts: the quiz bundle only on its page, particles only on the home
-  // hero, the GHL iframe-resizer only where GHL widgets are embedded (/book/*).
+  // Page-specific scripts: the quiz bundle only on its page, the GHL iframe-resizer only
+  // where GHL widgets are embedded (/book/*). particles.js stays on EVERY page — the
+  // treatment/detail heroes render particle canvases too, not just the home hero.
   if (routeKey !== "injectables-assessment") {
     html = html.replace(/[ \t]*<script[^>]*injectables-assessment\.min\.js[^>]*><\/script>\r?\n?/, "");
-  }
-  if (routeKey !== "home") {
-    html = html.replace(/[ \t]*<script[^>]*particles\.min\.js[^>]*><\/script>\r?\n?/, "");
   }
   if (routeKey !== "book") {
     html = html.replace(/[ \t]*<script[^>]*form_embed\.js[^>]*><\/script>\r?\n?/, "");
