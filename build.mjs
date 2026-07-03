@@ -76,7 +76,7 @@ function metaFor(routePath, routeKey) {
 }
 
 // Rewrite legacy hash/index.html#... internal links and document-relative asset URLs.
-function rewriteLinks(html, prefix) {
+function rewriteLinks(html, prefix, routeKey) {
   // Longest keys first so "#injectables-assessment" wins over "#injectables".
   const keys = [...ROUTE_KEYS].sort((a, b) => b.length - a.length);
   let out = html;
@@ -88,10 +88,15 @@ function rewriteLinks(html, prefix) {
     // href="#key/section" / href="index.html#key/section"
     out = out.replace(new RegExp(`href="(?:index\\.html)?#${key}/([^"]+)"`, "g"), (m, rest) => {
       if (key === "book" && BOOK_SUBROUTES.includes(rest)) return `href="${prefix}book/${rest}/"`;
+      // Section links to the page being generated become plain anchors (no reload). The
+      // placeholder keeps later route-key passes from re-consuming the anchor (e.g.
+      // "#assessment" on the quiz page must not become a link to /assessment/).
+      if (key === routeKey && key !== "book") return `href="#__anchor__${rest}"`;
       if (key === "home") return `href="${prefix}#${rest}"`;
       return `href="${prefix}${key}/#${rest}"`;
     });
   }
+  out = out.replace(/#__anchor__/g, "#");
 
   // Cross-page contact intents become /contact/?intent=<value>#contact-form.
   out = out.replace(/<a\b[^>]*>/g, (tag) => {
@@ -139,7 +144,7 @@ function buildPage(routePath, routeKey) {
     html = html.replace(/[ \t]*<script[^>]*injectables-assessment\.js[^>]*><\/script>\r?\n?/, "");
   }
 
-  html = rewriteLinks(html, prefix);
+  html = rewriteLinks(html, prefix, routeKey);
 
   const outFile = routePath ? path.join(ROOT, ...routePath.split("/"), "index.html") : path.join(ROOT, "index.html");
   fs.mkdirSync(path.dirname(outFile), { recursive: true });

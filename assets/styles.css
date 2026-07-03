@@ -4734,3 +4734,11 @@ p.text-sm {
     padding-top: calc(2.75rem + 92px);
   }
 }
+
+/* On narrow screens, let button labels wrap instead of overflowing their cards. */
+@media (max-width: 640px) {
+  .btn {
+    white-space: normal;
+    text-align: center;
+  }
+}
