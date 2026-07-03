@@ -188,7 +188,17 @@ fs.writeFileSync(
 );
 
 // --- .htaccess (Bluehost/Apache) ---
-fs.writeFileSync(path.join(ROOT, ".htaccess"), `ErrorDocument 404 /404.html\nOptions -Indexes\n`);
+fs.writeFileSync(
+  path.join(ROOT, ".htaccess"),
+  `ErrorDocument 404 /404.html
+Options -Indexes
+
+# Clean URLs: redirect any direct /route/index.html request to /route/
+RewriteEngine On
+RewriteCond %{THE_REQUEST} \\s/+(.*/)?index\\.html[\\s?]
+RewriteRule ^(.*/)?index\\.html$ /$1 [R=301,L]
+`
+);
 
 console.log(`Generated ${outputs.length} pages:`);
 for (const o of outputs) console.log(`  /${o.routePath === "(root)" ? "" : o.routePath + "/"}  (${o.bytes.toLocaleString()} bytes)  ${o.title}`);
