@@ -17,7 +17,6 @@
 - **Wire the Contact form to GHL** — it currently shows a local confirmation but submits nowhere (assets/app.js setupContactPage). Reuse the assessment webhook pattern (new GHL inbound webhook URL + tag, consent checkbox already present as placeholder).
 - Placeholder/encoding sweep + full QA pass (mobile/tablet layouts, all CTAs, accordions, link check).
 - Review Home and Treatments copy against latest approved wording.
-- Wellness assessment (PolyMVA / Ozone / NAD+): plan approved (combined `#wellness-assessment`), waiting on provider clinical content (indications, safety screening, protocol tiers, pricing).
 
 ## Waiting on client/provider
 - GHL workflow behind the assessment webhook: map fields, store `results_link` custom field, add note, SMS the lead their link (gate on consent). Then delete the ~12 "Test …" contacts.
