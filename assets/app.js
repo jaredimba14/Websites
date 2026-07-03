@@ -225,7 +225,7 @@ function initHeroParticles() {
   particlesJS("particles-js", {
     particles: {
       number: {
-        value: compactViewport ? 14 : 80,
+        value: compactViewport ? 26 : 80,
         density: { enable: true, value_area: 800 }
       },
       color: { value: "#ffffff" },
@@ -246,14 +246,14 @@ function initHeroParticles() {
       },
       line_linked: {
         enable: true,
-        distance: compactViewport ? 110 : 150,
+        distance: compactViewport ? 130 : 150,
         color: "#ffffff",
         opacity: 0.22,
         width: 1
       },
       move: {
         enable: true,
-        speed: compactViewport ? 1.5 : 3,
+        speed: compactViewport ? 2.2 : 3,
         direction: "none",
         random: false,
         straight: false,
