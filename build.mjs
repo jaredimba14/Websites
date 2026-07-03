@@ -13,11 +13,19 @@
 import fs from "node:fs";
 import path from "node:path";
 import vm from "node:vm";
+import { execSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const SITE_BASE = "https://elitevitamedaesthetics.com/";
 const BOOK_SUBROUTES = ["injectables", "iv", "skin"];
+
+// Compile Tailwind utilities into a static stylesheet (replaces the runtime CDN compiler).
+console.log("Compiling Tailwind...");
+execSync("npx -y tailwindcss@3.4.17 -c tailwind.config.js -o assets/tailwind.css --minify", {
+  cwd: ROOT,
+  stdio: ["ignore", "ignore", "inherit"]
+});
 
 const template = fs.readFileSync(path.join(ROOT, "template.html"), "utf8");
 const appSource = fs.readFileSync(path.join(ROOT, "assets", "app.js"), "utf8");
@@ -126,6 +134,11 @@ function buildPage(routePath, routeKey) {
     (m, attrs) => `<main id="app"${attrs} data-prerendered="${routeKey}">${appHtml}</main>`
   );
 
+  // The 116KB quiz script is only needed on its own page.
+  if (routeKey !== "injectables-assessment") {
+    html = html.replace(/[ \t]*<script[^>]*injectables-assessment\.js[^>]*><\/script>\r?\n?/, "");
+  }
+
   html = rewriteLinks(html, prefix);
 
   const outFile = routePath ? path.join(ROOT, ...routePath.split("/"), "index.html") : path.join(ROOT, "index.html");
@@ -197,6 +210,23 @@ Options -Indexes
 RewriteEngine On
 RewriteCond %{THE_REQUEST} \\s/+(.*/)?index\\.html[\\s?]
 RewriteRule ^(.*/)?index\\.html$ /$1 [R=301,L]
+
+# Compress text assets
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain application/javascript application/json image/svg+xml application/xml
+</IfModule>
+
+# Cache static assets (CSS/JS are cache-busted with ?v=, images are immutable content)
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType image/webp "access plus 6 months"
+  ExpiresByType image/png "access plus 6 months"
+  ExpiresByType image/jpeg "access plus 6 months"
+  ExpiresByType image/svg+xml "access plus 6 months"
+</IfModule>
 `
 );
 

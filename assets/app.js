@@ -4104,8 +4104,12 @@ function routeFromHref(href) {
 function render() {
   const page = currentRoute();
   // Section to scroll to: legacy "#page/section" or a plain "#section" anchor on this page.
+  // An anchor that shares a route's name (e.g. #assessment on the quiz page) counts as a
+  // section when a matching element exists in the prerendered DOM.
   const hashParts = (location.hash || "").replace(/^#/, "").split("/");
-  const sectionTarget = hashParts[0] === page ? hashParts[1] : (hashParts[0] && !pages[hashParts[0]] ? hashParts[0] : undefined);
+  const sectionTarget = hashParts[0] === page
+    ? hashParts[1]
+    : (hashParts[0] && (!pages[hashParts[0]] || document.getElementById(hashParts[0])) ? hashParts[0] : undefined);
   const app = document.querySelector("#app");
   const renderPage = pages[page] || pages.home;
   destroyHeroParticles();
@@ -4562,6 +4566,9 @@ function redirectLegacyHash() {
   if (!raw) return false;
   const [route, ...rest] = raw.split("/");
   if (!pages[route]) return false; // plain #section anchor — the browser handles it
+  // A same-named element on THIS page wins over a route name (e.g. #assessment is the quiz
+  // section on /injectables-assessment/, not a link to the /assessment/ page).
+  if (!rest.length && document.getElementById(route)) return false;
   // Compare against the PATH-derived route only (currentRoute() falls back to the hash,
   // which would make every legacy hash look like "already here").
   const segments = pathSegments();

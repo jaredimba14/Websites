@@ -9,7 +9,9 @@ The site is a prerendered multi-page static site. Every route is a real HTML pag
    generated route folders by hand — they are build output and get overwritten.**
 2. Bump the cache version in `template.html` if you changed `assets/app.js`,
    `assets/styles.css`, or `assets/injectables-assessment.js` (the `?v=NN` query).
-3. Rebuild: `node build.mjs`
+3. Rebuild: `node build.mjs` (also recompiles `assets/tailwind.css` via `npx tailwindcss` —
+   first run downloads the CLI, later runs use the npx cache; internet needed only for that
+   first run)
 4. Commit and push (GitHub Pages staging), then upload to Bluehost for production.
 
 ## What the build generates
