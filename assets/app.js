@@ -225,7 +225,7 @@ function initHeroParticles() {
   particlesJS("particles-js", {
     particles: {
       number: {
-        value: compactViewport ? 26 : 80,
+        value: compactViewport ? 30 : 80,
         density: { enable: true, value_area: 800 }
       },
       color: { value: "#ffffff" },
