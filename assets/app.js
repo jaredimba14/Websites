@@ -217,15 +217,15 @@ function initHeroParticles() {
   if (!HERO_PARTICLES_ENABLED || !container || !window.particlesJS) return;
   const compactViewport = window.matchMedia("(max-width: 767px)").matches;
   const coarsePointer = window.matchMedia("(pointer: coarse)").matches;
-  // Skip the canvas animation entirely on phones and for reduced-motion users: it costs
-  // ~600ms of main-thread time on a throttled mobile CPU for a barely visible decoration.
-  if (compactViewport || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
   container.querySelectorAll("canvas").forEach((canvas) => canvas.remove());
+  // Phones get a LIGHT variant (few particles, slow drift) — the full 40-particle config
+  // cost ~600ms of throttled-mobile main-thread time and dragged the Speed Index down.
   particlesJS("particles-js", {
     particles: {
       number: {
-        value: compactViewport ? 40 : 80,
+        value: compactViewport ? 14 : 80,
         density: { enable: true, value_area: 800 }
       },
       color: { value: "#ffffff" },
@@ -246,14 +246,14 @@ function initHeroParticles() {
       },
       line_linked: {
         enable: true,
-        distance: 150,
+        distance: compactViewport ? 110 : 150,
         color: "#ffffff",
         opacity: 0.22,
         width: 1
       },
       move: {
         enable: true,
-        speed: 3,
+        speed: compactViewport ? 1.5 : 3,
         direction: "none",
         random: false,
         straight: false,
