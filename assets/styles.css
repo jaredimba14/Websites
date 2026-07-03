@@ -4742,3 +4742,14 @@ p.text-sm {
     text-align: center;
   }
 }
+
+/* Mobile tap targets: footer text links get a >=24px hit area (Lighthouse tap-target audit). */
+@media (max-width: 640px) {
+  .footer-contact a,
+  .footer-legal a,
+  .footer-credit a {
+    display: inline-block;
+    padding: 6px 2px;
+    margin: -2px 0;
+  }
+}
