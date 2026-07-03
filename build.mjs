@@ -257,9 +257,10 @@ RewriteRule ^(.*/)?index\\.html$ /$1 [R=301,L]
   ExpiresByType image/png "access plus 1 year"
   ExpiresByType image/jpeg "access plus 1 year"
   ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
 </IfModule>
 <IfModule mod_headers.c>
-  <FilesMatch "\\.(css|js|webp|png|jpe?g|svg)$">
+  <FilesMatch "\\.(css|js|webp|png|jpe?g|svg|woff2)$">
     Header set Cache-Control "public, max-age=31536000, immutable"
   </FilesMatch>
   <FilesMatch "\\.html$">

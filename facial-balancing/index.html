@@ -63,16 +63,10 @@
     <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png?v=1" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- Fonts load without blocking first paint (display=swap shows fallback text immediately). -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@300;500;600;700;800&family=Roboto+Condensed:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet" media="print" onload="this.media='all'"
-    />
-    <!-- Lato: used by the Cherry financing widget -->
+    <!-- Site fonts are self-hosted (assets/fonts.css, display=swap) so caching/Expires apply. -->
+    <link rel="stylesheet" href="../assets/fonts.css?v=1" />
+    <!-- Lato: used only by the Cherry financing widget; loads without blocking first paint. -->
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
-    <noscript>
-      <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@300;500;600;700;800&family=Roboto+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-    </noscript>
     <!-- Tailwind utilities precompiled by build.mjs (tailwind.config.js) — no runtime compiler. -->
     <link rel="stylesheet" href="../assets/tailwind.css?v=1" />
     <link rel="stylesheet" href="../assets/styles.min.css?v=122" />
@@ -474,7 +468,7 @@
       </div>
     </footer>
 
-    <script defer src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script defer src="../assets/particles.min.js?v=1"></script>
     <script defer src="../assets/app.min.js?v=132"></script>
     <!-- GHL booking widget auto-resize -->
 
