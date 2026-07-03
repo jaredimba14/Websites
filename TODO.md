@@ -1,36 +1,41 @@
 # Elite VitaMed Website TODO
 
 ## Done
-- Results, Memberships, Contact, and Treatment Assessment built from approved copy (content-complete).
-- Fixed cross-page CTA routing (`#contact/contact-form` deep link) so phone-consultation/booking CTAs reach the contact form instead of falling back to Home.
-- Optimized image assets: converted hero/portrait/face-map/logo PNGs to WebP and resized oversized files (~6 MB -> ~0.36 MB); removed the unused `hero-concierge-cutout` asset.
-- Integrated the injectables assessment quiz into the SPA as route `#injectables-assessment` (shares the real nav/footer/design); extracted its inline 1.2 MB base64 face map to `face-map-detailed.webp`. The old standalone `injectables_assessment.html` was removed.
-- Built the FAQ page from approved copy (12 categories, 61 Q&As, intro + final CTA).
-- Added sample Google reviews (5.0 / 100+ reviews, placeholder quotes — replace with verified reviews before launch) and embedded the Cherry floating estimator widget (renders on the production domain only).
+- Results, Memberships, Contact, Treatment Assessment, and FAQ pages built from approved copy.
+- Injectables assessment integrated as SPA route `#injectables-assessment` with plain-English question descriptions.
+- Assessment → GoHighLevel webhook: auto-send on completion (JSON POST), required consent checkbox, `injectable_assessment` tag, 3 plans in notes, shareable results link (short-encoded, `#injectables-assessment/r/<code>`).
+- Assessment engine: distinct cost-ordered plan tiers, Botox itemized per area, age + first-timer experience drive results, Minimum plan aims ~$500.
+- GHL booking embedded (`#book` + per-category menus) with context-aware Book CTAs.
+- Cherry: real apply URL wired on all financing buttons; floating widget embedded (production domain only).
+- Real specials (Botox $9.99/unit, fillers $499/1ml, PDO $500/area, IV $50 off / 20% packages) + membership card, aligned CTAs.
+- Real phone/email in footer + Contact page; developer credit; footer polish.
+- SEO: real title/description, canonical, OG/Twitter + share image, MedicalBusiness JSON-LD, robots.txt, sitemap.xml, favicon from EVA logo.
+- Dynamic header kicker per page; sample Google reviews (placeholder quotes).
+- All pushed to origin/main through commit 6dde886.
 
-## Next Priority
-- Review Home and Treatments copy against the latest approved wording.
-- Fix any remaining placeholder text or encoding artifacts.
-- Cherry: add the full-page embed and wire "Apply For Cherry Financing" to the real Cherry apply URL.
-- Replace footer phone/email/social/legal placeholders and the membership pricing/benefits with confirmed details.
+## Next Priority (build)
+- **Wire the Contact form to GHL** — it currently shows a local confirmation but submits nowhere (assets/app.js setupContactPage). Reuse the assessment webhook pattern (new GHL inbound webhook URL + tag, consent checkbox already present as placeholder).
+- Placeholder/encoding sweep + full QA pass (mobile/tablet layouts, all CTAs, accordions, link check).
+- Review Home and Treatments copy against latest approved wording.
+- Wellness assessment (PolyMVA / Ozone / NAD+): plan approved (combined `#wellness-assessment`), waiting on provider clinical content (indications, safety screening, protocol tiers, pricing).
 
-## Content Needed
-- Add final Google rating, review count, review quotes, names, and Reviews URL.
-- Add real GHL booking calendar URL and Contact form integration.
-- Add real Cherry financing URL.
-- Confirm SMS and email consent wording.
-- Confirm membership benefits and pricing.
-- Add approved Tiana, before-and-after, treatment, IV therapy, and concierge images.
+## Waiting on client/provider
+- GHL workflow behind the assessment webhook: map fields, store `results_link` custom field, add note, SMS the lead their link (gate on consent). Then delete the ~12 "Test …" contacts.
+- Final SMS/email consent wording (assessment + contact form).
+- Real Google reviews (quotes, names, rating, count) + Google Reviews URL.
+- Confirmed membership names, pricing, benefits.
+- Business hours + service-area details (Contact page still has placeholders).
+- Instagram/Facebook URLs (footer icons point to #contact).
+- Privacy Policy + Terms content (footer legal links are placeholders).
+- Founder portrait (tiana), and any additional before/after or treatment photos.
+- Custom domain decision — when set, update canonical/OG URLs, JSON-LD, sitemap/robots (currently jaredimba14.github.io/Websites).
 
-## WordPress And GHL
-- Translate approved sections into Elementor containers, widgets, and global styles.
-- Map prototype hash routes to WordPress page slugs.
-- Connect Contact form intents, Treatment Assessment quizzes, recommendation pages, tags, pipeline stages, and follow-up automations in GHL.
-- Add SEO metadata, internal links, schema, analytics, and Meta tracking.
+## WordPress And GHL (later phase)
+- Translate approved sections into Elementor; map hash routes to page slugs.
+- Per-page SEO metadata becomes real once routes are real URLs.
+- Analytics + Meta tracking.
 
 ## QA Before Launch
-- Test desktop, tablet, and mobile layouts with no overflow or wrapped CTA labels.
-- Test dropdowns, mobile drawer, all CTAs, FAQ accordions, and Contact form states.
-- Confirm exactly one particle canvas after repeated route navigation.
-- Run accessibility, performance, compliance-copy, and final link checks.
-- Keep new image assets web-optimized (prefer WebP, size to display dimensions) so page weight stays low.
+- Desktop/tablet/mobile layouts, dropdowns, drawer, CTAs, FAQ accordions, Contact form states.
+- One particle canvas after repeated navigation; accessibility, performance, compliance copy, final links.
+- Keep images WebP and sized to display.
