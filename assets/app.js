@@ -217,6 +217,9 @@ function initHeroParticles() {
   if (!HERO_PARTICLES_ENABLED || !container || !window.particlesJS) return;
   const compactViewport = window.matchMedia("(max-width: 767px)").matches;
   const coarsePointer = window.matchMedia("(pointer: coarse)").matches;
+  // Skip the canvas animation entirely on phones and for reduced-motion users: it costs
+  // ~600ms of main-thread time on a throttled mobile CPU for a barely visible decoration.
+  if (compactViewport || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
   container.querySelectorAll("canvas").forEach((canvas) => canvas.remove());
   particlesJS("particles-js", {
@@ -390,7 +393,7 @@ function homeHero() {
   return `
     <section class="home-hero hero-gradient -mt-[200px] overflow-hidden bg-navy-deep pt-[200px] text-white">
       ${particles()}
-      <img class="home-hero-portrait home-hero-portrait-warm" src="./assets/hero-portrait-warm.webp" alt="" aria-hidden="true" fetchpriority="high" decoding="async" />
+      <img class="home-hero-portrait home-hero-portrait-warm" src="./assets/hero-portrait-warm.webp" srcset="./assets/hero-portrait-warm-750.webp 750w, ./assets/hero-portrait-warm.webp 1000w" sizes="(max-width: 767px) 100vw, 620px" alt="" aria-hidden="true" fetchpriority="high" decoding="async" />
       <div class="relative z-10 mx-auto max-w-7xl px-4 pb-12 pt-20 sm:px-6 lg:px-8 lg:pb-14 lg:pt-24">
         <div class="reveal max-w-5xl">
           <p class="eyebrow">Mobile Botox, Fillers, IV Drips and Wellness Care in New Hampshire</p>

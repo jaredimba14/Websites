@@ -162,11 +162,12 @@ function buildPage(routePath, routeKey) {
     html = html.replace(/[ \t]*<script[^>]*form_embed\.js[^>]*><\/script>\r?\n?/, "");
   }
 
-  // Preload the home hero portrait — it is the LCP element.
+  // Preload the home hero portrait — it is the LCP element. imagesrcset mirrors the <img>
+  // so the preloader fetches the same responsive variant the browser will actually use.
   if (routeKey === "home") {
     html = html.replace(
       '<link rel="stylesheet" href="./assets/tailwind.css',
-      '<link rel="preload" as="image" href="./assets/hero-portrait-warm.webp" fetchpriority="high" />\n    <link rel="stylesheet" href="./assets/tailwind.css'
+      '<link rel="preload" as="image" href="./assets/hero-portrait-warm.webp" imagesrcset="./assets/hero-portrait-warm-750.webp 750w, ./assets/hero-portrait-warm.webp 1000w" imagesizes="(max-width: 767px) 100vw, 620px" fetchpriority="high" />\n    <link rel="stylesheet" href="./assets/tailwind.css'
     );
   }
 
