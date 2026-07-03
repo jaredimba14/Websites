@@ -64,6 +64,8 @@ const injectables = ["Botox or Neurotoxins", "Dermal Fillers", "PDO Threads", "S
 const PLACEHOLDER_BOOKING_URL = "#book";
 const CHERRY_APPLY_URL = "https://pay.withcherry.com/elite-vitamed-aesthetics";
 const PLACEHOLDER_REVIEWS_URL = "https://example.com/elite-vitamed-google-reviews-placeholder";
+// GHL inbound webhook — contact-form leads are POSTed here on submit.
+const CONTACT_WEBHOOK_URL = "https://services.leadconnectorhq.com/hooks/T47y0ST5JBUfqTuqEE3m/webhook-trigger/eEktXiOsZix2d4rWJkMC";
 
 // GHL (LeadConnector) service-menu widgets, embedded on the #book route.
 const BOOKING_MENUS = {
@@ -4336,6 +4338,28 @@ function setupContactPage() {
     }
 
     errors.innerHTML = "";
+    const payload = {
+      first_name: firstName.value.trim(),
+      last_name: form.querySelector('[name="last_name"]').value.trim(),
+      phone: phone.value.trim(),
+      email: email.value.trim(),
+      treatment_interest: treatmentInterest.value,
+      request_type: requestType.value,
+      message: form.querySelector('[name="message"]').value.trim(),
+      consent: form.querySelector('[name="follow_up_consent"]').checked,
+      source: "Contact Form (Website)",
+      tags: ["contact_form"],
+      submitted_at: new Date().toISOString()
+    };
+    try {
+      // Same pattern as the assessment webhook: GHL requires a JSON body and allows CORS.
+      fetch(CONTACT_WEBHOOK_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+        keepalive: true
+      }).catch(() => {});
+    } catch (e) { /* confirmation still shows; delivery is verified on the GHL side */ }
     shell.classList.add("hidden");
     confirmation.classList.remove("hidden");
     confirmation.focus();
