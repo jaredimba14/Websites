@@ -4758,3 +4758,75 @@ p.text-sm {
     margin: -2px 0;
   }
 }
+
+/* New Client Special pricing strip on the injectables assessment page. */
+.inj-quiz .pricing-strip {
+  background:
+    radial-gradient(circle at 10% 20%, rgba(213, 168, 94, .14), transparent 20rem),
+    linear-gradient(90deg, #071f31, #0d2c42);
+  border-bottom: 1px solid rgba(213, 168, 94, .3);
+  padding: 1.5rem 1rem;
+}
+.inj-quiz .pricing-strip-inner {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .9rem 2.2rem;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 1100px;
+  text-align: center;
+}
+.inj-quiz .pricing-strip-badge {
+  background: linear-gradient(135deg, #d5a85e, #b88a44);
+  border-radius: 999px;
+  color: #2a1d07;
+  font-family: "Inter", sans-serif;
+  font-size: .68rem;
+  font-weight: 800;
+  letter-spacing: .14em;
+  margin: 0;
+  padding: .45rem .85rem;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.inj-quiz .pricing-strip-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .9rem 2.2rem;
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.inj-quiz .pricing-strip-list li {
+  align-items: baseline;
+  display: flex;
+  gap: .5rem;
+}
+.inj-quiz .pricing-strip-list strong {
+  color: #f3dfb8;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.7rem;
+  font-weight: 600;
+  line-height: 1;
+}
+.inj-quiz .pricing-strip-list strong span {
+  font-size: 1rem;
+}
+.inj-quiz .pricing-strip-list em {
+  color: rgba(255, 255, 255, .82);
+  font-family: "Inter", sans-serif;
+  font-size: .74rem;
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.inj-quiz .pricing-strip-note {
+  color: rgba(255, 255, 255, .5);
+  flex-basis: 100%;
+  font-size: .72rem;
+  line-height: 1.5;
+  margin: .1rem 0 0;
+}
