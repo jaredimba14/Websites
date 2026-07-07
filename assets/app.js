@@ -4430,6 +4430,8 @@ function setupContactPage() {
     }
 
     errors.innerHTML = "";
+    const attribution = leadAttribution();
+    const message = form.querySelector('[name="message"]').value.trim();
     const payload = {
       first_name: firstName.value.trim(),
       last_name: form.querySelector('[name="last_name"]').value.trim(),
@@ -4437,9 +4439,15 @@ function setupContactPage() {
       email: email.value.trim(),
       treatment_interest: treatmentInterest.value,
       request_type: requestType.value,
-      message: form.querySelector('[name="message"]').value.trim(),
+      message,
+      notes: `CONTACT FORM LEAD\n${message ? `Message: ${message}\n\n` : ""}${leadSourceNote("Contact Form (Website)")}`,
       consent: form.querySelector('[name="follow_up_consent"]').checked,
       source: "Contact Form (Website)",
+      landing_page: attribution.landing || "",
+      referrer: attribution.referrer || "",
+      utm_source: attribution.utm_source || "",
+      utm_medium: attribution.utm_medium || "",
+      utm_campaign: attribution.utm_campaign || "",
       tags: ["contact_form"],
       submitted_at: new Date().toISOString()
     };
@@ -4603,8 +4611,44 @@ function redirectLegacyHash() {
   return true;
 }
 
+// Lead attribution: remember where the visitor FIRST landed this session (page, referrer,
+// UTM campaign params) so webhook payloads can report where the lead came from even after
+// they navigate to other pages before converting.
+function captureLeadAttribution() {
+  try {
+    if (sessionStorage.getItem("eva_attribution")) return;
+    const params = new URLSearchParams(location.search || "");
+    sessionStorage.setItem("eva_attribution", JSON.stringify({
+      landing: location.href.split("#")[0],
+      referrer: document.referrer || "",
+      utm_source: params.get("utm_source") || "",
+      utm_medium: params.get("utm_medium") || "",
+      utm_campaign: params.get("utm_campaign") || "",
+      first_seen: new Date().toISOString()
+    }));
+  } catch (e) { /* storage unavailable — attribution is best-effort */ }
+}
+
+function leadAttribution() {
+  try { return JSON.parse(sessionStorage.getItem("eva_attribution")) || {}; } catch (e) { return {}; }
+}
+
+// Formatted "where this lead came from" block appended to webhook notes.
+function leadSourceNote(sourceLabel) {
+  const a = leadAttribution();
+  const currentPage = location.href.split("#")[0];
+  const lines = ["LEAD SOURCE", `Source: ${sourceLabel}`, `Submitted from: ${currentPage}`];
+  if (a.landing && a.landing !== currentPage) lines.push(`First landed on: ${a.landing}`);
+  lines.push(`Referrer: ${a.referrer || "Direct / none"}`);
+  if (a.utm_source || a.utm_medium || a.utm_campaign) {
+    lines.push(`Campaign: ${[a.utm_source, a.utm_medium, a.utm_campaign].filter(Boolean).join(" / ")}`);
+  }
+  return lines.join("\n");
+}
+
 // Browser bootstrap (skipped when this file is evaluated by build.mjs in Node).
 if (typeof document !== "undefined") {
+  captureLeadAttribution();
   if (!redirectLegacyHash()) {
     window.addEventListener("hashchange", redirectLegacyHash);
     setupMenu();

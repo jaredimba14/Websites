@@ -1143,8 +1143,11 @@ function setupInjectablesAssessment() {
         "",
         planText("RECOMMENDED", result.recommendedPlan, result.planPricing && result.planPricing.recommended),
         "",
-        planText("COMPREHENSIVE", result.comprehensivePlan, result.planPricing && result.planPricing.comprehensive)
-      ].join("\n");
+        planText("COMPREHENSIVE", result.comprehensivePlan, result.planPricing && result.planPricing.comprehensive),
+        "",
+        typeof leadSourceNote === "function" ? leadSourceNote("Injectables Assessment (Website)") : ""
+      ].join("\n").trim();
+      const attribution = typeof leadAttribution === "function" ? leadAttribution() : {};
       return {
         first_name: firstName,
         last_name: lastName,
@@ -1152,6 +1155,11 @@ function setupInjectablesAssessment() {
         email: result.email || "",
         city: result.city || "",
         source: "Injectables Assessment (Website)",
+        landing_page: attribution.landing || "",
+        referrer: attribution.referrer || "",
+        utm_source: attribution.utm_source || "",
+        utm_medium: attribution.utm_medium || "",
+        utm_campaign: attribution.utm_campaign || "",
         tags: ["injectable_assessment"],
         consent: true,
         results_link: buildResultsLink(result),
