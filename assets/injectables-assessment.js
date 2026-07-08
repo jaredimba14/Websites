@@ -1085,23 +1085,54 @@ function setupInjectablesAssessment() {
       return d;
     })();
 
+    // v2 codec: every answer is an option INDEX packed as base36 characters — 22 radio
+    // answers (1 char each) + goals/skin/safety bitmasks (2 chars each) = a 29-char code.
+    // Key/option ORDER is the wire format: append only, never reorder.
+    const CODEC_RADIO_KEYS = ["ageRange", "experience", "forehead", "frown", "crowsFeet", "bunnyLines", "lipFlip", "chinDimpling", "masseter", "neckBands", "brow", "underEye", "cheekVolume", "nasolabial", "currentLips", "lipGoal", "marionette", "jowls", "chinProfile", "jawlineGoal", "looseSkin", "budget"];
+    const CODEC_LIST_KEYS = ["goals", "skinConcerns", "safetyFlags"];
+    function codecOptions(key) {
+      if (key === "ageRange") return radioQuestions.age.options;
+      if (key === "budget") return budgetOptions;
+      return radioQuestions[key].options.map(option => option[0]);
+    }
+
     function encodeAnswers(a) {
-      const compact = {};
-      CLINICAL_KEYS.forEach(key => {
-        const value = a[key];
-        if (value === undefined) return;
-        if (LIST_KEYS[key]) {
-          if (!value || !value.length) return;
-          const indices = value.map(v => LIST_KEYS[key].indexOf(v)).filter(i => i >= 0);
-          if (indices.length) compact[ANSWER_KEY_CODES[key]] = indices;
-        } else if (value !== ANSWER_DEFAULTS[key]) {
-          compact[ANSWER_KEY_CODES[key]] = value;
-        }
-      });
-      return btoa(unescape(encodeURIComponent(JSON.stringify(compact)))).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+      let code = "2";
+      for (const key of CODEC_RADIO_KEYS) {
+        const options = codecOptions(key);
+        let index = options.indexOf(a[key]);
+        if (index < 0) index = Math.max(0, options.indexOf(ANSWER_DEFAULTS[key]));
+        code += index.toString(36);
+      }
+      for (const key of CODEC_LIST_KEYS) {
+        let mask = 0;
+        (a[key] || []).forEach(value => { const i = LIST_KEYS[key].indexOf(value); if (i >= 0) mask |= 1 << i; });
+        code += mask.toString(36).padStart(2, "0");
+      }
+      return code;
     }
 
     function decodeAnswers(code) {
+      // v2 compact code
+      if (/^2[0-9a-z]{28}$/.test(code)) {
+        try {
+          const a = {};
+          CLINICAL_KEYS.forEach(key => { const d = ANSWER_DEFAULTS[key]; a[key] = Array.isArray(d) ? d.slice() : d; });
+          CODEC_RADIO_KEYS.forEach((key, position) => {
+            const options = codecOptions(key);
+            const index = parseInt(code[1 + position], 36);
+            if (index >= 0 && index < options.length) a[key] = options[index];
+          });
+          CODEC_LIST_KEYS.forEach((key, position) => {
+            const mask = parseInt(code.slice(23 + position * 2, 25 + position * 2), 36);
+            a[key] = LIST_KEYS[key].filter((value, i) => mask & (1 << i));
+          });
+          return a;
+        } catch (e) {
+          return null;
+        }
+      }
+      // Legacy base64-JSON codes (long and short formats) keep decoding.
       try {
         const parsed = JSON.parse(decodeURIComponent(escape(atob(code.replace(/-/g, "+").replace(/_/g, "/")))));
         const a = {};
