@@ -93,7 +93,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
     <!-- Tailwind utilities precompiled by build.mjs (tailwind.config.js) — no runtime compiler. -->
     <link rel="stylesheet" href="../assets/tailwind.css?v=1" />
-    <link rel="stylesheet" href="../assets/styles.min.css?v=128" />
+    <link rel="stylesheet" href="../assets/styles.min.css?v=129" />
   </head>
   <body class="bg-ivory text-ink antialiased">
     <div class="site-header fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-navy-deep/95 backdrop-blur-xl">
@@ -750,23 +750,6 @@
                 </g>
               </svg>
           <div class="map-hover-label" id="mapHoverLabel" aria-hidden="true"></div>
-        </article>
-        <article class="map-copy-card">
-          <p class="eyebrow">How To Read The Map</p>
-          <h2 id="mapInfoTitle">Grouped by what the treatment is meant to support.</h2>
-          <p id="mapInfoText">Botox/Xeomin usually addresses expression-driven movement. Dermal filler supports volume and contour. PDO threads or biostimulators may support laxity. Skin treatments target texture, pores, fine lines, tone, and crepey quality.</p>
-          <div class="map-legend" aria-label="Treatment map legend">
-            <span><i class="legend-dot dot-botox" aria-hidden="true"></i>Botox/Xeomin</span>
-            <span><i class="legend-dot dot-filler" aria-hidden="true"></i>Filler/Contour</span>
-            <span><i class="legend-dot dot-thread" aria-hidden="true"></i>PDO/Support</span>
-            <span><i class="legend-dot dot-skin" aria-hidden="true"></i>Skin Quality</span>
-          </div>
-          <p class="map-status" id="mapStatus">Education mode: this map shows common injectable and skin-support areas before an assessment is completed.</p>
-          <div class="map-detail" aria-live="polite">
-            <strong id="mapDetailTitle">Hover or click a facial area</strong>
-            <p id="mapDetailText">The map will explain what the area commonly relates to and how it may connect to Botox/Xeomin, filler, PDO support, or skin-quality treatments.</p>
-            <span class="map-detail-meta" id="mapDetailMeta">Educational guide only</span>
-          </div>
           <h3 class="map-groups-title">Treatment Groups</h3>
           <p class="plans-subhead">Everything in your comprehensive plan, grouped by treatment type.</p>
           <div class="treatment-groups" aria-label="Recommendations grouped by treatment type">
@@ -788,14 +771,30 @@
             </article>
           </div>
         </article>
+        <article class="map-copy-card">
+          <p class="eyebrow">How To Read The Map</p>
+          <h2 id="mapInfoTitle">Grouped by what the treatment is meant to support.</h2>
+          <p id="mapInfoText">Botox/Xeomin usually addresses expression-driven movement. Dermal filler supports volume and contour. PDO threads or biostimulators may support laxity. Skin treatments target texture, pores, fine lines, tone, and crepey quality.</p>
+          <div class="map-legend" aria-label="Treatment map legend">
+            <span><i class="legend-dot dot-botox" aria-hidden="true"></i>Botox/Xeomin</span>
+            <span><i class="legend-dot dot-filler" aria-hidden="true"></i>Filler/Contour</span>
+            <span><i class="legend-dot dot-thread" aria-hidden="true"></i>PDO/Support</span>
+            <span><i class="legend-dot dot-skin" aria-hidden="true"></i>Skin Quality</span>
+          </div>
+          <p class="map-status" id="mapStatus">Education mode: this map shows common injectable and skin-support areas before an assessment is completed.</p>
+          <div class="map-detail" aria-live="polite">
+            <strong id="mapDetailTitle">Hover or click a facial area</strong>
+            <p id="mapDetailText">The map will explain what the area commonly relates to and how it may connect to Botox/Xeomin, filler, PDO support, or skin-quality treatments.</p>
+            <span class="map-detail-meta" id="mapDetailMeta">Educational guide only</span>
+          </div>
+          <ul class="map-points">
+            <li>Upper-face zones help patients identify forehead, frown lines, crow's feet, bunny lines, and brow-support areas.</li>
+            <li>Midface zones explain why cheek support may come before under-eye or smile-line filler.</li>
+            <li>Lower-face and neck zones show why jowls, laxity, jawline, chin, and neck bands are evaluated together.</li>
+          </ul>
+        </article>
       </div>
     </section>
-        </div>
-
-        <div class="result-section">
-          <h3>Estimated Treatment Range</h3>
-          <p class="plans-subhead">Totals for your recommended plan.</p>
-          <ul class="skin-list" id="estimateList"></ul>
         </div>
 
         <div class="result-section" id="skinSection">
@@ -1021,8 +1020,8 @@
     </footer>
 
     <script defer src="../assets/particles.min.js?v=1"></script>
-    <script defer src="../assets/injectables-assessment.min.js?v=23"></script>
-    <script defer src="../assets/app.min.js?v=140"></script>
+    <script defer src="../assets/injectables-assessment.min.js?v=24"></script>
+    <script defer src="../assets/app.min.js?v=141"></script>
     <!-- GHL booking widget auto-resize -->
 
     <!-- CHERRY WIDGET BEGIN (loaded after the page is idle so it never competes with first paint) -->

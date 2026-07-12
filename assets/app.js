@@ -2219,6 +2219,80 @@ function botoxPage() {
     <section class="section-shell bg-mist"><div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><div class="mx-auto max-w-4xl text-center"><p class="eyebrow">Benefits</p><h2 class="mt-3 font-serif text-4xl font-semibold text-navy sm:text-5xl">Why Clients Choose Botox and Neurotoxins</h2></div><div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-5">${benefits.map(x=>`<article class="luxe-card p-5"><div class="icon-badge mb-4">${icon("sparkle")}</div><h3 class="font-serif text-2xl font-semibold text-navy">${x[0]}</h3><p class="mt-3 text-sm leading-6 text-ink/66">${x[1]}</p></article>`).join("")}</div></div></section>
     ${neurotoxinFaceMap()}
     <section class="section-shell bg-white"><div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><div class="mx-auto max-w-4xl text-center"><p class="eyebrow">Treatment Areas</p><h2 class="mt-3 font-serif text-4xl font-semibold text-navy sm:text-5xl">Botox and Neurotoxin Treatment Areas</h2><p class="mt-4 leading-8 text-ink/68">Not every client is a candidate for every area, and some uses may be considered off label. Your provider will determine what is appropriate during consultation.</p></div><div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">${treatmentAreas.map(x=>`<article class="rounded-2xl border border-navy/10 bg-mist/70 p-5"><h3 class="font-serif text-2xl font-semibold text-navy">${x[0]}</h3><p class="mt-2 text-sm leading-6 text-ink/66">${x[1]}</p></article>`).join("")}</div></div></section>
+    <section class="section-shell bg-white"><div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><div class="mx-auto max-w-4xl text-center"><p class="eyebrow">Facial Treatment Map</p><h2 class="mt-3 font-serif text-4xl font-semibold text-navy sm:text-5xl">Where Botox Fits On The Facial Treatment Map</h2><p class="mt-4 leading-8 text-ink/68">Gold zones show areas commonly evaluated for Botox and neurotoxins. The other colors show how dermal filler, PDO support, and skin-quality treatments relate, so you can see how your plan may fit together.</p></div><div class="static-face-map mx-auto mt-10 max-w-3xl rounded-[1.5rem] border border-champagne/25 bg-ivory p-4 sm:p-7"><svg class="face-map-svg" viewBox="0 0 520 680" role="img" aria-label="Facial treatment map showing common Botox, filler, PDO, and skin treatment areas">
+                <rect x="0" y="0" width="520" height="680" rx="26" fill="#faf8f6"></rect>
+                <image href="./assets/treatment-face-map.webp" x="10" y="4" width="500" height="672" preserveAspectRatio="xMidYMid meet"></image>
+
+                <g id="zones">
+                  <ellipse id="botox-zone-fullFace" class="zone-static zone-none" cx="260" cy="340" rx="150" ry="250"></ellipse>
+                  <ellipse id="botox-zone-forehead" class="zone-static" style="fill:#c6903d;stroke:#c6903d;fill-opacity:.16;stroke-opacity:.45;stroke-width:2" cx="260" cy="150" rx="92" ry="38"></ellipse>
+                  <ellipse id="botox-zone-glabella" class="zone-static" style="fill:#c6903d;stroke:#c6903d;fill-opacity:.16;stroke-opacity:.45;stroke-width:2" cx="260" cy="214" rx="44" ry="34"></ellipse>
+                  <ellipse id="botox-zone-crowsLeft" class="zone-static" style="fill:#c6903d;stroke:#c6903d;fill-opacity:.16;stroke-opacity:.45;stroke-width:2" cx="154" cy="242" rx="35" ry="28"></ellipse>
+                  <ellipse id="botox-zone-crowsRight" class="zone-static" style="fill:#c6903d;stroke:#c6903d;fill-opacity:.16;stroke-opacity:.45;stroke-width:2" cx="366" cy="242" rx="35" ry="28"></ellipse>
+                  <ellipse id="botox-zone-templeLeft" class="zone-static" style="fill:#2f7890;stroke:#2f7890;fill-opacity:.16;stroke-opacity:.45;stroke-width:2" cx="158" cy="188" rx="38" ry="62"></ellipse>
+                  <ellipse id="botox-zone-templeRight" class="zone-static" style="fill:#2f7890;stroke:#2f7890;fill-opacity:.16;stroke-opacity:.45;stroke-width:2" cx="362" cy="188" rx="38" ry="62"></ellipse>
+                  <ellipse id="botox-zone-underEyeLeft" class="zone-static" style="fill:#2f7890;stroke:#2f7890;fill-opacity:.16;stroke-opacity:.45;stroke-width:2" cx="198" cy="284" rx="58" ry="25"></ellipse>
+                  <ellipse id="botox-zone-underEyeRight" class="zone-static" style="fill:#2f7890;stroke:#2f7890;fill-opacity:.16;stroke-opacity:.45;stroke-width:2" cx="322" cy="284" rx="58" ry="25"></ellipse>
+                  <ellipse id="botox-zone-nose" class="zone-static" style="fill:#c6903d;stroke:#c6903d;fill-opacity:.16;stroke-opacity:.45;stroke-width:2" cx="260" cy="294" rx="28" ry="54"></ellipse>
+                  <ellipse id="botox-zone-cheekLeft" class="zone-static" style="fill:#2f7890;stroke:#2f7890;fill-opacity:.16;stroke-opacity:.45;stroke-width:2" cx="184" cy="336" rx="68" ry="58"></ellipse>
+                  <ellipse id="botox-zone-cheekRight" class="zone-static" style="fill:#2f7890;stroke:#2f7890;fill-opacity:.16;stroke-opacity:.45;stroke-width:2" cx="336" cy="336" rx="68" ry="58"></ellipse>
+                  <ellipse id="botox-zone-nasolabialLeft" class="zone-static" style="fill:#2f7890;stroke:#2f7890;fill-opacity:.16;stroke-opacity:.45;stroke-width:2" cx="202" cy="388" rx="42" ry="62"></ellipse>
+                  <ellipse id="botox-zone-nasolabialRight" class="zone-static" style="fill:#2f7890;stroke:#2f7890;fill-opacity:.16;stroke-opacity:.45;stroke-width:2" cx="318" cy="388" rx="42" ry="62"></ellipse>
+                  <ellipse id="botox-zone-lips" class="zone-static" style="fill:#c6903d;stroke:#c6903d;fill-opacity:.16;stroke-opacity:.45;stroke-width:2" cx="260" cy="404" rx="62" ry="28"></ellipse>
+                  <ellipse id="botox-zone-mouthCornerLeft" class="zone-static" style="fill:#2f7890;stroke:#2f7890;fill-opacity:.16;stroke-opacity:.45;stroke-width:2" cx="208" cy="418" rx="30" ry="30"></ellipse>
+                  <ellipse id="botox-zone-mouthCornerRight" class="zone-static" style="fill:#2f7890;stroke:#2f7890;fill-opacity:.16;stroke-opacity:.45;stroke-width:2" cx="312" cy="418" rx="30" ry="30"></ellipse>
+                  <ellipse id="botox-zone-marionetteLeft" class="zone-static" style="fill:#2f7890;stroke:#2f7890;fill-opacity:.16;stroke-opacity:.45;stroke-width:2" cx="202" cy="464" rx="42" ry="60"></ellipse>
+                  <ellipse id="botox-zone-marionetteRight" class="zone-static" style="fill:#2f7890;stroke:#2f7890;fill-opacity:.16;stroke-opacity:.45;stroke-width:2" cx="318" cy="464" rx="42" ry="60"></ellipse>
+                  <ellipse id="botox-zone-masseterLeft" class="zone-static" style="fill:#c6903d;stroke:#c6903d;fill-opacity:.16;stroke-opacity:.45;stroke-width:2" cx="148" cy="382" rx="45" ry="62"></ellipse>
+                  <ellipse id="botox-zone-masseterRight" class="zone-static" style="fill:#c6903d;stroke:#c6903d;fill-opacity:.16;stroke-opacity:.45;stroke-width:2" cx="372" cy="382" rx="45" ry="62"></ellipse>
+                  <ellipse id="botox-zone-jawlineLeft" class="zone-static" style="fill:#2f7890;stroke:#2f7890;fill-opacity:.16;stroke-opacity:.45;stroke-width:2" cx="154" cy="505" rx="62" ry="48"></ellipse>
+                  <ellipse id="botox-zone-jawlineRight" class="zone-static" style="fill:#2f7890;stroke:#2f7890;fill-opacity:.16;stroke-opacity:.45;stroke-width:2" cx="366" cy="505" rx="62" ry="48"></ellipse>
+                  <ellipse id="botox-zone-lowerFaceLeft" class="zone-static" style="fill:#8b6f9f;stroke:#8b6f9f;fill-opacity:.16;stroke-opacity:.45;stroke-width:2" cx="190" cy="455" rx="58" ry="72"></ellipse>
+                  <ellipse id="botox-zone-lowerFaceRight" class="zone-static" style="fill:#8b6f9f;stroke:#8b6f9f;fill-opacity:.16;stroke-opacity:.45;stroke-width:2" cx="330" cy="455" rx="58" ry="72"></ellipse>
+                  <ellipse id="botox-zone-chin" class="zone-static" style="fill:#c6903d;stroke:#c6903d;fill-opacity:.16;stroke-opacity:.45;stroke-width:2" cx="260" cy="535" rx="54" ry="45"></ellipse>
+                  <ellipse id="botox-zone-neck" class="zone-static" style="fill:#c6903d;stroke:#c6903d;fill-opacity:.16;stroke-opacity:.45;stroke-width:2" cx="260" cy="610" rx="84" ry="58"></ellipse>
+                  <ellipse id="botox-zone-decolletage" class="zone-static" style="fill:#6a8f65;stroke:#6a8f65;fill-opacity:.16;stroke-opacity:.45;stroke-width:2" cx="260" cy="656" rx="118" ry="24"></ellipse>
+                </g>
+
+                <g id="faceMarkers">
+                  <g class="map-marker" data-zone="zone-forehead">
+                    <line x1="260" y1="150" x2="385" y2="138"></line>
+                    <circle class="outer" cx="260" cy="150" r="12"></circle>
+                    <circle class="inner" cx="260" cy="150" r="4"></circle>
+                    <text x="390" y="141">Forehead Lines</text>
+                  </g>
+                  <g class="map-marker" data-zone="zone-glabella">
+                    <line x1="260" y1="214" x2="386" y2="205"></line>
+                    <circle class="outer" cx="260" cy="214" r="12"></circle>
+                    <circle class="inner" cx="260" cy="214" r="4"></circle>
+                    <text x="390" y="208">Frown Lines</text>
+                  </g>
+                  <g class="map-marker" data-zone="zone-cheekLeft">
+                    <line x1="184" y1="336" x2="96" y2="326"></line>
+                    <circle class="outer" cx="184" cy="336" r="12"></circle>
+                    <circle class="inner" cx="184" cy="336" r="4"></circle>
+                    <text x="42" y="329">Cheek Filler</text>
+                  </g>
+                  <g class="map-marker" data-zone="zone-fullFace">
+                    <line x1="260" y1="340" x2="384" y2="323"></line>
+                    <circle class="outer" cx="260" cy="340" r="12"></circle>
+                    <circle class="inner" cx="260" cy="340" r="4"></circle>
+                    <text x="390" y="326">Full Face Rejuvenation</text>
+                  </g>
+                  <g class="map-marker" data-zone="zone-jawlineLeft">
+                    <line x1="154" y1="505" x2="82" y2="500"></line>
+                    <circle class="outer" cx="154" cy="505" r="12"></circle>
+                    <circle class="inner" cx="154" cy="505" r="4"></circle>
+                    <text x="40" y="503">Jawline Filler</text>
+                  </g>
+                  <g class="map-marker" data-zone="zone-neck">
+                    <line x1="260" y1="610" x2="96" y2="536"></line>
+                    <circle class="outer" cx="260" cy="610" r="12"></circle>
+                    <circle class="inner" cx="260" cy="610" r="4"></circle>
+                    <text x="34" y="539">PDO Jawline Contouring</text>
+                  </g>
+                </g>
+              </svg><div class="static-map-legend"><span><i class="legend-swatch" style="background:#c6903d"></i>Botox/Xeomin</span><span><i class="legend-swatch" style="background:#2f7890"></i>Filler/Contour</span><span><i class="legend-swatch" style="background:#8b6f9f"></i>PDO/Support</span><span><i class="legend-swatch" style="background:#6a8f65"></i>Skin Quality</span></div><p class="static-map-note">Educational reference only. Your provider confirms appropriate areas, products, and dosing at your consultation.</p></div></div></section>
     <section class="section-shell bg-mist"><div class="mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-[.9fr_1.1fr] lg:px-8"><div><p class="eyebrow">Ideal Candidates</p><h2 class="mt-3 font-serif text-4xl font-semibold text-navy sm:text-5xl">Who May Be A Good Candidate?</h2><p class="mt-4 leading-8 text-ink/68">You may be a good candidate for Botox or neurotoxin treatment if you are looking for a non surgical option to soften expression related lines, support facial balance, or address muscle related concerns in the face, jawline, or neck.</p><p class="mt-4 text-sm leading-7 text-ink/60">Final candidacy is always confirmed by the provider before treatment.</p></div><div class="flex flex-wrap content-start gap-2">${candidates.map(x=>`<span class="treatment-best-chip">${x}</span>`).join("")}</div></div></section>
     <section class="section-shell bg-ivory"><div class="mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-[.8fr_1.2fr] lg:px-8"><div><p class="eyebrow">What To Expect</p><h2 class="mt-3 font-serif text-4xl font-semibold text-navy sm:text-5xl">What Happens During Your Appointment</h2><p class="mt-4 leading-8 text-ink/68">Most clients are able to return to normal daily activities after treatment, but temporary redness, swelling, tenderness, or minor bruising may occur. Results develop gradually and timing varies by person, product, treatment area, and individual response.</p></div><div class="grid gap-4 sm:grid-cols-2">${steps.map((x,i)=>`<article class="rounded-2xl border border-navy/10 bg-white p-5"><p class="treatment-card-label">Step ${i+1}</p><h3 class="mt-2 font-serif text-2xl font-semibold text-navy">${x[0]}</h3><p class="mt-2 text-sm leading-6 text-ink/66">${x[1]}</p></article>`).join("")}</div></div></section>
     <section class="section-shell bg-white"><div class="mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-2 lg:px-8"><article class="rounded-[1.5rem] border border-navy/10 bg-ivory p-6 sm:p-8"><p class="eyebrow">Downtime</p><h2 class="mt-3 font-serif text-4xl font-semibold text-navy">Is There Downtime After Botox or Neurotoxins?</h2><p class="mt-4 leading-8 text-ink/70">Most clients are able to return to normal daily activities after neurotoxin treatment, but temporary redness, swelling, tenderness, or minor bruising at the injection site may occur.</p><p class="mt-4 text-sm leading-7 text-ink/64">Your provider will give you specific aftercare instructions. Results are not immediate. Neurotoxin effects typically develop gradually, and timing can vary by person, product, treatment area, and individual response.</p></article><article class="rounded-[1.5rem] border border-navy/10 bg-mist p-6 sm:p-8"><p class="eyebrow">Results</p><h2 class="mt-3 font-serif text-4xl font-semibold text-navy">What Results Can You Expect?</h2><p class="mt-4 leading-8 text-ink/70">Botox and neurotoxin treatments are designed to create a temporary softening effect in treated areas. The goal is not to erase every line or create a frozen look. The goal is to support a refreshed, natural looking result that fits your facial movement and goals.</p><p class="mt-4 text-sm leading-7 text-ink/64">Results depend on the area treated, muscle strength, anatomy, previous treatment history, dose and placement, and your body's individual response. Individual results vary.</p></article></div></section>

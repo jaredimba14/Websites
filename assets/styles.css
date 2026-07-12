@@ -5024,14 +5024,94 @@ p.text-sm {
   border-radius: 1.25rem;
   border-bottom-width: 1px;
 }
-.inj-quiz .map-copy-card .map-groups-title {
+.inj-quiz .map-groups-title {
   color: #06324a;
   font-family: "Cormorant Garamond", serif;
   font-size: 1.6rem;
   font-weight: 600;
   margin: 1.6rem 0 .2rem;
 }
+.inj-quiz .face-map-card .plans-subhead,
 .inj-quiz .map-copy-card .plans-subhead {
   font-size: .85rem;
   margin-bottom: .35rem;
+}
+
+/* Static facial treatment map on treatment pages (education-mode look, no quiz JS). */
+.static-face-map .face-map-svg {
+  display: block;
+  height: auto;
+  width: 100%;
+}
+.static-face-map .zone-static {
+  transition: fill-opacity .2s ease;
+}
+.static-face-map .zone-static:hover {
+  fill-opacity: .34;
+}
+.static-face-map .zone-none {
+  fill: transparent;
+  stroke: transparent;
+}
+.static-face-map .map-marker line {
+  stroke: rgba(184, 138, 68, .5);
+  stroke-linecap: round;
+  stroke-width: 2;
+}
+.static-face-map .map-marker circle.outer {
+  fill: #fbf7ee;
+  stroke: #b88a44;
+  stroke-width: 3;
+}
+.static-face-map .map-marker circle.inner {
+  fill: #b88a44;
+}
+.static-face-map .map-marker text {
+  fill: #06324a;
+  font-family: "Inter", sans-serif;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .01em;
+  paint-order: stroke;
+  stroke: #fff;
+  stroke-width: 3px;
+  text-transform: uppercase;
+}
+.static-map-legend {
+  display: grid;
+  gap: .75rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 1.25rem;
+}
+@media (min-width: 640px) {
+  .static-map-legend { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+.static-map-legend span {
+  align-items: center;
+  background: #fff;
+  border: 1px solid rgba(214, 178, 94, .25);
+  border-radius: .75rem;
+  color: #06324a;
+  display: flex;
+  font-family: "Inter", sans-serif;
+  font-size: .7rem;
+  font-weight: 700;
+  gap: .55rem;
+  letter-spacing: .06em;
+  padding: .8rem;
+  text-transform: uppercase;
+}
+.static-map-legend .legend-swatch {
+  border-radius: 999px;
+  display: inline-block;
+  flex: none;
+  height: .72rem;
+  width: .72rem;
+}
+.static-map-note {
+  color: rgba(20, 37, 54, .55);
+  font-size: .78rem;
+  line-height: 1.6;
+  margin: 1rem 0 0;
+  text-align: center;
 }
