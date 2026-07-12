@@ -93,7 +93,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
     <!-- Tailwind utilities precompiled by build.mjs (tailwind.config.js) — no runtime compiler. -->
     <link rel="stylesheet" href="../assets/tailwind.css?v=1" />
-    <link rel="stylesheet" href="../assets/styles.min.css?v=125" />
+    <link rel="stylesheet" href="../assets/styles.min.css?v=126" />
   </head>
   <body class="bg-ivory text-ink antialiased">
     <div class="site-header fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-navy-deep/95 backdrop-blur-xl">
@@ -394,6 +394,325 @@
       </div>
     </section>
 
+    <section id="assessment" class="assessment-shell welcome-mode" aria-labelledby="quizTitle">
+      <div class="quiz-welcome" id="quizWelcome">
+        <span class="quiz-welcome-badge">Injectables Assessment &middot; Find Your Starting Point</span>
+        <h2>Stop Guessing.<br>Start With A Personalized Plan.</h2>
+        <p>You already know what bothers you when you look in the mirror &mdash; maybe fine lines, lost volume, a tired look, or simply not feeling like yourself. The challenge usually isn't wanting treatment &mdash; it's knowing where to start.</p>
+        <p>Answer a few questions about your goals, features, and comfort level, and we'll build your personalized treatment plan so you understand:</p>
+        <ul class="quiz-welcome-list">
+          <li>Your facial priority areas</li>
+          <li>Three plan options &mdash; Minimum, Recommended, Comprehensive</li>
+          <li>Itemized Botox and filler estimates by treatment area</li>
+          <li>Estimated treatment investment</li>
+          <li>New Client Special pricing applied</li>
+          <li>Your recommended next step</li>
+        </ul>
+        <button type="button" class="btn btn-primary quiz-welcome-cta" id="startAssessmentBtn">Build My Treatment Plan &rarr;</button>
+        <div class="quiz-welcome-trust"><span>3 to 5 minutes</span><span>Free &amp; private</span><span>No commitment</span><span>Provider-reviewed</span></div>
+      </div>
+
+      <div class="quiz-top">
+        <div class="quiz-meta">
+          <div>
+            <p class="step-label" id="stepLabel">Step 1 of 14</p>
+            <h2 id="quizTitle">Injectables Assessment</h2>
+          </div>
+          <p class="inline-note">Educational results only. Provider evaluation confirms the final plan.</p>
+        </div>
+        <div class="progress-track" aria-hidden="true"><div class="progress-bar" id="progressBar"></div></div>
+      </div>
+
+      <form id="assessmentForm" class="quiz-card" novalidate>
+        <section class="question-section active" data-section="safety" aria-labelledby="safetyTitle">
+          <div class="section-heading">
+            <p class="eyebrow">Section 1</p>
+            <h2 id="safetyTitle">Safety Screening</h2>
+            <p>These questions do not disqualify you inside the quiz, but selected risk answers will recommend provider review before treatment.</p>
+          </div>
+          <div class="question-list" id="safetyQuestions"></div>
+          <div class="warning-box" id="riskPreview">Your answers suggest this should be reviewed by the provider before treatment. A consultation is required before any recommendation is finalized.</div>
+        </section>
+
+        <section class="question-section" data-section="goals" aria-labelledby="goalsTitle">
+          <div class="section-heading">
+            <p class="eyebrow">Section 2</p>
+            <h2 id="goalsTitle">Main Goals</h2>
+            <p>Select up to three priorities. This helps the plan read like a full-face assessment instead of one concern equaling one treatment.</p>
+          </div>
+          <div class="option-grid" id="goalsGrid"></div>
+          <span class="error" id="goalsError">Please choose 1 to 3 goals.</span>
+        </section>
+
+        <section class="question-section" data-section="age" aria-labelledby="ageTitle">
+          <div class="section-heading">
+            <p class="eyebrow">Section 3</p>
+            <h2 id="ageTitle">Age &amp; Experience</h2>
+            <p>Your age and how much injectable experience you have both shape the recommendation. First-timers are guided to start more conservatively.</p>
+          </div>
+          <div class="option-grid compact" id="ageGrid"></div>
+          <div class="question-list" id="experienceQuestions"></div>
+        </section>
+
+        <section class="question-section" data-section="upperFace" aria-labelledby="upperFaceTitle">
+          <div class="section-heading">
+            <p class="eyebrow">Section 4</p>
+            <h2 id="upperFaceTitle">Upper Face and Botox Logic</h2>
+            <p>Movement-related wrinkles typically map to Botox or Xeomin estimates. Units are shown as educational ranges only.</p>
+          </div>
+          <div class="question-list" id="upperFaceQuestions"></div>
+        </section>
+
+        <section class="question-section" data-section="eyes" aria-labelledby="eyesTitle">
+          <div class="section-heading">
+            <p class="eyebrow">Section 5</p>
+            <h2 id="eyesTitle">Brow and Eye Support</h2>
+            <p>The eye area needs conservative logic. Hollowing, puffiness, and brow heaviness are routed differently for safety and natural results.</p>
+          </div>
+          <div class="question-list" id="eyeQuestions"></div>
+        </section>
+
+        <section class="question-section" data-section="cheeks" aria-labelledby="cheeksTitle">
+          <div class="section-heading">
+            <p class="eyebrow">Section 6</p>
+            <h2 id="cheeksTitle">Midface and Cheek Support</h2>
+            <p>Cheek structure often supports under-eye hollowing, smile lines, tired appearance, and early lower-face heaviness.</p>
+          </div>
+          <div class="question-list" id="cheekQuestions"></div>
+        </section>
+
+        <section class="question-section" data-section="folds" aria-labelledby="foldsTitle">
+          <div class="section-heading">
+            <p class="eyebrow">Section 7</p>
+            <h2 id="foldsTitle">Smile Lines</h2>
+            <p>Nasolabial folds are not automatically treated alone when cheek support is lacking.</p>
+          </div>
+          <div class="question-list" id="foldQuestions"></div>
+        </section>
+
+        <section class="question-section" data-section="lips" aria-labelledby="lipsTitle">
+          <div class="section-heading">
+            <p class="eyebrow">Section 8</p>
+            <h2 id="lipsTitle">Lips</h2>
+            <p>Lip recommendations should stay anatomy-aware. Final amount depends on tissue, proportions, and safety.</p>
+          </div>
+          <div class="question-list" id="lipQuestions"></div>
+        </section>
+
+        <section class="question-section" data-section="lowerFace" aria-labelledby="lowerFaceTitle">
+          <div class="section-heading">
+            <p class="eyebrow">Section 9</p>
+            <h2 id="lowerFaceTitle">Lower Face, Marionette Lines, and Jowls</h2>
+            <p>Lower-face planning looks at cheek support, jowling, marionette depth, chin, jawline, and laxity together.</p>
+          </div>
+          <div class="question-list" id="lowerFaceQuestions"></div>
+        </section>
+
+        <section class="question-section" data-section="jawline" aria-labelledby="jawlineTitle">
+          <div class="section-heading">
+            <p class="eyebrow">Section 10</p>
+            <h2 id="jawlineTitle">Chin and Jawline</h2>
+            <p>Facial imbalance can be supported with filler or contouring when it fits the anatomy and overall plan.</p>
+          </div>
+          <div class="question-list" id="jawlineQuestions"></div>
+        </section>
+
+        <section class="question-section" data-section="neck" aria-labelledby="neckTitle">
+          <div class="section-heading">
+            <p class="eyebrow">Section 11</p>
+            <h2 id="neckTitle">Neck and Skin Laxity</h2>
+            <p>Laxity is not always a filler problem. Threads, biostimulator, or provider evaluation may be more appropriate.</p>
+          </div>
+          <div class="question-list" id="neckQuestions"></div>
+        </section>
+
+        <section class="question-section" data-section="skin" aria-labelledby="skinTitle">
+          <div class="section-heading">
+            <p class="eyebrow">Section 12</p>
+            <h2 id="skinTitle">Skin Quality</h2>
+            <p>Fine lines, texture, pores, crepey skin, scars, and tone concerns may need skin treatments rather than only Botox or filler.</p>
+          </div>
+          <div class="option-grid" id="skinGrid"></div>
+        </section>
+
+        <section class="question-section" data-section="budget" aria-labelledby="budgetTitle">
+          <div class="section-heading">
+            <p class="eyebrow">Section 13</p>
+            <h2 id="budgetTitle">Budget Comfort</h2>
+            <p>Budget controls how the Minimum, Recommended, and Comprehensive plans are phased.</p>
+          </div>
+          <div class="option-grid" id="budgetGrid"></div>
+        </section>
+
+        <section class="question-section" data-section="contact" aria-labelledby="contactTitle">
+          <div class="section-heading">
+            <p class="eyebrow">Section 14</p>
+            <h2 id="contactTitle">Almost Done &mdash; Where Should We Send Your Results?</h2>
+            <p>These details are used to send you a copy of your results by text and email and to follow up about your plan. See our <a href="../privacy-policy/" target="_blank" rel="noopener">Privacy Policy</a> for how your information is handled.</p>
+          </div>
+          <div class="field-grid">
+            <div class="field" data-field="name">
+              <label for="name">Name</label>
+              <input id="name" name="name" autocomplete="name" required>
+              <span class="error" id="nameError">Please enter your name.</span>
+            </div>
+            <div class="field" data-field="phone">
+              <label for="phone">Phone</label>
+              <input id="phone" name="phone" autocomplete="tel" required>
+              <span class="error" id="phoneError">Please enter a phone number.</span>
+            </div>
+            <div class="field" data-field="email">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" autocomplete="email" required>
+              <span class="error" id="emailError">Please enter a valid email.</span>
+            </div>
+            <div class="field" data-field="city">
+              <label for="city">City/State</label>
+              <input id="city" name="city" autocomplete="address-level2" required>
+              <span class="error" id="cityError">Please enter your city and state.</span>
+            </div>
+            <div class="field">
+              <label for="location">Preferred Treatment Location</label>
+              <select id="location" name="location">
+                <option value="Mobile appointment">Mobile appointment</option>
+                <option value="Provider location">Provider location</option>
+                <option value="Not sure">Not sure yet</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="contactTime">Best Time To Contact</label>
+              <select id="contactTime" name="contactTime">
+                <option value="Morning">Morning</option>
+                <option value="Afternoon">Afternoon</option>
+                <option value="Evening">Evening</option>
+                <option value="Any time">Any time</option>
+              </select>
+            </div>
+          </div>
+          <label class="consent-row" data-consent><input type="checkbox" id="assessmentConsent" name="assessmentConsent"> <span>I agree to receive my assessment results and follow-up messages from Elite VitaMed by text and email. Consent is not a condition of purchase and message/data rates may apply. (Final consent wording to be provider-reviewed before launch.)</span></label>
+          <span class="error" id="consentError">Please agree to receive your results to continue.</span>
+        </section>
+
+        <div class="quiz-actions">
+          <button class="btn btn-light" type="button" id="backBtn">Back</button>
+          <p class="inline-note" id="sectionHelp">Complete each section to continue.</p>
+          <button class="btn btn-secondary" type="button" id="nextBtn">Next</button>
+        </div>
+      </form>
+
+      <aside class="lead-note">
+        <strong>Important:</strong> This tool is designed to provide results that are generally close to what a qualified practitioner may recommend based on your responses, including an estimate of the treatments you are most likely to receive. It does not provide medical advice, a diagnosis, or a final treatment plan. A comprehensive facial assessment will still be performed during your appointment, and final treatment recommendations, eligibility, and dosage may vary based on your individual anatomy, goals, and clinical findings.
+      </aside>
+
+      <section id="results" class="results-panel" aria-live="polite" aria-labelledby="resultsTitle">
+        <div class="results-header">
+          <div>
+            <p class="eyebrow">Educational Results</p>
+            <h2 id="resultsTitle">Facial Assessment Summary</h2>
+            <p id="assessmentSummary"></p>
+          </div>
+          <button class="btn btn-light" type="button" id="retakeBtn">Retake</button>
+        </div>
+
+        <div class="warning-box" id="riskResult"></div>
+
+        <div class="summary-grid">
+          <div class="summary-box"><span>Botox/Xeomin</span><strong id="botoxRange">0 units</strong></div>
+          <div class="summary-box"><span>Filler</span><strong id="fillerRange">0 syringes</strong></div>
+          <div class="summary-box"><span>PDO Threads</span><strong id="threadRange">0 threads</strong></div>
+          <div class="summary-box"><span>Budget</span><strong id="budgetOutput">-</strong></div>
+        </div>
+
+        <div class="result-section">
+          <h3>Priority Areas</h3>
+          <ul class="priority-list" id="priorityAreas"></ul>
+        </div>
+
+        <div class="result-section">
+          <h3>Treatment Groups</h3>
+          <p class="plans-subhead">Everything in your comprehensive plan, grouped by treatment type.</p>
+          <div class="treatment-groups" aria-label="Recommendations grouped by treatment type">
+            <article class="treatment-group-card">
+              <h4><i class="legend-dot dot-botox" aria-hidden="true"></i>Botox/Xeomin</h4>
+              <ul class="group-list" id="botoxGroup"></ul>
+            </article>
+            <article class="treatment-group-card">
+              <h4><i class="legend-dot dot-filler" aria-hidden="true"></i>Dermal Filler</h4>
+              <ul class="group-list" id="fillerGroup"></ul>
+            </article>
+            <article class="treatment-group-card">
+              <h4><i class="legend-dot dot-thread" aria-hidden="true"></i>PDO / Biostimulator</h4>
+              <ul class="group-list" id="pdoGroup"></ul>
+            </article>
+            <article class="treatment-group-card">
+              <h4><i class="legend-dot dot-skin" aria-hidden="true"></i>Skin Quality</h4>
+              <ul class="group-list" id="skinGroup"></ul>
+            </article>
+          </div>
+        </div>
+
+        <div class="result-section plans-highlight">
+          <p class="plans-eyebrow">Your Personalized Result</p>
+          <h3>Your Three Plan Options</h3>
+          <p class="plans-subhead">Three provider-guided starting points based on your answers. The recommended plan is the best balance for most clients.</p>
+          <div class="plans-grid">
+            <article class="plan-card" data-plan-card="minimum">
+              <span class="plan-chip">Minimum</span>
+              <h4>Main Concern Only</h4>
+              <p>Designed to match budget and address the highest-impact priority first.</p>
+              <div class="plan-price" id="minimumPrice">Estimated pricing: pending</div>
+              <button class="plan-select" type="button" data-plan="minimum">Show Minimum On Map</button>
+              <ul class="plan-list" id="minimumPlan"></ul>
+            </article>
+            <article class="plan-card featured" data-plan-card="recommended">
+              <span class="plan-chip">Recommended</span>
+              <h4>Best Balanced Plan</h4>
+              <p>Balances wrinkle relaxation, support, contour, laxity, and skin quality where relevant.</p>
+              <div class="plan-price" id="recommendedPrice">Estimated pricing: pending</div>
+              <button class="plan-select" type="button" data-plan="recommended">Show Recommended On Map</button>
+              <ul class="plan-list" id="recommendedPlan"></ul>
+            </article>
+            <article class="plan-card" data-plan-card="comprehensive">
+              <span class="plan-chip">Comprehensive</span>
+              <h4>Full-Face Harmonization</h4>
+              <p>Includes relevant options without pushing an overly aggressive result.</p>
+              <div class="plan-price" id="comprehensivePrice">Estimated pricing: pending</div>
+              <button class="plan-select" type="button" data-plan="comprehensive">Show Comprehensive On Map</button>
+              <ul class="plan-list" id="comprehensivePlan"></ul>
+            </article>
+          </div>
+        </div>
+
+        <div class="result-section">
+          <h3>Estimated Treatment Range</h3>
+          <p class="plans-subhead">Totals for your recommended plan.</p>
+          <ul class="skin-list" id="estimateList"></ul>
+        </div>
+
+        <div class="result-section" id="skinSection">
+          <h3>Skin Quality Recommendations</h3>
+          <ul class="skin-list" id="skinRecommendations"></ul>
+        </div>
+
+        <div class="result-section">
+          <div class="provider-note">
+            <strong>Provider Note</strong>
+            <p id="providerNote"></p>
+          </div>
+        </div>
+
+        <div class="result-section">
+          <h3>Next Steps</h3>
+          <p class="disclaimer">This tool is designed to provide results that are generally close to what a qualified practitioner may recommend based on your responses, including an estimate of the treatments you are most likely to receive. It does not provide medical advice, a diagnosis, or a final treatment plan. A comprehensive facial assessment will still be performed during your appointment, and final treatment recommendations, eligibility, and dosage may vary based on your individual anatomy, goals, and clinical findings.</p>
+          <p class="webhook-status" id="webhookStatus"></p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="../book/injectables/">Book A Consultation</a>
+            <a class="btn btn-secondary" href="../contact/">Request A Call</a>
+          </div>
+        </div>
+      </section>
+    </section>
+
     <section class="content-section assessment-intro-section" aria-labelledby="introTitle">
       <div class="content-inner assessment-intro-layout">
         <div class="section-copy assessment-intro-copy">
@@ -596,308 +915,6 @@
         </article>
       </div>
     </section>
-
-    <section id="assessment" class="assessment-shell" aria-labelledby="quizTitle">
-      <div class="quiz-top">
-        <div class="quiz-meta">
-          <div>
-            <p class="step-label" id="stepLabel">Step 1 of 14</p>
-            <h2 id="quizTitle">Injectables Assessment</h2>
-          </div>
-          <p class="inline-note">Educational results only. Provider evaluation confirms the final plan.</p>
-        </div>
-        <div class="progress-track" aria-hidden="true"><div class="progress-bar" id="progressBar"></div></div>
-      </div>
-
-      <form id="assessmentForm" class="quiz-card" novalidate>
-        <section class="question-section active" data-section="contact" aria-labelledby="contactTitle">
-          <div class="section-heading">
-            <p class="eyebrow">Section 1</p>
-            <h2 id="contactTitle">Contact Info</h2>
-            <p>These details are used to send you a copy of your results by text and email and to follow up about your plan. See our <a href="../privacy-policy/" target="_blank" rel="noopener">Privacy Policy</a> for how your information is handled.</p>
-          </div>
-          <div class="field-grid">
-            <div class="field" data-field="name">
-              <label for="name">Name</label>
-              <input id="name" name="name" autocomplete="name" required>
-              <span class="error" id="nameError">Please enter your name.</span>
-            </div>
-            <div class="field" data-field="phone">
-              <label for="phone">Phone</label>
-              <input id="phone" name="phone" autocomplete="tel" required>
-              <span class="error" id="phoneError">Please enter a phone number.</span>
-            </div>
-            <div class="field" data-field="email">
-              <label for="email">Email</label>
-              <input id="email" name="email" type="email" autocomplete="email" required>
-              <span class="error" id="emailError">Please enter a valid email.</span>
-            </div>
-            <div class="field" data-field="city">
-              <label for="city">City/State</label>
-              <input id="city" name="city" autocomplete="address-level2" required>
-              <span class="error" id="cityError">Please enter your city and state.</span>
-            </div>
-            <div class="field">
-              <label for="location">Preferred Treatment Location</label>
-              <select id="location" name="location">
-                <option value="Mobile appointment">Mobile appointment</option>
-                <option value="Provider location">Provider location</option>
-                <option value="Not sure">Not sure yet</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="contactTime">Best Time To Contact</label>
-              <select id="contactTime" name="contactTime">
-                <option value="Morning">Morning</option>
-                <option value="Afternoon">Afternoon</option>
-                <option value="Evening">Evening</option>
-                <option value="Any time">Any time</option>
-              </select>
-            </div>
-          </div>
-          <label class="consent-row" data-consent><input type="checkbox" id="assessmentConsent" name="assessmentConsent"> <span>I agree to receive my assessment results and follow-up messages from Elite VitaMed by text and email. Consent is not a condition of purchase and message/data rates may apply. (Final consent wording to be provider-reviewed before launch.)</span></label>
-          <span class="error" id="consentError">Please agree to receive your results to continue.</span>
-        </section>
-
-        <section class="question-section" data-section="safety" aria-labelledby="safetyTitle">
-          <div class="section-heading">
-            <p class="eyebrow">Section 2</p>
-            <h2 id="safetyTitle">Safety Screening</h2>
-            <p>These questions do not disqualify you inside the quiz, but selected risk answers will recommend provider review before treatment.</p>
-          </div>
-          <div class="question-list" id="safetyQuestions"></div>
-          <div class="warning-box" id="riskPreview">Your answers suggest this should be reviewed by the provider before treatment. A consultation is required before any recommendation is finalized.</div>
-        </section>
-
-        <section class="question-section" data-section="goals" aria-labelledby="goalsTitle">
-          <div class="section-heading">
-            <p class="eyebrow">Section 3</p>
-            <h2 id="goalsTitle">Main Goals</h2>
-            <p>Select up to three priorities. This helps the plan read like a full-face assessment instead of one concern equaling one treatment.</p>
-          </div>
-          <div class="option-grid" id="goalsGrid"></div>
-          <span class="error" id="goalsError">Please choose 1 to 3 goals.</span>
-        </section>
-
-        <section class="question-section" data-section="age" aria-labelledby="ageTitle">
-          <div class="section-heading">
-            <p class="eyebrow">Section 4</p>
-            <h2 id="ageTitle">Age &amp; Experience</h2>
-            <p>Your age and how much injectable experience you have both shape the recommendation. First-timers are guided to start more conservatively.</p>
-          </div>
-          <div class="option-grid compact" id="ageGrid"></div>
-          <div class="question-list" id="experienceQuestions"></div>
-        </section>
-
-        <section class="question-section" data-section="upperFace" aria-labelledby="upperFaceTitle">
-          <div class="section-heading">
-            <p class="eyebrow">Section 5</p>
-            <h2 id="upperFaceTitle">Upper Face and Botox Logic</h2>
-            <p>Movement-related wrinkles typically map to Botox or Xeomin estimates. Units are shown as educational ranges only.</p>
-          </div>
-          <div class="question-list" id="upperFaceQuestions"></div>
-        </section>
-
-        <section class="question-section" data-section="eyes" aria-labelledby="eyesTitle">
-          <div class="section-heading">
-            <p class="eyebrow">Section 6</p>
-            <h2 id="eyesTitle">Brow and Eye Support</h2>
-            <p>The eye area needs conservative logic. Hollowing, puffiness, and brow heaviness are routed differently for safety and natural results.</p>
-          </div>
-          <div class="question-list" id="eyeQuestions"></div>
-        </section>
-
-        <section class="question-section" data-section="cheeks" aria-labelledby="cheeksTitle">
-          <div class="section-heading">
-            <p class="eyebrow">Section 7</p>
-            <h2 id="cheeksTitle">Midface and Cheek Support</h2>
-            <p>Cheek structure often supports under-eye hollowing, smile lines, tired appearance, and early lower-face heaviness.</p>
-          </div>
-          <div class="question-list" id="cheekQuestions"></div>
-        </section>
-
-        <section class="question-section" data-section="folds" aria-labelledby="foldsTitle">
-          <div class="section-heading">
-            <p class="eyebrow">Section 8</p>
-            <h2 id="foldsTitle">Smile Lines</h2>
-            <p>Nasolabial folds are not automatically treated alone when cheek support is lacking.</p>
-          </div>
-          <div class="question-list" id="foldQuestions"></div>
-        </section>
-
-        <section class="question-section" data-section="lips" aria-labelledby="lipsTitle">
-          <div class="section-heading">
-            <p class="eyebrow">Section 9</p>
-            <h2 id="lipsTitle">Lips</h2>
-            <p>Lip recommendations should stay anatomy-aware. Final amount depends on tissue, proportions, and safety.</p>
-          </div>
-          <div class="question-list" id="lipQuestions"></div>
-        </section>
-
-        <section class="question-section" data-section="lowerFace" aria-labelledby="lowerFaceTitle">
-          <div class="section-heading">
-            <p class="eyebrow">Section 10</p>
-            <h2 id="lowerFaceTitle">Lower Face, Marionette Lines, and Jowls</h2>
-            <p>Lower-face planning looks at cheek support, jowling, marionette depth, chin, jawline, and laxity together.</p>
-          </div>
-          <div class="question-list" id="lowerFaceQuestions"></div>
-        </section>
-
-        <section class="question-section" data-section="jawline" aria-labelledby="jawlineTitle">
-          <div class="section-heading">
-            <p class="eyebrow">Section 11</p>
-            <h2 id="jawlineTitle">Chin and Jawline</h2>
-            <p>Facial imbalance can be supported with filler or contouring when it fits the anatomy and overall plan.</p>
-          </div>
-          <div class="question-list" id="jawlineQuestions"></div>
-        </section>
-
-        <section class="question-section" data-section="neck" aria-labelledby="neckTitle">
-          <div class="section-heading">
-            <p class="eyebrow">Section 12</p>
-            <h2 id="neckTitle">Neck and Skin Laxity</h2>
-            <p>Laxity is not always a filler problem. Threads, biostimulator, or provider evaluation may be more appropriate.</p>
-          </div>
-          <div class="question-list" id="neckQuestions"></div>
-        </section>
-
-        <section class="question-section" data-section="skin" aria-labelledby="skinTitle">
-          <div class="section-heading">
-            <p class="eyebrow">Section 13</p>
-            <h2 id="skinTitle">Skin Quality</h2>
-            <p>Fine lines, texture, pores, crepey skin, scars, and tone concerns may need skin treatments rather than only Botox or filler.</p>
-          </div>
-          <div class="option-grid" id="skinGrid"></div>
-        </section>
-
-        <section class="question-section" data-section="budget" aria-labelledby="budgetTitle">
-          <div class="section-heading">
-            <p class="eyebrow">Section 14</p>
-            <h2 id="budgetTitle">Budget Comfort</h2>
-            <p>Budget controls how the Minimum, Recommended, and Comprehensive plans are phased.</p>
-          </div>
-          <div class="option-grid" id="budgetGrid"></div>
-        </section>
-
-        <div class="quiz-actions">
-          <button class="btn btn-light" type="button" id="backBtn">Back</button>
-          <p class="inline-note" id="sectionHelp">Complete each section to continue.</p>
-          <button class="btn btn-secondary" type="button" id="nextBtn">Next</button>
-        </div>
-      </form>
-
-      <aside class="lead-note">
-        <strong>Important:</strong> This tool is designed to provide results that are generally close to what a qualified practitioner may recommend based on your responses, including an estimate of the treatments you are most likely to receive. It does not provide medical advice, a diagnosis, or a final treatment plan. A comprehensive facial assessment will still be performed during your appointment, and final treatment recommendations, eligibility, and dosage may vary based on your individual anatomy, goals, and clinical findings.
-      </aside>
-
-      <section id="results" class="results-panel" aria-live="polite" aria-labelledby="resultsTitle">
-        <div class="results-header">
-          <div>
-            <p class="eyebrow">Educational Results</p>
-            <h2 id="resultsTitle">Facial Assessment Summary</h2>
-            <p id="assessmentSummary"></p>
-          </div>
-          <button class="btn btn-light" type="button" id="retakeBtn">Retake</button>
-        </div>
-
-        <div class="warning-box" id="riskResult"></div>
-
-        <div class="summary-grid">
-          <div class="summary-box"><span>Botox/Xeomin</span><strong id="botoxRange">0 units</strong></div>
-          <div class="summary-box"><span>Filler</span><strong id="fillerRange">0 syringes</strong></div>
-          <div class="summary-box"><span>PDO Threads</span><strong id="threadRange">0 threads</strong></div>
-          <div class="summary-box"><span>Budget</span><strong id="budgetOutput">-</strong></div>
-        </div>
-
-        <div class="result-section">
-          <h3>Priority Areas</h3>
-          <ul class="priority-list" id="priorityAreas"></ul>
-        </div>
-
-        <div class="result-section">
-          <h3>Treatment Groups</h3>
-          <p class="plans-subhead">Everything in your comprehensive plan, grouped by treatment type.</p>
-          <div class="treatment-groups" aria-label="Recommendations grouped by treatment type">
-            <article class="treatment-group-card">
-              <h4><i class="legend-dot dot-botox" aria-hidden="true"></i>Botox/Xeomin</h4>
-              <ul class="group-list" id="botoxGroup"></ul>
-            </article>
-            <article class="treatment-group-card">
-              <h4><i class="legend-dot dot-filler" aria-hidden="true"></i>Dermal Filler</h4>
-              <ul class="group-list" id="fillerGroup"></ul>
-            </article>
-            <article class="treatment-group-card">
-              <h4><i class="legend-dot dot-thread" aria-hidden="true"></i>PDO / Biostimulator</h4>
-              <ul class="group-list" id="pdoGroup"></ul>
-            </article>
-            <article class="treatment-group-card">
-              <h4><i class="legend-dot dot-skin" aria-hidden="true"></i>Skin Quality</h4>
-              <ul class="group-list" id="skinGroup"></ul>
-            </article>
-          </div>
-        </div>
-
-        <div class="result-section plans-highlight">
-          <p class="plans-eyebrow">Your Personalized Result</p>
-          <h3>Your Three Plan Options</h3>
-          <p class="plans-subhead">Three provider-guided starting points based on your answers. The recommended plan is the best balance for most clients.</p>
-          <div class="plans-grid">
-            <article class="plan-card" data-plan-card="minimum">
-              <span class="plan-chip">Minimum</span>
-              <h4>Main Concern Only</h4>
-              <p>Designed to match budget and address the highest-impact priority first.</p>
-              <div class="plan-price" id="minimumPrice">Estimated pricing: pending</div>
-              <button class="plan-select" type="button" data-plan="minimum">Show Minimum On Map</button>
-              <ul class="plan-list" id="minimumPlan"></ul>
-            </article>
-            <article class="plan-card featured" data-plan-card="recommended">
-              <span class="plan-chip">Recommended</span>
-              <h4>Best Balanced Plan</h4>
-              <p>Balances wrinkle relaxation, support, contour, laxity, and skin quality where relevant.</p>
-              <div class="plan-price" id="recommendedPrice">Estimated pricing: pending</div>
-              <button class="plan-select" type="button" data-plan="recommended">Show Recommended On Map</button>
-              <ul class="plan-list" id="recommendedPlan"></ul>
-            </article>
-            <article class="plan-card" data-plan-card="comprehensive">
-              <span class="plan-chip">Comprehensive</span>
-              <h4>Full-Face Harmonization</h4>
-              <p>Includes relevant options without pushing an overly aggressive result.</p>
-              <div class="plan-price" id="comprehensivePrice">Estimated pricing: pending</div>
-              <button class="plan-select" type="button" data-plan="comprehensive">Show Comprehensive On Map</button>
-              <ul class="plan-list" id="comprehensivePlan"></ul>
-            </article>
-          </div>
-        </div>
-
-        <div class="result-section">
-          <h3>Estimated Treatment Range</h3>
-          <p class="plans-subhead">Totals for your recommended plan.</p>
-          <ul class="skin-list" id="estimateList"></ul>
-        </div>
-
-        <div class="result-section" id="skinSection">
-          <h3>Skin Quality Recommendations</h3>
-          <ul class="skin-list" id="skinRecommendations"></ul>
-        </div>
-
-        <div class="result-section">
-          <div class="provider-note">
-            <strong>Provider Note</strong>
-            <p id="providerNote"></p>
-          </div>
-        </div>
-
-        <div class="result-section">
-          <h3>Next Steps</h3>
-          <p class="disclaimer">This tool is designed to provide results that are generally close to what a qualified practitioner may recommend based on your responses, including an estimate of the treatments you are most likely to receive. It does not provide medical advice, a diagnosis, or a final treatment plan. A comprehensive facial assessment will still be performed during your appointment, and final treatment recommendations, eligibility, and dosage may vary based on your individual anatomy, goals, and clinical findings.</p>
-          <p class="webhook-status" id="webhookStatus"></p>
-          <div class="cta-row">
-            <a class="btn btn-primary" href="../book/injectables/">Book A Consultation</a>
-            <a class="btn btn-secondary" href="../contact/">Request A Call</a>
-          </div>
-        </div>
-      </section>
-    </section>
 </div>
     <section class="bg-navy-deep px-4 py-16 text-white"><div class="mx-auto grid max-w-7xl items-center gap-8 rounded-[1.5rem] border border-champagne/25 bg-white/5 p-7 sm:px-10 lg:grid-cols-[1fr_auto]"><div><p class="eyebrow">Start Your Injectables Assessment</p><h2 class="mt-3 font-serif text-4xl font-semibold">Get A Clearer Idea Of Where To Begin Before Booking</h2><p class="mt-3 max-w-2xl leading-7 text-white/70">Take a few minutes to map your goals to treatment directions worth discussing with your provider.</p><p class="mt-3 max-w-2xl text-xs leading-6 text-white/55">This tool provides results that are generally close to what a qualified practitioner may recommend based on your responses, including an estimate of the treatments you are most likely to receive. It does not provide medical advice, a diagnosis, or a final treatment plan. A comprehensive facial assessment is still performed during your appointment, and final recommendations, eligibility, and dosage may vary based on your anatomy, goals, and clinical findings.</p></div><div class="flex flex-col gap-3 sm:flex-row lg:flex-col"><a href="#assessment" class="btn btn-gold justify-center"><svg class="svg-icon " viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3l1.7 5.3L19 10l-5.3 1.7L12 17l-1.7-5.3L5 10l5.3-1.7L12 3Z"/><path d="M19 17l.8 2.2L22 20l-2.2.8L19 23l-.8-2.2L16 20l2.2-.8L19 17Z"/></svg> Start Injectable Assessment</a><a href="../contact/?intent=phone-consultation#contact-form" data-contact-intent="phone-consultation" class="btn btn-ghost justify-center"><svg class="svg-icon " viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.4 19.4 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.7.6 2.5a2 2 0 0 1-.5 2.1L8 9.5a16 16 0 0 0 6.5 6.5l1.2-1.2a2 2 0 0 1 2.1-.5c.8.3 1.6.5 2.5.6A2 2 0 0 1 22 16.9Z"/></svg> Request A Phone Consultation</a></div></div></section>
 
@@ -1002,7 +1019,7 @@
     </footer>
 
     <script defer src="../assets/particles.min.js?v=1"></script>
-    <script defer src="../assets/injectables-assessment.min.js?v=20"></script>
+    <script defer src="../assets/injectables-assessment.min.js?v=21"></script>
     <script defer src="../assets/app.min.js?v=140"></script>
     <!-- GHL booking widget auto-resize -->
 
