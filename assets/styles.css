@@ -4832,17 +4832,6 @@ p.text-sm {
 }
 
 /* Legal pages (Privacy Policy, Terms of Use). */
-.legal-page {
-  max-width: 56rem;
-}
-.legal-updated {
-  color: rgba(20, 37, 54, .5);
-  font-size: .85rem;
-  margin-top: .75rem;
-}
-.legal-body {
-  margin-top: 2rem;
-}
 .legal-body h3 {
   color: #06324a;
   font-family: "Cormorant Garamond", serif;

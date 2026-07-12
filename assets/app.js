@@ -3994,13 +3994,15 @@ const pageMeta = {
 
 function legalPageShell(eyebrow, title, updated, bodyHtml) {
   return `
-    <section class="content-section" aria-labelledby="legalTitle">
-      <div class="content-inner legal-page">
-        <div class="section-copy">
-          <p class="eyebrow">${eyebrow}</p>
-          <h2 id="legalTitle">${title}</h2>
-          <p class="legal-updated">Last updated: ${updated}</p>
-        </div>
+    <section class="bg-navy-deep px-4 pb-14 pt-16 text-white sm:px-6 lg:px-8" aria-labelledby="legalTitle">
+      <div class="mx-auto max-w-4xl">
+        <p class="eyebrow">${eyebrow}</p>
+        <h1 id="legalTitle" class="mt-3 font-serif text-4xl font-semibold sm:text-5xl">${title}</h1>
+        <p class="mt-4 text-sm text-white/55">Last updated: ${updated}</p>
+      </div>
+    </section>
+    <section class="section-shell bg-white">
+      <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         <div class="legal-body">
           ${bodyHtml}
         </div>
