@@ -1718,9 +1718,9 @@ p.text-sm {
       --shadow-luxe: 0 28px 80px rgba(3, 29, 46, .13);
       --radius: 1rem;
       --radius-card: 1.35rem;
-      --botox-map: rgba(108, 139, 205, .28);
-      --filler-map: rgba(202, 111, 144, .26);
-      --threads-map: rgba(184, 138, 68, .25);
+      --botox-map: rgba(198, 144, 61, .28);
+      --filler-map: rgba(47, 120, 144, .26);
+      --threads-map: rgba(139, 111, 159, .25);
       --skin-map: rgba(106, 143, 101, .18);
     }
 
@@ -2382,7 +2382,7 @@ p.text-sm {
     .inj-quiz .face-map-card #zone-masseterLeft,
     .inj-quiz .face-map-card #zone-masseterRight {
       fill: var(--botox-map);
-      stroke: rgba(108, 139, 205, .8);
+      stroke: rgba(198, 144, 61, .8);
     }
 
     .inj-quiz .face-map-card #zone-templeLeft,
@@ -2402,14 +2402,14 @@ p.text-sm {
     .inj-quiz .face-map-card #zone-jawlineRight,
     .inj-quiz .face-map-card #zone-chin {
       fill: var(--filler-map);
-      stroke: rgba(202, 111, 144, .82);
+      stroke: rgba(47, 120, 144, .82);
     }
 
     .inj-quiz .face-map-card #zone-lowerFaceLeft,
     .inj-quiz .face-map-card #zone-lowerFaceRight,
     .inj-quiz .face-map-card #zone-neck {
       fill: var(--threads-map);
-      stroke: rgba(184, 138, 68, .86);
+      stroke: rgba(139, 111, 159, .86);
     }
 
     .inj-quiz .face-map-card #zone-fullFace,
@@ -2429,18 +2429,18 @@ p.text-sm {
     }
 
     .inj-quiz .face-map-card.map-active svg.face .zone.map-highlight.map-botox {
-      fill: rgba(108, 139, 205, .38) !important;
-      stroke: rgba(108, 139, 205, .95) !important;
+      fill: rgba(198, 144, 61, .38) !important;
+      stroke: rgba(198, 144, 61, .95) !important;
     }
 
     .inj-quiz .face-map-card.map-active svg.face .zone.map-highlight.map-filler {
-      fill: rgba(202, 111, 144, .36) !important;
-      stroke: rgba(202, 111, 144, .95) !important;
+      fill: rgba(47, 120, 144, .36) !important;
+      stroke: rgba(47, 120, 144, .95) !important;
     }
 
     .inj-quiz .face-map-card.map-active svg.face .zone.map-highlight.map-threads {
-      fill: rgba(184, 138, 68, .36) !important;
-      stroke: rgba(184, 138, 68, .95) !important;
+      fill: rgba(139, 111, 159, .36) !important;
+      stroke: rgba(139, 111, 159, .95) !important;
     }
 
     .inj-quiz .face-map-card.map-active svg.face .zone.map-highlight.map-skin {
@@ -2450,20 +2450,20 @@ p.text-sm {
 
     .inj-quiz .face-map-card.map-active svg.face .zone.map-hover.map-botox,
     .inj-quiz .face-map-card.map-active svg.face .zone.map-selected.map-botox {
-      fill: rgba(108, 139, 205, .46) !important;
-      stroke: rgba(108, 139, 205, 1) !important;
+      fill: rgba(198, 144, 61, .46) !important;
+      stroke: rgba(198, 144, 61, 1) !important;
     }
 
     .inj-quiz .face-map-card.map-active svg.face .zone.map-hover.map-filler,
     .inj-quiz .face-map-card.map-active svg.face .zone.map-selected.map-filler {
-      fill: rgba(202, 111, 144, .44) !important;
-      stroke: rgba(202, 111, 144, 1) !important;
+      fill: rgba(47, 120, 144, .44) !important;
+      stroke: rgba(47, 120, 144, 1) !important;
     }
 
     .inj-quiz .face-map-card.map-active svg.face .zone.map-hover.map-threads,
     .inj-quiz .face-map-card.map-active svg.face .zone.map-selected.map-threads {
-      fill: rgba(184, 138, 68, .44) !important;
-      stroke: rgba(184, 138, 68, 1) !important;
+      fill: rgba(139, 111, 159, .44) !important;
+      stroke: rgba(139, 111, 159, 1) !important;
     }
 
     .inj-quiz .face-map-card.map-active svg.face .zone.map-hover.map-skin,
@@ -3909,7 +3909,7 @@ p.text-sm {
     }
 
     .inj-quiz .hero-map-zone.zone-forehead {
-      background: rgba(108, 139, 205, .34);
+      background: rgba(198, 144, 61, .34);
       height: 2.15rem;
       left: 50%;
       top: 27%;
@@ -3918,7 +3918,7 @@ p.text-sm {
 
     .inj-quiz .hero-map-zone.zone-cheek-left,
     .inj-quiz .hero-map-zone.zone-cheek-right {
-      background: rgba(202, 111, 144, .3);
+      background: rgba(47, 120, 144, .3);
       height: 4rem;
       top: 54%;
       width: 3.9rem;
