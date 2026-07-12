@@ -1,40 +1,54 @@
 # Elite VitaMed Website TODO
 
-## Done
-- Results, Memberships, Contact, Treatment Assessment, and FAQ pages built from approved copy.
-- Injectables assessment integrated as SPA route `#injectables-assessment` with plain-English question descriptions.
-- Assessment → GoHighLevel webhook: auto-send on completion (JSON POST), required consent checkbox, `injectable_assessment` tag, 3 plans in notes, shareable results link (short-encoded, `#injectables-assessment/r/<code>`).
-- Assessment engine: distinct cost-ordered plan tiers, Botox itemized per area, age + first-timer experience drive results, Minimum plan aims ~$500.
-- GHL booking embedded (`#book` + per-category menus) with context-aware Book CTAs.
-- Cherry: real apply URL wired on all financing buttons; floating widget embedded (production domain only).
-- Real specials (Botox $9.99/unit, fillers $499/1ml, PDO $500/area, IV $50 off / 20% packages) + membership card, aligned CTAs.
-- Real phone/email in footer + Contact page; developer credit; footer polish.
-- SEO: real title/description, canonical, OG/Twitter + share image, MedicalBusiness JSON-LD, robots.txt, sitemap.xml, favicon from EVA logo.
-- Dynamic header kicker per page; sample Google reviews (placeholder quotes).
-- All pushed to origin/main through commit 6dde886.
+## Done (live on elitevitamedaesthetics.com)
+- All pages built from approved copy; site converted from hash-SPA to a prerendered
+  multi-page static site (40 real URLs, per-page SEO, sitemap, robots, .htaccess).
+- Injectables assessment: per-area Botox breakdown, age/first-timer logic, cost-ordered
+  plan tiers, groups/range corresponding to the plans, question descriptions, New Client
+  Special pricing strip, 29-char shareable results links (legacy links still decode).
+- GHL integrations: assessment webhook (consent-gated, `injectable_assessment` tag,
+  3 plans + LEAD SOURCE attribution in notes, `results_link` custom field), contact-form
+  webhook (`contact_form` tag, message + lead source in notes), GHL booking embeds with
+  context-aware CTAs, Cherry apply links + floating widget.
+- Lead-source attribution: first-touch landing page / referrer / UTM captured per session
+  and sent in both payloads (structured fields + notes block).
+- Performance: precompiled Tailwind (CDN removed), minified JS/CSS, self-hosted fonts +
+  particles, per-page scripts, deferred Cherry, LCP preload + responsive hero, gzip +
+  1-year immutable caching. Mobile QA: no overflow at 375px, tap targets fixed.
+- Contact page: real hours (8am-7pm, by appointment), service-area copy, real phone/email.
 
-## Next Priority (build)
-- **Wire the Contact form to GHL** — it currently shows a local confirmation but submits nowhere (assets/app.js setupContactPage). Reuse the assessment webhook pattern (new GHL inbound webhook URL + tag, consent checkbox already present as placeholder).
-- Placeholder/encoding sweep + full QA pass (mobile/tablet layouts, all CTAs, accordions, link check).
-- Review Home and Treatments copy against latest approved wording.
+## Build (Claude, when asked)
+- Meta Pixel base code on all pages once the Pixel ID is provided (PageView/audiences
+  layer; Lead conversions come from GHL CAPI — do not double-fire Lead in the browser).
+- Optional: set the URL to the lead's #r/<code> after submitting the assessment so
+  refresh/bookmark keeps their results (offered, awaiting decision).
+- Review Home and Treatments copy against the latest approved wording.
+- Light QA remainder: cross-browser spot-check (Safari/iOS), FAQ accordions, form
+  error states on mobile.
 
-## Waiting on client/provider
-- GHL workflow behind the assessment webhook: map fields, store `results_link` custom field, add note, SMS the lead their link (gate on consent). Then delete the ~12 "Test …" contacts.
-- Final SMS/email consent wording (assessment + contact form).
-- Real Google reviews (quotes, names, rating, count) + Google Reviews URL.
-- Confirmed membership names, pricing, benefits.
-- Business hours + service-area details (Contact page still has placeholders).
+## Waiting on client/provider (content)
+- **Real Google reviews + Reviews URL** — the 6 quotes and "5.0 / 100+ reviews" are
+  invented placeholders; replace before running ads (compliance risk for a medical
+  business). "Read More Reviews" still points at a placeholder URL.
+- **Privacy Policy + Terms pages** — footer links are placeholders; now collecting PII,
+  consent, and (soon) Meta tracking, so these are launch-blocking for ads.
+- Final consent wording (assessment checkbox + contact form) — provider-reviewed.
 - Instagram/Facebook URLs (footer icons point to #contact).
-- Privacy Policy + Terms content (footer legal links are placeholders).
-- Founder portrait (tiana), and any additional before/after or treatment photos.
-- Custom domain decision — when set, update canonical/OG URLs, JSON-LD, sitemap/robots (currently jaredimba14.github.io/Websites).
+- Confirmed membership names, pricing, benefits (page says "confirm before publishing").
+- Founder portrait for About/hero (currently reuses the provider-consult photo).
+- Specific NH towns served (optional; helps local SEO on the Contact page).
 
-## WordPress And GHL (later phase)
-- Translate approved sections into Elementor; map hash routes to page slugs.
-- Per-page SEO metadata becomes real once routes are real URLs.
-- Analytics + Meta tracking.
+## Marketing/ops (user side, in GHL and Google)
+- Google Search Console: verify the domain, submit https://elitevitamedaesthetics.com/sitemap.xml.
+- Google Business Profile: create/claim, link the site — biggest local-SEO lever.
+- Meta: Conversions API "Lead" action in both webhook workflows; point the custom
+  conversion at the Lead event (in progress).
+- Delete the ~16 "Test …" contacts in GHL once mapping/testing is finished.
+- UTM-tag every outbound link (ads, social bios, GBP) so LEAD SOURCE attributes channels.
+- Build the nurture sequences in GHL beyond the results SMS (follow-up cadence,
+  booking reminders, review requests).
 
-## QA Before Launch
-- Desktop/tablet/mobile layouts, dropdowns, drawer, CTAs, FAQ accordions, Contact form states.
-- One particle canvas after repeated navigation; accessibility, performance, compliance copy, final links.
-- Keep images WebP and sized to display.
+## Workflow reminder
+Edit content in assets/app.js or template.html → `node build.mjs` → upload
+elitevitamed-site.zip contents to public_html (see DEPLOY.md). Never hand-edit
+index.html or the route folders.
