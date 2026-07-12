@@ -93,7 +93,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
     <!-- Tailwind utilities precompiled by build.mjs (tailwind.config.js) — no runtime compiler. -->
     <link rel="stylesheet" href="../assets/tailwind.css?v=1" />
-    <link rel="stylesheet" href="../assets/styles.min.css?v=126" />
+    <link rel="stylesheet" href="../assets/styles.min.css?v=127" />
   </head>
   <body class="bg-ivory text-ink antialiased">
     <div class="site-header fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-navy-deep/95 backdrop-blur-xl">
@@ -628,29 +628,6 @@
           <ul class="priority-list" id="priorityAreas"></ul>
         </div>
 
-        <div class="result-section">
-          <h3>Treatment Groups</h3>
-          <p class="plans-subhead">Everything in your comprehensive plan, grouped by treatment type.</p>
-          <div class="treatment-groups" aria-label="Recommendations grouped by treatment type">
-            <article class="treatment-group-card">
-              <h4><i class="legend-dot dot-botox" aria-hidden="true"></i>Botox/Xeomin</h4>
-              <ul class="group-list" id="botoxGroup"></ul>
-            </article>
-            <article class="treatment-group-card">
-              <h4><i class="legend-dot dot-filler" aria-hidden="true"></i>Dermal Filler</h4>
-              <ul class="group-list" id="fillerGroup"></ul>
-            </article>
-            <article class="treatment-group-card">
-              <h4><i class="legend-dot dot-thread" aria-hidden="true"></i>PDO / Biostimulator</h4>
-              <ul class="group-list" id="pdoGroup"></ul>
-            </article>
-            <article class="treatment-group-card">
-              <h4><i class="legend-dot dot-skin" aria-hidden="true"></i>Skin Quality</h4>
-              <ul class="group-list" id="skinGroup"></ul>
-            </article>
-          </div>
-        </div>
-
         <div class="result-section plans-highlight">
           <p class="plans-eyebrow">Your Personalized Result</p>
           <h3>Your Three Plan Options</h3>
@@ -681,6 +658,132 @@
               <ul class="plan-list" id="comprehensivePlan"></ul>
             </article>
           </div>
+        </div>
+
+        <div class="result-section results-map">
+          <section class="map-section" aria-labelledby="mapTitle">
+      <div class="map-inner">
+        <article class="face-map-card">
+          <div>
+            <p class="eyebrow">Facial Treatment Map</p>
+            <h2 id="mapTitle">See how each area is evaluated.</h2>
+            <p>The map gives patients a simple visual reference for common injectable and skin-support zones. The provider still confirms anatomy, safety, product choice, and dosage in person.</p>
+          </div>
+          <svg class="face face-map" viewBox="0 0 520 680" role="img" aria-label="Interactive face map for injectables assessment">
+                <rect x="0" y="0" width="520" height="680" rx="26" fill="#faf8f6"></rect>
+                <image href="../assets/treatment-face-map.webp" x="10" y="4" width="500" height="672" preserveAspectRatio="xMidYMid meet"></image>
+
+                <g id="zones">
+                  <ellipse id="zone-fullFace" class="zone" cx="260" cy="340" rx="150" ry="250"></ellipse>
+                  <ellipse id="zone-forehead" class="zone" cx="260" cy="150" rx="92" ry="38"></ellipse>
+                  <ellipse id="zone-glabella" class="zone" cx="260" cy="214" rx="44" ry="34"></ellipse>
+                  <ellipse id="zone-crowsLeft" class="zone" cx="154" cy="242" rx="35" ry="28"></ellipse>
+                  <ellipse id="zone-crowsRight" class="zone" cx="366" cy="242" rx="35" ry="28"></ellipse>
+                  <ellipse id="zone-templeLeft" class="zone" cx="158" cy="188" rx="38" ry="62"></ellipse>
+                  <ellipse id="zone-templeRight" class="zone" cx="362" cy="188" rx="38" ry="62"></ellipse>
+                  <ellipse id="zone-underEyeLeft" class="zone" cx="198" cy="284" rx="58" ry="25"></ellipse>
+                  <ellipse id="zone-underEyeRight" class="zone" cx="322" cy="284" rx="58" ry="25"></ellipse>
+                  <ellipse id="zone-nose" class="zone" cx="260" cy="294" rx="28" ry="54"></ellipse>
+                  <ellipse id="zone-cheekLeft" class="zone" cx="184" cy="336" rx="68" ry="58"></ellipse>
+                  <ellipse id="zone-cheekRight" class="zone" cx="336" cy="336" rx="68" ry="58"></ellipse>
+                  <ellipse id="zone-nasolabialLeft" class="zone" cx="202" cy="388" rx="42" ry="62"></ellipse>
+                  <ellipse id="zone-nasolabialRight" class="zone" cx="318" cy="388" rx="42" ry="62"></ellipse>
+                  <ellipse id="zone-lips" class="zone" cx="260" cy="404" rx="62" ry="28"></ellipse>
+                  <ellipse id="zone-mouthCornerLeft" class="zone" cx="208" cy="418" rx="30" ry="30"></ellipse>
+                  <ellipse id="zone-mouthCornerRight" class="zone" cx="312" cy="418" rx="30" ry="30"></ellipse>
+                  <ellipse id="zone-marionetteLeft" class="zone" cx="202" cy="464" rx="42" ry="60"></ellipse>
+                  <ellipse id="zone-marionetteRight" class="zone" cx="318" cy="464" rx="42" ry="60"></ellipse>
+                  <ellipse id="zone-masseterLeft" class="zone" cx="148" cy="382" rx="45" ry="62"></ellipse>
+                  <ellipse id="zone-masseterRight" class="zone" cx="372" cy="382" rx="45" ry="62"></ellipse>
+                  <ellipse id="zone-jawlineLeft" class="zone" cx="154" cy="505" rx="62" ry="48"></ellipse>
+                  <ellipse id="zone-jawlineRight" class="zone" cx="366" cy="505" rx="62" ry="48"></ellipse>
+                  <ellipse id="zone-lowerFaceLeft" class="zone" cx="190" cy="455" rx="58" ry="72"></ellipse>
+                  <ellipse id="zone-lowerFaceRight" class="zone" cx="330" cy="455" rx="58" ry="72"></ellipse>
+                  <ellipse id="zone-chin" class="zone" cx="260" cy="535" rx="54" ry="45"></ellipse>
+                  <ellipse id="zone-neck" class="zone" cx="260" cy="610" rx="84" ry="58"></ellipse>
+                  <ellipse id="zone-decolletage" class="zone" cx="260" cy="656" rx="118" ry="24"></ellipse>
+                </g>
+
+                <g id="faceMarkers">
+                  <g class="map-marker" data-zone="zone-forehead">
+                    <line x1="260" y1="150" x2="385" y2="138"></line>
+                    <circle class="outer" cx="260" cy="150" r="12"></circle>
+                    <circle class="inner" cx="260" cy="150" r="4"></circle>
+                    <text x="390" y="141">Forehead Lines</text>
+                  </g>
+                  <g class="map-marker" data-zone="zone-glabella">
+                    <line x1="260" y1="214" x2="386" y2="205"></line>
+                    <circle class="outer" cx="260" cy="214" r="12"></circle>
+                    <circle class="inner" cx="260" cy="214" r="4"></circle>
+                    <text x="390" y="208">Frown Lines</text>
+                  </g>
+                  <g class="map-marker" data-zone="zone-cheekLeft">
+                    <line x1="184" y1="336" x2="96" y2="326"></line>
+                    <circle class="outer" cx="184" cy="336" r="12"></circle>
+                    <circle class="inner" cx="184" cy="336" r="4"></circle>
+                    <text x="42" y="329">Cheek Filler</text>
+                  </g>
+                  <g class="map-marker" data-zone="zone-fullFace">
+                    <line x1="260" y1="340" x2="384" y2="323"></line>
+                    <circle class="outer" cx="260" cy="340" r="12"></circle>
+                    <circle class="inner" cx="260" cy="340" r="4"></circle>
+                    <text x="390" y="326">Full Face Rejuvenation</text>
+                  </g>
+                  <g class="map-marker" data-zone="zone-jawlineLeft">
+                    <line x1="154" y1="505" x2="82" y2="500"></line>
+                    <circle class="outer" cx="154" cy="505" r="12"></circle>
+                    <circle class="inner" cx="154" cy="505" r="4"></circle>
+                    <text x="40" y="503">Jawline Filler</text>
+                  </g>
+                  <g class="map-marker" data-zone="zone-neck">
+                    <line x1="260" y1="610" x2="96" y2="536"></line>
+                    <circle class="outer" cx="260" cy="610" r="12"></circle>
+                    <circle class="inner" cx="260" cy="610" r="4"></circle>
+                    <text x="34" y="539">PDO Jawline Contouring</text>
+                  </g>
+                </g>
+              </svg>
+          <div class="map-hover-label" id="mapHoverLabel" aria-hidden="true"></div>
+        </article>
+        <article class="map-copy-card">
+          <p class="eyebrow">How To Read The Map</p>
+          <h2 id="mapInfoTitle">Grouped by what the treatment is meant to support.</h2>
+          <p id="mapInfoText">Botox/Xeomin usually addresses expression-driven movement. Dermal filler supports volume and contour. PDO threads or biostimulators may support laxity. Skin treatments target texture, pores, fine lines, tone, and crepey quality.</p>
+          <div class="map-legend" aria-label="Treatment map legend">
+            <span><i class="legend-dot dot-botox" aria-hidden="true"></i>Botox/Xeomin</span>
+            <span><i class="legend-dot dot-filler" aria-hidden="true"></i>Filler/Contour</span>
+            <span><i class="legend-dot dot-thread" aria-hidden="true"></i>PDO/Support</span>
+            <span><i class="legend-dot dot-skin" aria-hidden="true"></i>Skin Quality</span>
+          </div>
+          <p class="map-status" id="mapStatus">Education mode: this map shows common injectable and skin-support areas before an assessment is completed.</p>
+          <div class="map-detail" aria-live="polite">
+            <strong id="mapDetailTitle">Hover or click a facial area</strong>
+            <p id="mapDetailText">The map will explain what the area commonly relates to and how it may connect to Botox/Xeomin, filler, PDO support, or skin-quality treatments.</p>
+            <span class="map-detail-meta" id="mapDetailMeta">Educational guide only</span>
+          </div>
+          <h3 class="map-groups-title">Treatment Groups</h3>
+          <p class="plans-subhead">Everything in your comprehensive plan, grouped by treatment type.</p>
+          <div class="treatment-groups" aria-label="Recommendations grouped by treatment type">
+            <article class="treatment-group-card">
+              <h4><i class="legend-dot dot-botox" aria-hidden="true"></i>Botox/Xeomin</h4>
+              <ul class="group-list" id="botoxGroup"></ul>
+            </article>
+            <article class="treatment-group-card">
+              <h4><i class="legend-dot dot-filler" aria-hidden="true"></i>Dermal Filler</h4>
+              <ul class="group-list" id="fillerGroup"></ul>
+            </article>
+            <article class="treatment-group-card">
+              <h4><i class="legend-dot dot-thread" aria-hidden="true"></i>PDO / Biostimulator</h4>
+              <ul class="group-list" id="pdoGroup"></ul>
+            </article>
+            <article class="treatment-group-card">
+              <h4><i class="legend-dot dot-skin" aria-hidden="true"></i>Skin Quality</h4>
+              <ul class="group-list" id="skinGroup"></ul>
+            </article>
+          </div>
+        </article>
+      </div>
+    </section>
         </div>
 
         <div class="result-section">
@@ -807,114 +910,7 @@
       </div>
     </section>
 
-    <section class="map-section" aria-labelledby="mapTitle">
-      <div class="map-inner">
-        <article class="face-map-card">
-          <div>
-            <p class="eyebrow">Facial Treatment Map</p>
-            <h2 id="mapTitle">See how each area is evaluated.</h2>
-            <p>The map gives patients a simple visual reference for common injectable and skin-support zones. The provider still confirms anatomy, safety, product choice, and dosage in person.</p>
-          </div>
-          <svg class="face face-map" viewBox="0 0 520 680" role="img" aria-label="Interactive face map for injectables assessment">
-                <rect x="0" y="0" width="520" height="680" rx="26" fill="#faf8f6"></rect>
-                <image href="../assets/treatment-face-map.webp" x="10" y="4" width="500" height="672" preserveAspectRatio="xMidYMid meet"></image>
-
-                <g id="zones">
-                  <ellipse id="zone-fullFace" class="zone" cx="260" cy="340" rx="150" ry="250"></ellipse>
-                  <ellipse id="zone-forehead" class="zone" cx="260" cy="150" rx="92" ry="38"></ellipse>
-                  <ellipse id="zone-glabella" class="zone" cx="260" cy="214" rx="44" ry="34"></ellipse>
-                  <ellipse id="zone-crowsLeft" class="zone" cx="154" cy="242" rx="35" ry="28"></ellipse>
-                  <ellipse id="zone-crowsRight" class="zone" cx="366" cy="242" rx="35" ry="28"></ellipse>
-                  <ellipse id="zone-templeLeft" class="zone" cx="158" cy="188" rx="38" ry="62"></ellipse>
-                  <ellipse id="zone-templeRight" class="zone" cx="362" cy="188" rx="38" ry="62"></ellipse>
-                  <ellipse id="zone-underEyeLeft" class="zone" cx="198" cy="284" rx="58" ry="25"></ellipse>
-                  <ellipse id="zone-underEyeRight" class="zone" cx="322" cy="284" rx="58" ry="25"></ellipse>
-                  <ellipse id="zone-nose" class="zone" cx="260" cy="294" rx="28" ry="54"></ellipse>
-                  <ellipse id="zone-cheekLeft" class="zone" cx="184" cy="336" rx="68" ry="58"></ellipse>
-                  <ellipse id="zone-cheekRight" class="zone" cx="336" cy="336" rx="68" ry="58"></ellipse>
-                  <ellipse id="zone-nasolabialLeft" class="zone" cx="202" cy="388" rx="42" ry="62"></ellipse>
-                  <ellipse id="zone-nasolabialRight" class="zone" cx="318" cy="388" rx="42" ry="62"></ellipse>
-                  <ellipse id="zone-lips" class="zone" cx="260" cy="404" rx="62" ry="28"></ellipse>
-                  <ellipse id="zone-mouthCornerLeft" class="zone" cx="208" cy="418" rx="30" ry="30"></ellipse>
-                  <ellipse id="zone-mouthCornerRight" class="zone" cx="312" cy="418" rx="30" ry="30"></ellipse>
-                  <ellipse id="zone-marionetteLeft" class="zone" cx="202" cy="464" rx="42" ry="60"></ellipse>
-                  <ellipse id="zone-marionetteRight" class="zone" cx="318" cy="464" rx="42" ry="60"></ellipse>
-                  <ellipse id="zone-masseterLeft" class="zone" cx="148" cy="382" rx="45" ry="62"></ellipse>
-                  <ellipse id="zone-masseterRight" class="zone" cx="372" cy="382" rx="45" ry="62"></ellipse>
-                  <ellipse id="zone-jawlineLeft" class="zone" cx="154" cy="505" rx="62" ry="48"></ellipse>
-                  <ellipse id="zone-jawlineRight" class="zone" cx="366" cy="505" rx="62" ry="48"></ellipse>
-                  <ellipse id="zone-lowerFaceLeft" class="zone" cx="190" cy="455" rx="58" ry="72"></ellipse>
-                  <ellipse id="zone-lowerFaceRight" class="zone" cx="330" cy="455" rx="58" ry="72"></ellipse>
-                  <ellipse id="zone-chin" class="zone" cx="260" cy="535" rx="54" ry="45"></ellipse>
-                  <ellipse id="zone-neck" class="zone" cx="260" cy="610" rx="84" ry="58"></ellipse>
-                  <ellipse id="zone-decolletage" class="zone" cx="260" cy="656" rx="118" ry="24"></ellipse>
-                </g>
-
-                <g id="faceMarkers">
-                  <g class="map-marker" data-zone="zone-forehead">
-                    <line x1="260" y1="150" x2="385" y2="138"></line>
-                    <circle class="outer" cx="260" cy="150" r="12"></circle>
-                    <circle class="inner" cx="260" cy="150" r="4"></circle>
-                    <text x="390" y="141">Forehead Lines</text>
-                  </g>
-                  <g class="map-marker" data-zone="zone-glabella">
-                    <line x1="260" y1="214" x2="386" y2="205"></line>
-                    <circle class="outer" cx="260" cy="214" r="12"></circle>
-                    <circle class="inner" cx="260" cy="214" r="4"></circle>
-                    <text x="390" y="208">Frown Lines</text>
-                  </g>
-                  <g class="map-marker" data-zone="zone-cheekLeft">
-                    <line x1="184" y1="336" x2="96" y2="326"></line>
-                    <circle class="outer" cx="184" cy="336" r="12"></circle>
-                    <circle class="inner" cx="184" cy="336" r="4"></circle>
-                    <text x="42" y="329">Cheek Filler</text>
-                  </g>
-                  <g class="map-marker" data-zone="zone-fullFace">
-                    <line x1="260" y1="340" x2="384" y2="323"></line>
-                    <circle class="outer" cx="260" cy="340" r="12"></circle>
-                    <circle class="inner" cx="260" cy="340" r="4"></circle>
-                    <text x="390" y="326">Full Face Rejuvenation</text>
-                  </g>
-                  <g class="map-marker" data-zone="zone-jawlineLeft">
-                    <line x1="154" y1="505" x2="82" y2="500"></line>
-                    <circle class="outer" cx="154" cy="505" r="12"></circle>
-                    <circle class="inner" cx="154" cy="505" r="4"></circle>
-                    <text x="40" y="503">Jawline Filler</text>
-                  </g>
-                  <g class="map-marker" data-zone="zone-neck">
-                    <line x1="260" y1="610" x2="96" y2="536"></line>
-                    <circle class="outer" cx="260" cy="610" r="12"></circle>
-                    <circle class="inner" cx="260" cy="610" r="4"></circle>
-                    <text x="34" y="539">PDO Jawline Contouring</text>
-                  </g>
-                </g>
-              </svg>
-          <div class="map-hover-label" id="mapHoverLabel" aria-hidden="true"></div>
-        </article>
-        <article class="map-copy-card">
-          <p class="eyebrow">How To Read The Map</p>
-          <h2 id="mapInfoTitle">Grouped by what the treatment is meant to support.</h2>
-          <p id="mapInfoText">Botox/Xeomin usually addresses expression-driven movement. Dermal filler supports volume and contour. PDO threads or biostimulators may support laxity. Skin treatments target texture, pores, fine lines, tone, and crepey quality.</p>
-          <div class="map-legend" aria-label="Treatment map legend">
-            <span><i class="legend-dot dot-botox" aria-hidden="true"></i>Botox/Xeomin</span>
-            <span><i class="legend-dot dot-filler" aria-hidden="true"></i>Filler/Contour</span>
-            <span><i class="legend-dot dot-thread" aria-hidden="true"></i>PDO/Support</span>
-            <span><i class="legend-dot dot-skin" aria-hidden="true"></i>Skin Quality</span>
-          </div>
-          <p class="map-status" id="mapStatus">Education mode: this map shows common injectable and skin-support areas before an assessment is completed.</p>
-          <div class="map-detail" aria-live="polite">
-            <strong id="mapDetailTitle">Hover or click a facial area</strong>
-            <p id="mapDetailText">The map will explain what the area commonly relates to and how it may connect to Botox/Xeomin, filler, PDO support, or skin-quality treatments.</p>
-            <span class="map-detail-meta" id="mapDetailMeta">Educational guide only</span>
-          </div>
-          <ul class="map-points">
-            <li>Upper-face zones help patients identify forehead, frown lines, crow's feet, bunny lines, and brow-support areas.</li>
-            <li>Midface zones explain why cheek support may come before under-eye or smile-line filler.</li>
-            <li>Lower-face and neck zones show why jowls, laxity, jawline, chin, and neck bands are evaluated together.</li>
-          </ul>
-        </article>
-      </div>
-    </section>
+    
 </div>
     <section class="bg-navy-deep px-4 py-16 text-white"><div class="mx-auto grid max-w-7xl items-center gap-8 rounded-[1.5rem] border border-champagne/25 bg-white/5 p-7 sm:px-10 lg:grid-cols-[1fr_auto]"><div><p class="eyebrow">Start Your Injectables Assessment</p><h2 class="mt-3 font-serif text-4xl font-semibold">Get A Clearer Idea Of Where To Begin Before Booking</h2><p class="mt-3 max-w-2xl leading-7 text-white/70">Take a few minutes to map your goals to treatment directions worth discussing with your provider.</p><p class="mt-3 max-w-2xl text-xs leading-6 text-white/55">This tool provides results that are generally close to what a qualified practitioner may recommend based on your responses, including an estimate of the treatments you are most likely to receive. It does not provide medical advice, a diagnosis, or a final treatment plan. A comprehensive facial assessment is still performed during your appointment, and final recommendations, eligibility, and dosage may vary based on your anatomy, goals, and clinical findings.</p></div><div class="flex flex-col gap-3 sm:flex-row lg:flex-col"><a href="#assessment" class="btn btn-gold justify-center"><svg class="svg-icon " viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3l1.7 5.3L19 10l-5.3 1.7L12 17l-1.7-5.3L5 10l5.3-1.7L12 3Z"/><path d="M19 17l.8 2.2L22 20l-2.2.8L19 23l-.8-2.2L16 20l2.2-.8L19 17Z"/></svg> Start Injectable Assessment</a><a href="../contact/?intent=phone-consultation#contact-form" data-contact-intent="phone-consultation" class="btn btn-ghost justify-center"><svg class="svg-icon " viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.4 19.4 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.7.6 2.5a2 2 0 0 1-.5 2.1L8 9.5a16 16 0 0 0 6.5 6.5l1.2-1.2a2 2 0 0 1 2.1-.5c.8.3 1.6.5 2.5.6A2 2 0 0 1 22 16.9Z"/></svg> Request A Phone Consultation</a></div></div></section>
 
@@ -1019,7 +1015,7 @@
     </footer>
 
     <script defer src="../assets/particles.min.js?v=1"></script>
-    <script defer src="../assets/injectables-assessment.min.js?v=21"></script>
+    <script defer src="../assets/injectables-assessment.min.js?v=22"></script>
     <script defer src="../assets/app.min.js?v=140"></script>
     <!-- GHL booking widget auto-resize -->
 

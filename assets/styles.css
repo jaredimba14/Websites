@@ -4980,3 +4980,21 @@ p.text-sm {
 .inj-quiz .assessment-shell.shared-view .quiz-welcome {
   display: none;
 }
+
+/* Facial treatment map inside the results panel (next to the plan options). */
+.inj-quiz .results-panel .map-section {
+  border: 1px solid var(--line);
+  border-radius: 1.25rem;
+  border-bottom-width: 1px;
+}
+.inj-quiz .map-copy-card .map-groups-title {
+  color: #06324a;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin: 1.6rem 0 .2rem;
+}
+.inj-quiz .map-copy-card .plans-subhead {
+  font-size: .85rem;
+  margin-bottom: .35rem;
+}
