@@ -93,7 +93,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
     <!-- Tailwind utilities precompiled by build.mjs (tailwind.config.js) — no runtime compiler. -->
     <link rel="stylesheet" href="../assets/tailwind.css?v=1" />
-    <link rel="stylesheet" href="../assets/styles.min.css?v=127" />
+    <link rel="stylesheet" href="../assets/styles.min.css?v=128" />
   </head>
   <body class="bg-ivory text-ink antialiased">
     <div class="site-header fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-navy-deep/95 backdrop-blur-xl">
@@ -396,20 +396,26 @@
 
     <section id="assessment" class="assessment-shell welcome-mode" aria-labelledby="quizTitle">
       <div class="quiz-welcome" id="quizWelcome">
-        <span class="quiz-welcome-badge">Injectables Assessment &middot; Find Your Starting Point</span>
-        <h2>Stop Guessing.<br>Start With A Personalized Plan.</h2>
-        <p>You already know what bothers you when you look in the mirror &mdash; maybe fine lines, lost volume, a tired look, or simply not feeling like yourself. The challenge usually isn't wanting treatment &mdash; it's knowing where to start.</p>
-        <p>Answer a few questions about your goals, features, and comfort level, and we'll build your personalized treatment plan so you understand:</p>
-        <ul class="quiz-welcome-list">
-          <li>Your facial priority areas</li>
-          <li>Three plan options &mdash; Minimum, Recommended, Comprehensive</li>
-          <li>Itemized Botox and filler estimates by treatment area</li>
-          <li>Estimated treatment investment</li>
-          <li>New Client Special pricing applied</li>
-          <li>Your recommended next step</li>
-        </ul>
-        <button type="button" class="btn btn-primary quiz-welcome-cta" id="startAssessmentBtn">Build My Treatment Plan &rarr;</button>
-        <div class="quiz-welcome-trust"><span>3 to 5 minutes</span><span>Free &amp; private</span><span>No commitment</span><span>Provider-reviewed</span></div>
+        <div class="quiz-welcome-main">
+          <span class="quiz-welcome-badge">Injectables Assessment &middot; Find Your Starting Point</span>
+          <h2>Stop Guessing.<br>Start With A Personalized Plan.</h2>
+          <p>You already know what bothers you when you look in the mirror &mdash; maybe fine lines, lost volume, a tired look, or simply not feeling like yourself. The challenge usually isn't wanting treatment &mdash; it's knowing where to start.</p>
+          <p>Answer a few questions about your goals, features, and comfort level, and we'll build your personalized treatment plan.</p>
+          <button type="button" class="btn btn-primary quiz-welcome-cta" id="startAssessmentBtn">Build My Treatment Plan &rarr;</button>
+          <div class="quiz-welcome-trust"><span>3 to 5 minutes</span><span>Free &amp; private</span><span>No commitment</span><span>Provider-reviewed</span></div>
+        </div>
+        <aside class="quiz-welcome-panel" aria-label="What your results include">
+          <p class="quiz-welcome-panel-label">Your Results Include</p>
+          <ul class="quiz-welcome-list">
+            <li>Your facial priority areas</li>
+            <li>Three plan options &mdash; Minimum, Recommended, Comprehensive</li>
+            <li>Itemized Botox and filler estimates by treatment area</li>
+            <li>Estimated treatment investment</li>
+            <li>New Client Special pricing applied</li>
+            <li>Your recommended next step</li>
+          </ul>
+          <p class="quiz-welcome-panel-note">Educational results &mdash; your provider confirms the final plan at your consultation.</p>
+        </aside>
       </div>
 
       <div class="quiz-top">
@@ -1015,7 +1021,7 @@
     </footer>
 
     <script defer src="../assets/particles.min.js?v=1"></script>
-    <script defer src="../assets/injectables-assessment.min.js?v=22"></script>
+    <script defer src="../assets/injectables-assessment.min.js?v=23"></script>
     <script defer src="../assets/app.min.js?v=140"></script>
     <!-- GHL booking widget auto-resize -->
 

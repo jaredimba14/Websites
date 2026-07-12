@@ -4867,13 +4867,49 @@ p.text-sm {
   background: #fff;
   border: 1px solid rgba(6, 50, 74, .08);
   border-radius: 1.5rem;
-  box-shadow: 0 18px 50px rgba(6, 50, 74, .08);
+  box-shadow: 0 24px 60px rgba(6, 50, 74, .1);
   margin: 0 auto;
-  max-width: 46rem;
+  max-width: 68rem;
   padding: 2.5rem 1.5rem;
 }
 @media (min-width: 640px) {
   .inj-quiz .quiz-welcome { padding: 3rem; }
+}
+@media (min-width: 960px) {
+  .inj-quiz .quiz-welcome {
+    align-items: center;
+    display: grid;
+    gap: 3.5rem;
+    grid-template-columns: 1.1fr .9fr;
+    padding: 3.5rem 4rem;
+  }
+}
+.inj-quiz .quiz-welcome-panel {
+  background: linear-gradient(160deg, #fbf7ee, #f6ecd8);
+  border: 1px solid rgba(213, 168, 94, .4);
+  border-radius: 1.25rem;
+  margin-top: 2rem;
+  padding: 1.9rem 1.6rem;
+}
+@media (min-width: 960px) {
+  .inj-quiz .quiz-welcome-panel { margin-top: 0; }
+}
+.inj-quiz .quiz-welcome-panel-label {
+  color: #8a5d1d;
+  font-family: "Inter", sans-serif;
+  font-size: .7rem;
+  font-weight: 800;
+  letter-spacing: .14em;
+  margin: 0 0 1rem;
+  text-transform: uppercase;
+}
+.inj-quiz .quiz-welcome-panel-note {
+  border-top: 1px solid rgba(213, 168, 94, .35);
+  color: rgba(20, 37, 54, .55);
+  font-size: .78rem;
+  line-height: 1.6;
+  margin: 1.4rem 0 0;
+  padding-top: 1rem;
 }
 .inj-quiz .quiz-welcome-badge {
   align-items: center;
@@ -4900,7 +4936,7 @@ p.text-sm {
 .inj-quiz .quiz-welcome h2 {
   color: #06324a;
   font-family: "Cormorant Garamond", serif;
-  font-size: clamp(2rem, 4.5vw, 2.9rem);
+  font-size: clamp(2.1rem, 3.4vw, 3.3rem);
   font-weight: 600;
   line-height: 1.15;
   margin: 1.4rem 0 1rem;
@@ -4912,9 +4948,9 @@ p.text-sm {
 }
 .inj-quiz .quiz-welcome-list {
   display: grid;
-  gap: .65rem;
+  gap: .8rem;
   list-style: none;
-  margin: 1.4rem 0 1.8rem;
+  margin: 0;
   padding: 0;
 }
 .inj-quiz .quiz-welcome-list li {
@@ -4942,6 +4978,7 @@ p.text-sm {
 .inj-quiz .quiz-welcome-cta {
   font-size: 1rem;
   justify-content: center;
+  margin-top: 1.6rem;
   padding: 1rem 1.6rem;
   width: 100%;
 }
