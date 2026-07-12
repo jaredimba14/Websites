@@ -63,7 +63,7 @@ const services = [
 const injectables = ["Botox or Neurotoxins", "Dermal Fillers", "PDO Threads", "Sculptra", "Radiesse", "Facial Balancing"];
 const PLACEHOLDER_BOOKING_URL = "#book";
 const CHERRY_APPLY_URL = "https://pay.withcherry.com/elite-vitamed-aesthetics";
-const PLACEHOLDER_REVIEWS_URL = "https://example.com/elite-vitamed-google-reviews-placeholder";
+const GOOGLE_REVIEWS_URL = "https://share.google/9PST1FRexYiBJmSAv";
 // GHL inbound webhook — contact-form leads are POSTed here on submit.
 const CONTACT_WEBHOOK_URL = "https://services.leadconnectorhq.com/hooks/T47y0ST5JBUfqTuqEE3m/webhook-trigger/eEktXiOsZix2d4rWJkMC";
 
@@ -97,7 +97,9 @@ const HEADER_KICKERS = {
   about: "Meet Your Provider",
   faq: "Questions, Answered",
   contact: "Book Your Consultation",
-  book: "Book Your Appointment"
+  book: "Book Your Appointment",
+  "privacy-policy": "Privacy Policy",
+  terms: "Terms of Use"
 };
 function prettifyRoute(route) {
   const caps = { iv: "IV", prp: "PRP", prf: "PRF", pdo: "PDO", nad: "NAD+" };
@@ -731,13 +733,13 @@ function homeReviews() {
           <p class="mt-4 leading-8 text-ink/68">Clients trust Elite VitaMed for personalized aesthetic and wellness care performed by a Nurse Practitioner and certified injector, with the privacy and convenience of concierge appointments.</p>
           <p class="mt-3 text-sm leading-7 text-ink/60">Every appointment is designed to feel thoughtful, comfortable, and guided. Whether a client is booking injectables, IV therapy, or a wellness service, the goal is to provide top tier care with clear communication, personalized recommendations, and a treatment experience that feels easy from start to finish.</p>
           <div class="mt-6 text-2xl tracking-[.18em] text-champagne">★★★★★</div>
-          <p class="mt-2 text-sm font-bold text-navy">Rated 5.0 stars on Google · 100+ reviews</p>
+          <p class="mt-2 text-sm font-bold text-navy">Rated 5.0 stars on Google</p>
         </div>
         <div class="mt-9 grid gap-5 lg:grid-cols-3">
           ${reviewCards(3)}
         </div>
         <div class="mt-8 flex flex-col justify-center gap-3 sm:flex-row sm:flex-wrap">
-          <a href="${PLACEHOLDER_REVIEWS_URL}" target="_blank" rel="noopener" data-integration-placeholder="reviews" class="btn btn-navy justify-center">${icon("users")} Read More Google Reviews</a>
+          <a href="${GOOGLE_REVIEWS_URL}" target="_blank" rel="noopener" class="btn btn-navy justify-center">${icon("users")} Read More Google Reviews</a>
           <a href="${bookingRouteForCurrentPage()}" class="btn btn-gold justify-center">${icon("calendar")} Book Your Appointment</a>
         </div>
       </div>
@@ -928,7 +930,7 @@ function servicesProviderCare() {
 
 function servicesNextSteps() {
   const items = [
-    ["Book Your Appointment", "Best if you already know the service you want and are ready to schedule.", "Book Now", "#contact", "calendar"],
+    ["Book Your Appointment", "Best if you already know the service you want and are ready to schedule.", "Book Now", "#book", "calendar"],
     ["Start Treatment Assessment", "Best if you are interested but unsure which treatment path fits your goals.", "Start Assessment", "#assessment", "sparkle"],
     ["Request A Phone Consultation", "Best if you want to talk through your options before booking.", "Request A Phone Consultation", "#contact", "phone"]
   ];
@@ -1207,7 +1209,7 @@ function contactLocation() {
           <p class="mt-4 leading-8 text-ink/70">Care may include injectable treatments, skin and tightening, regenerative aesthetics, IV drip therapy, vitamin shots, intimate wellness consultations, and personalized treatment planning.</p>
           <div class="mt-6 space-y-3">
             <div class="rounded-2xl border border-navy/10 bg-white p-5"><p class="text-xs font-bold uppercase tracking-[.12em] text-soft-gold/90">Service Area or Business Location</p><p class="mt-1 text-sm leading-7 text-ink/66">Elite VitaMed is a mobile concierge practice — your provider comes to you for in-home appointments across New Hampshire and surrounding areas.</p></div>
-            <div class="rounded-2xl border border-navy/10 bg-white p-5" data-content-placeholder="service-area"><p class="text-xs font-bold uppercase tracking-[.12em] text-soft-gold/90">New Hampshire Service Areas</p><p class="mt-1 text-sm leading-7 text-ink/66">Mobile appointments are available throughout New Hampshire. Not sure if you're in range? Reach out and we'll confirm availability in your area.</p></div>
+            <div class="rounded-2xl border border-navy/10 bg-white p-5"><p class="text-xs font-bold uppercase tracking-[.12em] text-soft-gold/90">New Hampshire Service Areas</p><p class="mt-1 text-sm leading-7 text-ink/66">We proudly serve clients all across New Hampshire, including Manchester, Nashua, Concord, Bedford, Salem, Derry, Londonderry, Windham, Merrimack, Hudson, Amherst, Hooksett, Goffstown, Exeter, Portsmouth, Dover, Rochester, Keene, and the surrounding communities. Not sure if you're in range? Reach out and we'll confirm availability in your area.</p></div>
           </div>
         </div>
         <div class="rounded-[1.5rem] border border-champagne/30 bg-white p-6 shadow-sm sm:p-8">
@@ -1257,7 +1259,7 @@ function contactPrivateConsult() {
 }
 
 function contactReviews() {
-  return `<section class="section-shell bg-ivory"><div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><div class="mx-auto max-w-4xl text-center"><p class="eyebrow">Google Reviews</p><h2 class="mt-3 font-serif text-4xl font-semibold text-navy sm:text-5xl">Trusted For Provider Led Care and A Premium Client Experience</h2><p class="mt-4 leading-8 text-ink/68">Clients trust Elite VitaMed for personalized aesthetic and wellness care performed by a Nurse Practitioner and certified injector, with the privacy and convenience of concierge appointments.</p><div class="mt-6 text-2xl tracking-[.18em] text-champagne">★★★★★</div><p class="mt-2 text-sm font-bold text-navy">Rated 5.0 stars on Google · 100+ reviews</p></div><div class="mt-9 grid gap-5 md:grid-cols-2">${reviewCards(2)}</div><div class="mt-8 text-center"><a href="${PLACEHOLDER_REVIEWS_URL}" target="_blank" rel="noopener" data-integration-placeholder="reviews" class="btn btn-navy justify-center">${icon("users")} Read More Reviews</a></div></div></section>`;
+  return `<section class="section-shell bg-ivory"><div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><div class="mx-auto max-w-4xl text-center"><p class="eyebrow">Google Reviews</p><h2 class="mt-3 font-serif text-4xl font-semibold text-navy sm:text-5xl">Trusted For Provider Led Care and A Premium Client Experience</h2><p class="mt-4 leading-8 text-ink/68">Clients trust Elite VitaMed for personalized aesthetic and wellness care performed by a Nurse Practitioner and certified injector, with the privacy and convenience of concierge appointments.</p><div class="mt-6 text-2xl tracking-[.18em] text-champagne">★★★★★</div><p class="mt-2 text-sm font-bold text-navy">Rated 5.0 stars on Google</p></div><div class="mt-9 grid gap-5 md:grid-cols-2">${reviewCards(2)}</div><div class="mt-8 text-center"><a href="${GOOGLE_REVIEWS_URL}" target="_blank" rel="noopener" class="btn btn-navy justify-center">${icon("users")} Read More Reviews</a></div></div></section>`;
 }
 
 function contactFaq() {
@@ -1321,7 +1323,7 @@ function aboutPage() {
           <p class="mt-4 leading-8 text-ink/70">Every client has different goals, anatomy, treatment history, and comfort levels. That is why Elite VitaMed does not take a one size fits all approach. Each recommendation is guided by your desired outcome, your features, your wellness goals, and what is appropriate for you.</p>
           <p class="mt-4 leading-8 text-ink/70">The goal is not to change who you are. The goal is to help you look refreshed, feel supported, and move forward with confidence.</p>
           <div class="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <a href="#contact" class="btn btn-navy justify-center">${icon("phone")} Book A Consultation</a>
+            <a href="#book" class="btn btn-navy justify-center">${icon("calendar")} Book A Consultation</a>
             <a href="#assessment" class="btn border border-navy/15 bg-white text-navy justify-center">${icon("sparkle")} Start Treatment Assessment</a>
           </div>
         </div>
@@ -1461,7 +1463,7 @@ function assessmentPage() {
 
     <section class="section-shell bg-ivory"><div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><div class="mx-auto max-w-4xl text-center"><p class="eyebrow">Why Clients Use It</p><h2 class="mt-3 font-serif text-4xl font-semibold text-navy sm:text-5xl">Why Clients Use The Assessment</h2><p class="mt-4 leading-8 text-ink/68">Clients often use the Treatment Assessment when they are thinking:</p></div><div class="mt-9 grid gap-5 md:grid-cols-2">${whyUse.map((x) => `<article class="luxe-card p-6"><p class="font-serif text-2xl leading-8 text-navy">"${x}"</p></article>`).join("")}</div></div></section>
 
-    <section class="section-shell bg-white"><div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><div class="mx-auto max-w-4xl text-center"><p class="eyebrow">Google Reviews</p><h2 class="mt-3 font-serif text-4xl font-semibold text-navy sm:text-5xl">Trusted For Provider Led Care and A Premium Client Experience</h2><p class="mt-4 leading-8 text-ink/68">Clients trust Elite VitaMed for personalized aesthetic and wellness care performed by a Nurse Practitioner and certified injector, with the privacy and convenience of concierge appointments.</p><div class="mt-6 text-2xl tracking-[.18em] text-champagne">★★★★★</div><p class="mt-2 text-sm font-bold text-navy">Rated 5.0 stars on Google · 100+ reviews</p></div><div class="mt-9 grid gap-5 md:grid-cols-2">${reviewCards(2)}</div><div class="mt-8 text-center"><a href="${PLACEHOLDER_REVIEWS_URL}" target="_blank" rel="noopener" data-integration-placeholder="reviews" class="btn btn-navy justify-center">${icon("users")} Read More Reviews</a></div></div></section>
+    <section class="section-shell bg-white"><div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><div class="mx-auto max-w-4xl text-center"><p class="eyebrow">Google Reviews</p><h2 class="mt-3 font-serif text-4xl font-semibold text-navy sm:text-5xl">Trusted For Provider Led Care and A Premium Client Experience</h2><p class="mt-4 leading-8 text-ink/68">Clients trust Elite VitaMed for personalized aesthetic and wellness care performed by a Nurse Practitioner and certified injector, with the privacy and convenience of concierge appointments.</p><div class="mt-6 text-2xl tracking-[.18em] text-champagne">★★★★★</div><p class="mt-2 text-sm font-bold text-navy">Rated 5.0 stars on Google</p></div><div class="mt-9 grid gap-5 md:grid-cols-2">${reviewCards(2)}</div><div class="mt-8 text-center"><a href="${GOOGLE_REVIEWS_URL}" target="_blank" rel="noopener" class="btn btn-navy justify-center">${icon("users")} Read More Reviews</a></div></div></section>
 
     <section class="section-shell bg-ivory"><div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8"><div class="text-center"><p class="eyebrow">Assessment FAQ</p><h2 class="mt-3 font-serif text-4xl font-semibold text-navy sm:text-5xl">Treatment Assessment Questions</h2></div><div class="mt-8">${faqList(assessmentFaq)}</div></div></section>
 
@@ -1550,7 +1552,7 @@ function membershipsPage() {
 
     <section class="bg-navy-deep px-4 py-16 text-white"><div class="mx-auto grid max-w-7xl items-center gap-8 rounded-[1.5rem] border border-champagne/25 bg-white/5 p-7 sm:px-10 lg:grid-cols-[1fr_auto]"><div><p class="eyebrow">Not Sure Where To Start?</p><h2 class="mt-3 font-serif text-4xl font-semibold">Not Sure Which Membership Is Right For You?</h2><p class="mt-3 max-w-2xl leading-7 text-white/70">You do not need to know the perfect membership before reaching out.</p><p class="mt-3 max-w-2xl text-sm leading-7 text-white/60">Start with a treatment assessment or request a phone consultation. Elite VitaMed can help you choose the membership path that best fits your aesthetic goals, wellness goals, and treatment preferences.</p></div><div class="flex flex-col gap-3 sm:flex-row lg:flex-col"><a href="#assessment" class="btn btn-gold justify-center">${icon("sparkle")} Start Treatment Assessment</a><a href="#contact/contact-form" data-contact-intent="phone-consultation" class="btn btn-ghost justify-center">${icon("phone")} Request A Phone Consultation</a></div></div></section>
 
-    <section class="section-shell bg-ivory"><div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><div class="mx-auto max-w-4xl text-center"><p class="eyebrow">Google Reviews</p><h2 class="mt-3 font-serif text-4xl font-semibold text-navy sm:text-5xl">Trusted For Provider Led Care and A Premium Client Experience</h2><p class="mt-4 leading-8 text-ink/68">Clients trust Elite VitaMed for personalized aesthetic and wellness care performed by a Nurse Practitioner and certified injector, with the privacy and convenience of concierge appointments.</p><div class="mt-6 text-2xl tracking-[.18em] text-champagne">★★★★★</div><p class="mt-2 text-sm font-bold text-navy">Rated 5.0 stars on Google · 100+ reviews</p></div><div class="mt-9 grid gap-5 md:grid-cols-2">${reviewCards(2)}</div><div class="mt-8 flex justify-center"><a href="${PLACEHOLDER_REVIEWS_URL}" target="_blank" rel="noopener" data-integration-placeholder="reviews" class="btn btn-navy justify-center">${icon("users")} Read More Reviews</a></div></div></section>
+    <section class="section-shell bg-ivory"><div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><div class="mx-auto max-w-4xl text-center"><p class="eyebrow">Google Reviews</p><h2 class="mt-3 font-serif text-4xl font-semibold text-navy sm:text-5xl">Trusted For Provider Led Care and A Premium Client Experience</h2><p class="mt-4 leading-8 text-ink/68">Clients trust Elite VitaMed for personalized aesthetic and wellness care performed by a Nurse Practitioner and certified injector, with the privacy and convenience of concierge appointments.</p><div class="mt-6 text-2xl tracking-[.18em] text-champagne">★★★★★</div><p class="mt-2 text-sm font-bold text-navy">Rated 5.0 stars on Google</p></div><div class="mt-9 grid gap-5 md:grid-cols-2">${reviewCards(2)}</div><div class="mt-8 flex justify-center"><a href="${GOOGLE_REVIEWS_URL}" target="_blank" rel="noopener" class="btn btn-navy justify-center">${icon("users")} Read More Reviews</a></div></div></section>
 
     <section class="section-shell bg-white"><div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8"><div class="text-center"><p class="eyebrow">Membership FAQ</p><h2 class="mt-3 font-serif text-4xl font-semibold text-navy sm:text-5xl">Membership Questions</h2></div><div class="mt-8">${faqList(membershipFaq)}</div></div></section>
 
@@ -1749,7 +1751,7 @@ function resultsPage() {
 
     <section class="section-shell bg-white"><div class="mx-auto grid max-w-7xl gap-9 px-4 sm:px-6 lg:grid-cols-2 lg:px-8"><div><p class="eyebrow">Before and After Expectations</p><h2 class="mt-3 font-serif text-4xl font-semibold text-navy sm:text-5xl">What To Know Before Comparing Results</h2><p class="mt-4 leading-8 text-ink/70">Before and after photos are helpful, but they are not a guarantee of what your result will look like. Your outcome depends on several factors, including:</p><div class="mt-5 flex flex-wrap gap-2">${expectationFactors.map(x => `<span class="treatment-best-chip">${x}</span>`).join("")}</div></div><div class="rounded-[1.5rem] border border-navy/10 bg-ivory p-6 sm:p-8"><p class="eyebrow">Timing</p><h3 class="mt-3 font-serif text-3xl font-semibold text-navy">Some Results Are Immediate, Others Develop Over Time</h3><p class="mt-4 leading-8 text-ink/70">Some treatments may create visible changes sooner, while others work gradually over time. For example, filler may create more immediate volume or contour support, while collagen stimulation treatments, PRP, PRF, microneedling, and hair restoration plans may develop more gradually.</p><p class="mt-4 text-sm leading-7 text-ink/64">Your provider will help you understand what is realistic for your goals before treatment begins.</p></div></div></section>
 
-    <section class="section-shell bg-ivory"><div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><div class="mx-auto max-w-4xl text-center"><p class="eyebrow">Client Reviews</p><h2 class="mt-3 font-serif text-4xl font-semibold text-navy sm:text-5xl">Trusted For Provider Led Care and A Premium Client Experience</h2><p class="mt-4 leading-8 text-ink/68">Clients trust Elite VitaMed for personalized aesthetic and wellness care performed by a Nurse Practitioner and certified injector, with the privacy and convenience of concierge appointments.</p><div class="mt-6 text-2xl tracking-[.18em] text-champagne">★★★★★</div><p class="mt-2 text-sm font-bold text-navy">Rated 5.0 stars on Google · 100+ reviews</p></div><div class="mt-9 grid gap-5 lg:grid-cols-3">${reviewCards(3)}</div><div class="mt-8 flex justify-center"><a href="${PLACEHOLDER_REVIEWS_URL}" target="_blank" rel="noopener" data-integration-placeholder="reviews" class="btn btn-navy justify-center">${icon("users")} Read More Reviews</a></div></div></section>
+    <section class="section-shell bg-ivory"><div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><div class="mx-auto max-w-4xl text-center"><p class="eyebrow">Client Reviews</p><h2 class="mt-3 font-serif text-4xl font-semibold text-navy sm:text-5xl">Trusted For Provider Led Care and A Premium Client Experience</h2><p class="mt-4 leading-8 text-ink/68">Clients trust Elite VitaMed for personalized aesthetic and wellness care performed by a Nurse Practitioner and certified injector, with the privacy and convenience of concierge appointments.</p><div class="mt-6 text-2xl tracking-[.18em] text-champagne">★★★★★</div><p class="mt-2 text-sm font-bold text-navy">Rated 5.0 stars on Google</p></div><div class="mt-9 grid gap-5 lg:grid-cols-3">${reviewCards(3)}</div><div class="mt-8 flex justify-center"><a href="${GOOGLE_REVIEWS_URL}" target="_blank" rel="noopener" class="btn btn-navy justify-center">${icon("users")} Read More Reviews</a></div></div></section>
 
     <section class="bg-navy-deep px-4 py-16 text-white"><div class="mx-auto grid max-w-7xl items-center gap-8 rounded-[1.5rem] border border-champagne/25 bg-white/5 p-7 sm:px-10 lg:grid-cols-[1fr_auto]"><div><p class="eyebrow">Treatment Assessment</p><h2 class="mt-3 font-serif text-4xl font-semibold">Not Sure Which Treatment Fits Your Goals?</h2><p class="mt-3 max-w-2xl leading-7 text-white/70">You do not need to know exactly what treatment you need before starting. Many clients know what they want to improve, but they are unsure whether Botox, filler, Sculptra, Radiesse, PDO threads, PRP, skin tightening, chemical peels, IV therapy, or another treatment is the right fit.</p><p class="mt-3 max-w-2xl text-sm leading-7 text-white/60">Start with a treatment assessment and get a clearer starting point before booking.</p></div><div class="flex flex-col gap-3 sm:flex-row lg:flex-col"><a href="#assessment" class="btn btn-gold justify-center">${icon("sparkle")} Start Treatment Assessment</a><a href="#contact/contact-form" data-contact-intent="phone-consultation" class="btn btn-ghost justify-center">${icon("phone")} Request A Phone Consultation</a></div></div></section>
 
@@ -3007,7 +3009,7 @@ function injectablesPage() {
     ["PDO Threads", "PDO threads may be discussed for clients interested in subtle lifting or skin support without surgery. This option depends heavily on candidacy.", ["Mild laxity", "Subtle lift", "Lower face support", "Non surgical lifting goals", "Alternatives to surgery"], "Explore PDO Threads", "#pdo-threads", "sparkle"],
     ["Facial Balancing", "Facial balancing is a personalized approach that looks at the face as a whole instead of focusing on only one area.", ["Full face refresh goals", "Facial harmony", "Multiple areas of concern", "Clients unsure what they need", "Personalized planning"], "Explore Facial Balancing", "#facial-balancing", "users"],
     ["Non Surgical Face Lift", "A non surgical face lift approach may combine multiple injectable or skin support options based on your anatomy, goals, and provider recommendation.", ["Lower face concerns", "Mild sagging", "Volume loss", "Facial structure support", "Non surgical rejuvenation"], "Explore Face Lift", "#non-surgical-face-lift", "sparkle"],
-    ["Injectables Consultation", "If you are not sure which injectable treatment is right for you, a consultation is the best place to start.", ["First time injectable clients", "Comparing treatment options", "Clients who want a full face plan", "Provider guidance before booking"], "Book Consultation", "#contact", "calendar"]
+    ["Injectables Consultation", "If you are not sure which injectable treatment is right for you, a consultation is the best place to start.", ["First time injectable clients", "Comparing treatment options", "Clients who want a full face plan", "Provider guidance before booking"], "Book Consultation", "#book/injectables", "calendar"]
   ];
   const benefits = [
     ["Refreshed Appearance", "Injectables may help soften visible signs of aging and support a more rested, refreshed look."],
@@ -3126,7 +3128,7 @@ function detailedTreatmentCategoryPage(category) {
     <section class="section-shell bg-mist"><div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><div class="mx-auto max-w-4xl text-center"><p class="eyebrow">Treatment Comparison</p><h2 class="mt-3 font-serif text-4xl font-semibold text-navy sm:text-5xl">${category.comparisonTitle}</h2></div><div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">${category.comparisons.map(x=>`<article class="luxe-card p-5"><h3 class="font-serif text-2xl font-semibold text-navy">${x[0]}</h3><p class="mt-3 text-sm leading-6 text-ink/66">${x[1]}</p></article>`).join("")}</div><div class="mt-8 text-center"><p class="leading-7 text-ink/68">${category.comparisonCta}</p><a href="${assessmentRoute}" class="btn btn-navy mt-5 justify-center">${icon("sparkle")} ${assessmentLabel}</a></div></div></section>
   ` : "";
   const providerSection = category.providerTitle ? `
-    <section class="section-shell bg-ivory"><div class="mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-2 lg:px-8"><article><p class="eyebrow">Your Provider</p><h2 class="mt-3 font-serif text-4xl font-semibold text-navy sm:text-5xl">${category.providerTitle}</h2><p class="mt-4 leading-8 text-ink/70">${category.providerCopy}</p><div class="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap"><a href="#about" class="btn btn-navy justify-center">${icon("users")} Meet Tiana</a><a href="${phoneRoute}" class="btn border border-navy/15 bg-white text-navy justify-center">${icon(category.providerSecondaryIcon || "calendar")} ${category.providerSecondaryLabel || "Book A Consultation"}</a></div></article><article><p class="eyebrow">${category.localEyebrow}</p><h2 class="mt-3 font-serif text-4xl font-semibold text-navy sm:text-5xl">${category.localTitle}</h2><p class="mt-4 leading-8 text-ink/70">${category.localCopy}</p></article></div></section>
+    <section class="section-shell bg-ivory"><div class="mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-2 lg:px-8"><article><p class="eyebrow">Your Provider</p><h2 class="mt-3 font-serif text-4xl font-semibold text-navy sm:text-5xl">${category.providerTitle}</h2><p class="mt-4 leading-8 text-ink/70">${category.providerCopy}</p><div class="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap"><a href="#about" class="btn btn-navy justify-center">${icon("users")} Meet Tiana</a><a href="${/\bBook\b/i.test(category.providerSecondaryLabel || "Book A Consultation") ? bookingRoute : phoneRoute}" class="btn border border-navy/15 bg-white text-navy justify-center">${icon(category.providerSecondaryIcon || "calendar")} ${category.providerSecondaryLabel || "Book A Consultation"}</a></div></article><article><p class="eyebrow">${category.localEyebrow}</p><h2 class="mt-3 font-serif text-4xl font-semibold text-navy sm:text-5xl">${category.localTitle}</h2><p class="mt-4 leading-8 text-ink/70">${category.localCopy}</p></article></div></section>
   ` : "";
   const relatedSection = category.related ? `
     <section class="section-shell bg-white"><div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><div class="text-center"><p class="eyebrow">${category.relatedEyebrow || "Related Treatments"}</p><h2 class="mt-3 font-serif text-4xl font-semibold text-navy sm:text-5xl">${category.relatedTitle || "Explore Related Treatment Options"}</h2></div><div class="mt-8 flex flex-wrap justify-center gap-3">${category.related.map(x=>`<a href="${x[1]}" class="rounded-full border border-navy/10 bg-mist px-5 py-3 text-sm font-bold text-navy transition hover:border-champagne hover:bg-ivory">${x[0]}</a>`).join("")}</div></div></section>
@@ -3137,7 +3139,7 @@ function detailedTreatmentCategoryPage(category) {
   return `
     <section class="treatment-detail-hero hero-gradient -mt-[200px] overflow-hidden bg-navy-deep pt-[200px] text-white">${particles()}<div class="relative z-10 mx-auto max-w-7xl px-4 pb-16 pt-20 sm:px-6 lg:px-8 lg:pt-24"><div class="reveal max-w-4xl"><p class="eyebrow">${category.eyebrow}</p><h1 class="mt-4 text-balance font-serif text-[2.7rem] font-semibold leading-[.98] sm:text-6xl lg:text-7xl">${category.title}</h1><div class="gold-rule mt-6"><span></span></div><p class="hero-copy mt-6 max-w-3xl leading-8">${category.subheadline}</p><p class="hero-copy mt-4 max-w-3xl leading-7">${category.supportingCopy}</p><div class="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap"><a href="${bookingRoute}" class="btn btn-gold justify-center">${icon("calendar")} ${category.primaryCta}</a><a href="${assessmentRoute}" class="btn btn-ghost justify-center">${icon("sparkle")} ${category.secondaryCta}</a></div><p class="mt-5 flex items-center gap-2 text-xs font-medium uppercase tracking-[.14em] text-soft-gold/85">${icon("shield")} ${category.trustLine}</p></div></div></section>
     <section class="section-shell bg-white"><div class="mx-auto grid max-w-7xl gap-9 px-4 sm:px-6 lg:grid-cols-2 lg:px-8"><div><p class="eyebrow">${category.introEyebrow}</p><h2 class="mt-3 font-serif text-4xl font-semibold text-navy sm:text-5xl">${category.introTitle}</h2>${category.introCopy.map(x=>`<p class="mt-4 leading-8 text-ink/70">${x}</p>`).join("")}</div><div><p class="eyebrow">Who It Helps</p><h2 class="mt-3 font-serif text-4xl font-semibold text-navy sm:text-5xl">${category.whoTitle}</h2><p class="mt-4 leading-8 text-ink/70">${category.whoCopy}</p><div class="mt-5 flex flex-wrap gap-2">${category.whoFor.map(x=>`<span class="treatment-best-chip">${x}</span>`).join("")}</div><p class="mt-5 text-sm leading-7 text-ink/60">${category.candidacyNote}</p></div></div></section>
-    <section class="section-shell bg-ivory"><div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><div class="mx-auto max-w-4xl text-center"><p class="eyebrow">Treatment Options</p><h2 class="mt-3 font-serif text-4xl font-semibold text-navy sm:text-5xl">${category.optionsTitle}</h2><p class="mt-4 leading-8 text-ink/68">${category.optionsCopy}</p></div><div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">${treatmentPaths.map(x=>`<article id="${x[5] || `treatment-${slug(x[0])}`}" class="treatment-overview-card luxe-card flex scroll-mt-36 flex-col p-5 sm:p-6"><div class="icon-badge mb-4">${icon(category.icon)}</div><h3 class="font-serif text-3xl font-semibold text-navy">${x[0]}</h3><p class="mt-3 text-sm leading-7 text-ink/66">${x[1]}</p><div class="mt-5 flex flex-wrap gap-2">${(x[2] || []).map(y=>`<span class="treatment-best-chip">${y}</span>`).join("")}</div><div class="mt-auto pt-6"><a href="${x[4] || phoneRoute}" class="btn btn-navy justify-center">${icon("arrow")} ${x[3]}</a></div></article>`).join("")}</div></div></section>
+    <section class="section-shell bg-ivory"><div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><div class="mx-auto max-w-4xl text-center"><p class="eyebrow">Treatment Options</p><h2 class="mt-3 font-serif text-4xl font-semibold text-navy sm:text-5xl">${category.optionsTitle}</h2><p class="mt-4 leading-8 text-ink/68">${category.optionsCopy}</p></div><div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">${treatmentPaths.map(x=>`<article id="${x[5] || `treatment-${slug(x[0])}`}" class="treatment-overview-card luxe-card flex scroll-mt-36 flex-col p-5 sm:p-6"><div class="icon-badge mb-4">${icon(category.icon)}</div><h3 class="font-serif text-3xl font-semibold text-navy">${x[0]}</h3><p class="mt-3 text-sm leading-7 text-ink/66">${x[1]}</p><div class="mt-5 flex flex-wrap gap-2">${(x[2] || []).map(y=>`<span class="treatment-best-chip">${y}</span>`).join("")}</div><div class="mt-auto pt-6"><a href="${x[4] || (/\bBook\b/i.test(x[3]) ? bookingRoute : phoneRoute)}" class="btn btn-navy justify-center">${icon("arrow")} ${x[3]}</a></div></article>`).join("")}</div></div></section>
     <section class="section-shell bg-mist"><div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><div class="mx-auto max-w-4xl text-center"><p class="eyebrow">Benefits</p><h2 class="mt-3 font-serif text-4xl font-semibold text-navy sm:text-5xl">${category.benefitsTitle}</h2></div><div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-5">${category.benefits.map(x=>`<article class="luxe-card p-5"><div class="icon-badge mb-4">${icon(category.icon)}</div><h3 class="font-serif text-2xl font-semibold text-navy">${x[0]}</h3><p class="mt-3 text-sm leading-6 text-ink/66">${x[1]}</p></article>`).join("")}</div></div></section>
     ${category.mapSection || ""}
     ${category.treatmentAreaSection || ""}
@@ -3153,7 +3155,7 @@ function detailedTreatmentCategoryPage(category) {
     ${category.extraSection || ""}
     ${category.financingSection || homeFinancing()}
     <section class="section-shell bg-mist"><div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8"><div class="text-center"><p class="eyebrow">Frequently Asked Questions</p><h2 class="mt-3 font-serif text-4xl font-semibold text-navy sm:text-5xl">${category.faqTitle}</h2></div><div class="mt-8 space-y-3">${category.faqs.map(x=>`<details class="faq-item"><summary><span>${x[0]}</span>${icon("arrow")}</summary><p>${x[1]}</p></details>`).join("")}</div></div></section>
-    <section class="bg-navy-deep px-4 py-16 text-white"><div class="mx-auto max-w-7xl rounded-[1.5rem] border border-champagne/25 bg-white/5 p-7 text-center sm:px-10"><p class="eyebrow">Your Next Step</p><h2 class="mx-auto mt-3 max-w-4xl font-serif text-4xl font-semibold sm:text-5xl">${category.finalTitle}</h2><p class="mx-auto mt-4 max-w-3xl leading-8 text-white/70">${category.finalCopy}</p><div class="mt-7 flex flex-col justify-center gap-3 sm:flex-row sm:flex-wrap"><a href="${bookingRoute}" class="btn btn-gold justify-center">${icon("calendar")} ${category.primaryCta}</a><a href="${assessmentRoute}" class="btn btn-ghost justify-center">${icon("sparkle")} ${category.secondaryCta}</a><a href="${phoneRoute}" class="btn border border-white/25 bg-white text-navy justify-center">${icon("phone")} ${category.thirdCta}</a></div></div></section>
+    <section class="bg-navy-deep px-4 py-16 text-white"><div class="mx-auto max-w-7xl rounded-[1.5rem] border border-champagne/25 bg-white/5 p-7 text-center sm:px-10"><p class="eyebrow">Your Next Step</p><h2 class="mx-auto mt-3 max-w-4xl font-serif text-4xl font-semibold sm:text-5xl">${category.finalTitle}</h2><p class="mx-auto mt-4 max-w-3xl leading-8 text-white/70">${category.finalCopy}</p><div class="mt-7 flex flex-col justify-center gap-3 sm:flex-row sm:flex-wrap"><a href="${bookingRoute}" class="btn btn-gold justify-center">${icon("calendar")} ${category.primaryCta}</a><a href="${assessmentRoute}" class="btn btn-ghost justify-center">${icon("sparkle")} ${category.secondaryCta}</a><a href="${/\bBook\b/i.test(category.thirdCta || "") ? bookingRoute : phoneRoute}" class="btn border border-white/25 bg-white text-navy justify-center">${icon(/\bBook\b/i.test(category.thirdCta || "") ? "calendar" : "phone")} ${category.thirdCta}</a></div></div></section>
   `;
 }
 
@@ -3698,7 +3700,7 @@ function injectablesAssessmentTail() {
 
     <section class="section-shell bg-white"><div class="mx-auto grid max-w-7xl gap-9 px-4 sm:px-6 lg:grid-cols-2 lg:px-8"><div><p class="eyebrow">A More Thoughtful Way To Start</p><h2 class="mt-3 font-serif text-4xl font-semibold text-navy sm:text-5xl">Recommendations Should Be Personal, Precise, and Guided By Anatomy</h2><p class="mt-4 leading-8 text-ink/70">At Elite VitaMed, every recommendation is based on provider evaluation, not a generic treatment menu. Your plan considers:</p></div><div class="flex flex-wrap content-start gap-2">${factors.map((x) => `<span class="treatment-best-chip">${x}</span>`).join("")}</div></div></section>
 
-    <section class="section-shell bg-mist"><div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><div class="mx-auto max-w-4xl text-center"><p class="eyebrow">Google Reviews</p><h2 class="mt-3 font-serif text-4xl font-semibold text-navy sm:text-5xl">Trusted For Provider Led Care and A Premium Client Experience</h2><p class="mt-4 leading-8 text-ink/68">Clients trust Elite VitaMed for personalized aesthetic and wellness care performed by a Nurse Practitioner and certified injector, with the privacy and convenience of concierge appointments.</p><div class="mt-6 text-2xl tracking-[.18em] text-champagne">★★★★★</div><p class="mt-2 text-sm font-bold text-navy">Rated 5.0 stars on Google · 100+ reviews</p></div><div class="mt-9 grid gap-5 md:grid-cols-2">${reviewCards(2)}</div><div class="mt-8 text-center"><a href="${PLACEHOLDER_REVIEWS_URL}" target="_blank" rel="noopener" data-integration-placeholder="reviews" class="btn btn-navy justify-center">${icon("users")} Read More Reviews</a></div></div></section>
+    <section class="section-shell bg-mist"><div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><div class="mx-auto max-w-4xl text-center"><p class="eyebrow">Google Reviews</p><h2 class="mt-3 font-serif text-4xl font-semibold text-navy sm:text-5xl">Trusted For Provider Led Care and A Premium Client Experience</h2><p class="mt-4 leading-8 text-ink/68">Clients trust Elite VitaMed for personalized aesthetic and wellness care performed by a Nurse Practitioner and certified injector, with the privacy and convenience of concierge appointments.</p><div class="mt-6 text-2xl tracking-[.18em] text-champagne">★★★★★</div><p class="mt-2 text-sm font-bold text-navy">Rated 5.0 stars on Google</p></div><div class="mt-9 grid gap-5 md:grid-cols-2">${reviewCards(2)}</div><div class="mt-8 text-center"><a href="${GOOGLE_REVIEWS_URL}" target="_blank" rel="noopener" class="btn btn-navy justify-center">${icon("users")} Read More Reviews</a></div></div></section>
 
     <section class="section-shell bg-white"><div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><div class="mx-auto max-w-4xl text-center"><p class="eyebrow">Common Concerns</p><h2 class="mt-3 font-serif text-4xl font-semibold text-navy sm:text-5xl">This Assessment Can Help Sort Through Common Injectable Concerns</h2><p class="mt-4 leading-8 text-ink/68">You do not need to know the treatment name before reaching out. You only need to know what you want help improving.</p></div><div class="mt-8 flex flex-wrap justify-center gap-2">${concerns.map((x) => `<span class="treatment-best-chip">${x}</span>`).join("")}</div></div></section>
 
@@ -3868,6 +3870,14 @@ const pageMeta = {
     title: "Contact Elite VitaMed Aesthetics | Book Mobile Aesthetics in New Hampshire",
     description: "Contact Elite VitaMed to book Botox, fillers, IV drip therapy, or a phone consultation. Mobile concierge appointments across New Hampshire, 8:00 AM to 7:00 PM."
   },
+  "privacy-policy": {
+    title: "Privacy Policy | Elite VitaMed Aesthetics",
+    description: "How Elite VitaMed Aesthetics collects, uses, and protects your information, including form submissions, assessment responses, text message consent, and your choices."
+  },
+  terms: {
+    title: "Terms of Use | Elite VitaMed Aesthetics",
+    description: "The terms governing use of the Elite VitaMed Aesthetics website, including educational content disclaimers, appointments and deposits, pricing, and financing."
+  },
   home: {
     title: "Elite VitaMed Aesthetics | Mobile Botox, Fillers and IV Therapy in New Hampshire",
     description: "Premium mobile concierge injectables, IV drip therapy, and wellness care across New Hampshire, performed by a Nurse Practitioner and certified injector. Book online or start a treatment assessment."
@@ -3982,6 +3992,141 @@ const pageMeta = {
   }
 };
 
+function legalPageShell(eyebrow, title, updated, bodyHtml) {
+  return `
+    <section class="content-section" aria-labelledby="legalTitle">
+      <div class="content-inner legal-page">
+        <div class="section-copy">
+          <p class="eyebrow">${eyebrow}</p>
+          <h2 id="legalTitle">${title}</h2>
+          <p class="legal-updated">Last updated: ${updated}</p>
+        </div>
+        <div class="legal-body">
+          ${bodyHtml}
+        </div>
+      </div>
+    </section>
+  `;
+}
+
+function privacyPolicyPage() {
+  return legalPageShell("Privacy Policy", "How Elite VitaMed Handles Your Information", "July 12, 2026", `
+    <p>Elite VitaMed Aesthetics ("Elite VitaMed," "we," "us") provides mobile concierge aesthetic and wellness services across New Hampshire. This Privacy Policy explains what information we collect through elitevitamedaesthetics.com, how we use it, and the choices you have. By using this website, you agree to the practices described here.</p>
+
+    <h3>Information You Provide</h3>
+    <ul>
+      <li><strong>Contact and booking details</strong> — your name, phone number, email address, city/state, preferred appointment location, and best contact time when you submit our contact form, complete the injectables assessment, or book an appointment.</li>
+      <li><strong>Assessment responses</strong> — your answers to the injectables assessment (goals, areas of concern, treatment history, budget comfort) so we can prepare educational treatment plan options for you.</li>
+      <li><strong>Messages</strong> — anything you write to us in a form message, text, or email.</li>
+    </ul>
+
+    <h3>Information Collected Automatically</h3>
+    <ul>
+      <li><strong>Visit attribution</strong> — the page you landed on, the site that referred you, and campaign parameters in the link you clicked (for example, whether you arrived from an ad or social post). This helps us understand which channels bring clients to us.</li>
+      <li><strong>Cookies and similar technologies</strong> — used by us and the embedded services below for scheduling, financing, analytics, and advertising measurement. You can control cookies through your browser settings.</li>
+    </ul>
+
+    <h3>How We Use Your Information</h3>
+    <ul>
+      <li>To respond to your inquiries and schedule appointments.</li>
+      <li>To send your assessment results and follow-up messages by text or email when you have given consent.</li>
+      <li>To operate, improve, and secure our website and services.</li>
+      <li>To send promotional communications you have opted into (you can opt out at any time).</li>
+      <li>To measure advertising performance (for example, confirming that an inquiry came from an ad).</li>
+    </ul>
+
+    <h3>Text Message Consent</h3>
+    <p>When you check the consent box on our forms, you agree to receive your results and follow-up messages from Elite VitaMed by text and email. Consent is not a condition of purchase. Message and data rates may apply, and message frequency varies. Reply STOP to any text to opt out, or HELP for help.</p>
+
+    <h3>How We Share Information</h3>
+    <p>We do not sell your personal information. We share it only with service providers who help us operate, and only for the purposes above:</p>
+    <ul>
+      <li><strong>CRM and messaging</strong> — LeadConnector/HighLevel processes our form submissions, contact records, scheduling, and text/email communication.</li>
+      <li><strong>Financing</strong> — if you choose to apply for financing, your application is made directly with Cherry Technologies and governed by their privacy policy; we do not receive your financial details.</li>
+      <li><strong>Analytics and advertising platforms</strong> — such as Google and Meta, for measurement and advertising as described above.</li>
+      <li><strong>Legal requirements</strong> — when required by law or to protect our rights, clients, or the public.</li>
+    </ul>
+
+    <h3>Health-Related Information</h3>
+    <p>Assessment answers submitted through this website are educational screening information used to prepare consultation options; they are not a medical record, diagnosis, or treatment plan. Clinical records created during your care are maintained separately under our practice's clinical policies and applicable law.</p>
+
+    <h3>Data Retention and Security</h3>
+    <p>We keep personal information for as long as needed for the purposes above or as required by law, and we use reasonable administrative and technical safeguards to protect it. No method of transmission or storage is completely secure, so we cannot guarantee absolute security.</p>
+
+    <h3>Your Choices</h3>
+    <ul>
+      <li>Opt out of texts by replying STOP, and out of emails using the unsubscribe link.</li>
+      <li>Request access to, correction of, or deletion of your personal information by contacting us using the details below. We will respond within a reasonable time and as required by applicable law.</li>
+    </ul>
+
+    <h3>Children</h3>
+    <p>Our services and website are intended for adults 18 and older. We do not knowingly collect personal information from children.</p>
+
+    <h3>Third-Party Links</h3>
+    <p>Our site links to third-party services (for example, booking, financing, and social platforms). Their privacy practices are governed by their own policies.</p>
+
+    <h3>Changes to This Policy</h3>
+    <p>We may update this Privacy Policy from time to time. The "Last updated" date above reflects the latest revision, and continued use of the site after changes means you accept the updated policy.</p>
+
+    <h3>Contact Us</h3>
+    <p>Elite VitaMed Aesthetics · New Hampshire<br>Phone: <a href="tel:+16037657760">(603) 765-7760</a><br>Email: <a href="mailto:elitevitamedaesthetics@gmail.com">elitevitamedaesthetics@gmail.com</a></p>
+  `);
+}
+
+function termsPage() {
+  return legalPageShell("Terms of Use", "Website Terms of Use", "July 12, 2026", `
+    <p>These Terms of Use ("Terms") govern your use of elitevitamedaesthetics.com, operated by Elite VitaMed Aesthetics ("Elite VitaMed," "we," "us"). By using this website, you agree to these Terms. If you do not agree, please do not use the site.</p>
+
+    <h3>Educational Content — Not Medical Advice</h3>
+    <p>All website content, including treatment descriptions, pricing examples, and the injectables assessment, is educational information only. It is not medical advice, a diagnosis, or a treatment plan, and it does not create a provider-patient relationship. Whether any treatment is appropriate for you can only be determined through an in-person evaluation by a qualified provider, and final recommendations, eligibility, dosing, and pricing may differ from anything shown on this site.</p>
+
+    <h3>Eligibility</h3>
+    <p>This website and our services are intended for adults 18 years of age or older.</p>
+
+    <h3>Appointments and Deposits</h3>
+    <p>Appointments may require a deposit (for example, promotional offers require a $50 deposit), which is applied toward your treatment. Scheduling, rescheduling, and cancellation terms are provided at the time of booking. Treatment is always subject to provider evaluation and candidacy — if a treatment is not appropriate for you, we will discuss alternatives or refund applicable deposits.</p>
+
+    <h3>Pricing and Promotions</h3>
+    <p>Prices, specials, and membership offerings shown on this site are subject to change without notice, may be limited to new clients or specific treatments, and are subject to provider evaluation. The price you are quoted at your consultation controls.</p>
+
+    <h3>Financing</h3>
+    <p>Financing is offered through Cherry Technologies, an independent third party. Your application and any payment plan are governed by Cherry's own terms and approval process; we are not a lender.</p>
+
+    <h3>Communications</h3>
+    <p>By submitting our forms with the consent box checked, you agree to receive texts and emails from us as described in our <a href="#privacy-policy">Privacy Policy</a>. You can opt out at any time (reply STOP to texts).</p>
+
+    <h3>Intellectual Property</h3>
+    <p>The content, design, branding, and imagery on this website are owned by or licensed to Elite VitaMed Aesthetics and may not be copied, reproduced, or used commercially without our written permission.</p>
+
+    <h3>Acceptable Use</h3>
+    <p>You agree not to misuse the website — including attempting to disrupt it, submitting false information, scraping content, or using it for any unlawful purpose.</p>
+
+    <h3>Results Vary</h3>
+    <p>Any results, reviews, or testimonials shown reflect individual experiences. Aesthetic outcomes vary from person to person, and no specific result is promised or guaranteed.</p>
+
+    <h3>Third-Party Services</h3>
+    <p>The site embeds or links to third-party services (scheduling, financing, social media, maps). We are not responsible for third-party content, availability, or practices.</p>
+
+    <h3>Disclaimers</h3>
+    <p>The website is provided "as is" and "as available" without warranties of any kind, express or implied, including accuracy, availability, or fitness for a particular purpose.</p>
+
+    <h3>Limitation of Liability</h3>
+    <p>To the fullest extent permitted by law, Elite VitaMed Aesthetics will not be liable for indirect, incidental, special, or consequential damages arising from your use of this website. Nothing in these Terms limits liability that cannot be limited under applicable law, and nothing here limits your rights as a patient under applicable healthcare law.</p>
+
+    <h3>Indemnification</h3>
+    <p>You agree to indemnify and hold Elite VitaMed Aesthetics harmless from claims arising out of your misuse of the website or violation of these Terms.</p>
+
+    <h3>Governing Law</h3>
+    <p>These Terms are governed by the laws of the State of New Hampshire, without regard to conflict-of-law principles, and any disputes will be resolved in the state or federal courts located in New Hampshire.</p>
+
+    <h3>Changes to These Terms</h3>
+    <p>We may update these Terms from time to time. The "Last updated" date above reflects the latest revision, and continued use of the site after changes means you accept the updated Terms.</p>
+
+    <h3>Contact Us</h3>
+    <p>Elite VitaMed Aesthetics · New Hampshire<br>Phone: <a href="tel:+16037657760">(603) 765-7760</a><br>Email: <a href="mailto:elitevitamedaesthetics@gmail.com">elitevitamedaesthetics@gmail.com</a></p>
+  `);
+}
+
 const pages = {
   home: () => `
     ${homeHero()}
@@ -4080,14 +4225,20 @@ const pages = {
 
   "injectables-assessment": () => (window.INJECTABLES_ASSESSMENT_HTML || "") + injectablesAssessmentTail(),
 
-  contact: () => `${contactHero()}${contactOptions()}${contactForm()}${contactLocation()}${contactExpect()}${contactReasons()}${contactProviderCare()}${contactTreatmentCategories()}${contactPrivateConsult()}${contactReviews()}${contactFaq()}${contactFinalCta()}`
+  contact: () => `${contactHero()}${contactOptions()}${contactForm()}${contactLocation()}${contactExpect()}${contactReasons()}${contactProviderCare()}${contactTreatmentCategories()}${contactPrivateConsult()}${contactReviews()}${contactFaq()}${contactFinalCta()}`,
+
+  "privacy-policy": privacyPolicyPage,
+
+  terms: termsPage
 };
 
 // Resolve the active page from the URL path (multi-page site); falls back to the legacy
 // hash route, then home. Works at the domain root and under a subpath (GitHub Pages staging).
 function currentRoute() {
+  // First page-key segment wins: /book/injectables/ is the "book" page (injectables
+  // booking menu), NOT the /injectables/ treatment overview.
   const segments = pathSegments();
-  for (let i = segments.length - 1; i >= 0; i--) {
+  for (let i = 0; i < segments.length; i++) {
     if (pages[segments[i]]) return segments[i];
   }
   const hashRoute = hashRouteSegment();
@@ -4584,7 +4735,7 @@ function redirectLegacyHash() {
   // which would make every legacy hash look like "already here").
   const segments = pathSegments();
   let pathRoute = "home";
-  for (let i = segments.length - 1; i >= 0; i--) {
+  for (let i = 0; i < segments.length; i++) {
     if (pages[segments[i]]) { pathRoute = segments[i]; break; }
   }
   const samePage = route === pathRoute && !(route === "book" && rest.length);

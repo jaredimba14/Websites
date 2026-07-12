@@ -15,7 +15,7 @@
 </div>
 <script>
   (function () {
-    var routes = ["home","about","services","injectables","botox-neurotoxins","dermal-fillers","radiesse-fillers","restylane-fillers","jawline-contouring","under-eye-rejuvenation","sculptra","facial-balancing","non-surgical-face-lift","pdo-threads","regenerative-aesthetics","prp-prf","hair-restoration","collagen-stimulation","skin-tightening","breeze","wondertouch","ultimate-glow-lift","facial-contouring","microneedling-stem-cells","chemical-peels","iv-wellness","iv-drips","intimate-wellness","feminine-wellness","vaginal-tightening","assessment","memberships","results","faq","book","injectables-assessment","contact"];
+    var routes = ["home","about","services","injectables","botox-neurotoxins","dermal-fillers","radiesse-fillers","restylane-fillers","jawline-contouring","under-eye-rejuvenation","sculptra","facial-balancing","non-surgical-face-lift","pdo-threads","regenerative-aesthetics","prp-prf","hair-restoration","collagen-stimulation","skin-tightening","breeze","wondertouch","ultimate-glow-lift","facial-contouring","microneedling-stem-cells","chemical-peels","iv-wellness","iv-drips","intimate-wellness","feminine-wellness","vaginal-tightening","assessment","memberships","results","faq","book","injectables-assessment","contact","privacy-policy","terms"];
     var raw = (location.hash || "").replace(/^#/, "");
     var route = raw.split("/")[0];
     if (routes.indexOf(route) >= 0) location.replace("/" + (route === "home" ? "" : route + "/"));

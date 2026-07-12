@@ -4830,3 +4830,45 @@ p.text-sm {
   line-height: 1.5;
   margin: .1rem 0 0;
 }
+
+/* Legal pages (Privacy Policy, Terms of Use). */
+.legal-page {
+  max-width: 56rem;
+}
+.legal-updated {
+  color: rgba(20, 37, 54, .5);
+  font-size: .85rem;
+  margin-top: .75rem;
+}
+.legal-body {
+  margin-top: 2rem;
+}
+.legal-body h3 {
+  color: #06324a;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.55rem;
+  font-weight: 600;
+  margin: 2.2rem 0 .6rem;
+}
+.legal-body p,
+.legal-body li {
+  color: rgba(20, 37, 54, .72);
+  font-size: .96rem;
+  line-height: 1.85;
+}
+.legal-body p {
+  margin: 0 0 1rem;
+}
+.legal-body ul {
+  list-style: disc;
+  margin: 0 0 1rem;
+  padding-left: 1.4rem;
+}
+.legal-body li {
+  margin-bottom: .45rem;
+}
+.legal-body a {
+  color: #b88a44;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}

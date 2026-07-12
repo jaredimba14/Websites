@@ -47,7 +47,31 @@
         "email": "elitevitamedaesthetics@gmail.com",
         "priceRange": "$$",
         "currenciesAccepted": "USD",
-        "areaServed": { "@type": "State", "name": "New Hampshire" },
+        "areaServed": [
+          { "@type": "State", "name": "New Hampshire" },
+          { "@type": "City", "name": "Manchester" },
+          { "@type": "City", "name": "Nashua" },
+          { "@type": "City", "name": "Concord" },
+          { "@type": "City", "name": "Bedford" },
+          { "@type": "City", "name": "Salem" },
+          { "@type": "City", "name": "Derry" },
+          { "@type": "City", "name": "Londonderry" },
+          { "@type": "City", "name": "Windham" },
+          { "@type": "City", "name": "Merrimack" },
+          { "@type": "City", "name": "Hudson" },
+          { "@type": "City", "name": "Amherst" },
+          { "@type": "City", "name": "Hooksett" },
+          { "@type": "City", "name": "Goffstown" },
+          { "@type": "City", "name": "Exeter" },
+          { "@type": "City", "name": "Portsmouth" },
+          { "@type": "City", "name": "Dover" },
+          { "@type": "City", "name": "Rochester" },
+          { "@type": "City", "name": "Keene" }
+        ],
+        "sameAs": [
+          "https://www.facebook.com/profile.php?id=61583172604302",
+          "https://www.instagram.com/elitevitamedaesthetics/"
+        ],
         "address": { "@type": "PostalAddress", "addressRegion": "NH", "addressCountry": "US" },
         "knowsAbout": ["Botox", "Dermal fillers", "Facial balancing", "Sculptra", "PDO threads", "PRP", "IV therapy", "Vitamin injections", "Skin tightening"],
         "makesOffer": [
@@ -69,7 +93,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
     <!-- Tailwind utilities precompiled by build.mjs (tailwind.config.js) — no runtime compiler. -->
     <link rel="stylesheet" href="../assets/tailwind.css?v=1" />
-    <link rel="stylesheet" href="../assets/styles.min.css?v=123" />
+    <link rel="stylesheet" href="../assets/styles.min.css?v=124" />
   </head>
   <body class="bg-ivory text-ink antialiased">
     <div class="site-header fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-navy-deep/95 backdrop-blur-xl">
@@ -372,8 +396,8 @@
               <img class="footer-logo" src="../assets/logo-horizontal.webp" alt="Elite VitaMed Aesthetics" />
             </a>
             <div class="footer-social mt-5 flex gap-3">
-              <a aria-label="Instagram" href="../contact/" data-integration-placeholder="social"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.4"/><circle cx="12" cy="12" r="4"/><circle cx="17.6" cy="6.4" r="1.1" fill="currentColor" stroke="none"/></svg></a>
-              <a aria-label="Facebook" href="../contact/" data-integration-placeholder="social"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3Z"/></svg></a>
+              <a aria-label="Instagram" href="https://www.instagram.com/elitevitamedaesthetics/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.4"/><circle cx="12" cy="12" r="4"/><circle cx="17.6" cy="6.4" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+              <a aria-label="Facebook" href="https://www.facebook.com/profile.php?id=61583172604302" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3Z"/></svg></a>
             </div>
           </div>
           <div>
@@ -403,8 +427,8 @@
           <div class="footer-legal flex flex-wrap gap-x-5 gap-y-2">
             <a href="../faq/">FAQ</a>
             <a href="../contact/">Contact</a>
-            <a href="../contact/" data-content-placeholder="legal">Privacy Policy</a>
-            <a href="../contact/" data-content-placeholder="legal">Terms</a>
+            <a href="../privacy-policy/">Privacy Policy</a>
+            <a href="../terms/">Terms</a>
           </div>
         </div>
         <p class="mt-5 max-w-4xl text-xs leading-6 text-white/40">Information on this site is educational and does not constitute medical advice. Individual results vary. A consultation and provider evaluation are required before any treatment.</p>
@@ -413,7 +437,7 @@
     </footer>
 
     <script defer src="../assets/particles.min.js?v=1"></script>
-    <script defer src="../assets/app.min.js?v=138"></script>
+    <script defer src="../assets/app.min.js?v=139"></script>
     <!-- GHL booking widget auto-resize -->
 
     <!-- CHERRY WIDGET BEGIN (loaded after the page is idle so it never competes with first paint) -->
