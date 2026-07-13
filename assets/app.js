@@ -1160,9 +1160,9 @@ function contactForm() {
             <p class="mt-4 max-w-3xl leading-8">Use the form below to contact Elite VitaMed. A member of the team will follow up with you to help answer your questions or guide you toward the right next step.</p>
             <form class="mt-7 grid gap-4 sm:grid-cols-2" data-contact-form novalidate>
               <label class="contact-field">First Name <span aria-hidden="true">*</span><input class="${inputClass}" name="first_name" autocomplete="given-name" /></label>
-              <label class="contact-field">Last Name<input class="${inputClass}" name="last_name" autocomplete="family-name" /></label>
-              <label class="contact-field">Phone Number<input class="${inputClass}" name="phone" inputmode="tel" autocomplete="tel" /></label>
-              <label class="contact-field">Email Address<input class="${inputClass}" name="email" type="email" autocomplete="email" /></label>
+              <label class="contact-field">Last Name <span aria-hidden="true">*</span><input class="${inputClass}" name="last_name" autocomplete="family-name" /></label>
+              <label class="contact-field">Phone Number <span aria-hidden="true">*</span><input class="${inputClass}" name="phone" inputmode="tel" autocomplete="tel" /></label>
+              <label class="contact-field">Email Address <span aria-hidden="true">*</span><input class="${inputClass}" name="email" type="email" autocomplete="email" /></label>
               <label class="contact-field sm:col-span-2">What are you interested in? <span aria-hidden="true">*</span>
                 <select class="${inputClass}" name="treatment_interest"><option value="">Select one</option>${interestOptions.map((o) => `<option>${o}</option>`).join("")}</select>
               </label>
@@ -4549,6 +4549,7 @@ function setupContactPage() {
     event.preventDefault();
     const invalid = [];
     const firstName = form.querySelector('[name="first_name"]');
+    const lastName = form.querySelector('[name="last_name"]');
     const phone = form.querySelector('[name="phone"]');
     const email = form.querySelector('[name="email"]');
     const treatmentInterest = form.querySelector('[name="treatment_interest"]');
@@ -4558,8 +4559,12 @@ function setupContactPage() {
     form.querySelectorAll("[data-field-error]").forEach((message) => message.remove());
 
     if (!firstName.value.trim()) invalid.push([firstName, "Enter your first name."]);
-    if (!phone.value.trim() && !email.value.trim()) {
-      invalid.push([phone, "Enter a phone number or email address.", [phone, email]]);
+    if (!lastName.value.trim()) invalid.push([lastName, "Enter your last name."]);
+    if (!phone.value.trim()) invalid.push([phone, "Enter your phone number."]);
+    if (!email.value.trim()) {
+      invalid.push([email, "Enter your email address."]);
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) {
+      invalid.push([email, "Enter a valid email address."]);
     }
     if (!treatmentInterest.value) invalid.push([treatmentInterest, "Tell us what you are interested in."]);
 
